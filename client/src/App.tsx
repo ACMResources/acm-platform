@@ -13,6 +13,7 @@ import Dashboard from '@/pages/dashboard';
 import CandidatesPage from '@/pages/candidates';
 import ClientsPage from '@/pages/clients';
 import ProjectsPage from '@/pages/projects';
+import ProjectDetailPage from '@/pages/project-detail';
 import PlacementsPage from '@/pages/placements';
 import TimesheetsPage from '@/pages/timesheets';
 import QuotesPage from '@/pages/quotes';
@@ -39,6 +40,7 @@ function AppRouter() {
       <Route path="/candidates" component={CandidatesPage} />
       <Route path="/clients" component={ClientsPage} />
       <Route path="/projects" component={ProjectsPage} />
+      <Route path="/projects/:id" component={ProjectDetailPage} />
       <Route path="/placements" component={PlacementsPage} />
       <Route path="/timesheets" component={TimesheetsPage} />
       <Route path="/quotes" component={QuotesPage} />

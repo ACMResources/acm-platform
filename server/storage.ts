@@ -1,14 +1,19 @@
 import { drizzle } from "drizzle-orm/better-sqlite3";
 import Database from "better-sqlite3";
-import { eq, desc, like, and } from "drizzle-orm";
+import { eq, desc } from "drizzle-orm";
 import {
   candidates, clients, projects, placements, quotes, timesheets,
+  projectTasks, projectRfis, projectNotes, projectMilestones,
   type Candidate, type InsertCandidate,
   type Client, type InsertClient,
   type Project, type InsertProject,
   type Placement, type InsertPlacement,
   type Quote, type InsertQuote,
   type Timesheet, type InsertTimesheet,
+  type ProjectTask, type InsertProjectTask,
+  type ProjectRfi, type InsertProjectRfi,
+  type ProjectNote, type InsertProjectNote,
+  type ProjectMilestone, type InsertProjectMilestone,
 } from "@shared/schema";
 
 const sqlite = new Database("acm.db");
@@ -56,6 +61,50 @@ sqlite.exec(`
     contract_value REAL,
     headcount INTEGER DEFAULT 0,
     notes TEXT,
+    created_at TEXT NOT NULL DEFAULT (datetime('now'))
+  );
+
+  CREATE TABLE IF NOT EXISTS project_tasks (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    project_id INTEGER NOT NULL,
+    title TEXT NOT NULL,
+    description TEXT,
+    assigned_to TEXT,
+    priority TEXT NOT NULL DEFAULT 'medium',
+    status TEXT NOT NULL DEFAULT 'open',
+    due_date TEXT,
+    created_at TEXT NOT NULL DEFAULT (datetime('now'))
+  );
+
+  CREATE TABLE IF NOT EXISTS project_rfis (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    project_id INTEGER NOT NULL,
+    rfi_number TEXT,
+    subject TEXT NOT NULL,
+    question TEXT NOT NULL,
+    raised_by TEXT,
+    assigned_to TEXT,
+    due_date TEXT,
+    response TEXT,
+    status TEXT NOT NULL DEFAULT 'open',
+    created_at TEXT NOT NULL DEFAULT (datetime('now'))
+  );
+
+  CREATE TABLE IF NOT EXISTS project_notes (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    project_id INTEGER NOT NULL,
+    author TEXT NOT NULL DEFAULT 'Lydon Hollitt',
+    body TEXT NOT NULL,
+    created_at TEXT NOT NULL DEFAULT (datetime('now'))
+  );
+
+  CREATE TABLE IF NOT EXISTS project_milestones (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    project_id INTEGER NOT NULL,
+    title TEXT NOT NULL,
+    target_date TEXT,
+    completed_date TEXT,
+    status TEXT NOT NULL DEFAULT 'pending',
     created_at TEXT NOT NULL DEFAULT (datetime('now'))
   );
 
@@ -197,26 +246,54 @@ if (existingCandidates.count === 0) {
     (9, 12, 9, '2026-04-13', 12, 12, 12, 12, 0, 0, 0, 48, 'approved'),
     (10, 15, 10, '2026-04-13', 12, 12, 12, 0, 0, 0, 0, 36, 'pending'),
     (12, 14, 11, '2026-04-13', 12, 12, 0, 0, 0, 0, 0, 24, 'pending');
+
+    INSERT INTO project_tasks (project_id, title, description, assigned_to, priority, status, due_date) VALUES
+    (8, 'Weekly headcount reconciliation', 'Confirm all workers on site match placement records', 'Lydon Hollitt', 'high', 'open', '2026-04-25'),
+    (8, 'Submit monthly progress report to FMG', 'Compile hours, progress photos, and safety stats', 'Dan Johnstone', 'high', 'open', '2026-04-30'),
+    (10, 'Confirm HDPE pipe delivery schedule', 'Coordinate with supplier for Phase 2 pipe delivery', 'Lydon Hollitt', 'critical', 'in_progress', '2026-04-22'),
+    (10, 'ITP sign-off for Section 3', 'Get client sign-off on inspection test plan for section 3', 'Brian Cox', 'high', 'open', '2026-04-28'),
+    (12, 'Mobilise additional welder', 'Source and mobilise one extra poly welder for increased scope', 'Lydon Hollitt', 'medium', 'done', '2026-04-15'),
+    (14, 'BOR daily report submission', 'Submit daily production reports to Rio Tinto site team', 'Lydon Hollitt', 'medium', 'open', '2026-04-20'),
+    (15, 'ADC site induction for new starters', 'Arrange site induction for 2 new welders starting Monday', 'Brian Cox', 'high', 'open', '2026-04-21');
+
+    INSERT INTO project_rfis (project_id, rfi_number, subject, question, raised_by, assigned_to, due_date, status) VALUES
+    (10, 'RFI-001', 'Pipe pressure rating confirmation', 'Can you confirm the minimum pressure rating required for the DN200 HDPE pipe on section 4A? Drawings show PN10 but spec doc references PN12.5.', 'ACM Resources', 'MPC Kinetic Engineering', '2026-04-24', 'open'),
+    (10, 'RFI-002', 'Butt fusion temperature variance', 'Site ambient temperature has been dropping to 4°C overnight. Confirm acceptable fusion temperature range and whether pre-heating is required per AS/NZS 4130.', 'Brian Cox', 'MPC Kinetic Engineering', '2026-04-21', 'under_review'),
+    (8, 'RFI-001', 'Access road conditions at Site B', 'Access road to Site B compound has deteriorated. Requesting confirmation of FMG''s maintenance schedule or alternative access route for heavy plant.', 'Dan Johnstone', 'Fortescue Site Team', '2026-04-22', 'answered'),
+    (15, 'RFI-001', 'Welding qualification requirement', 'Client spec references ISO 12176. Confirm whether existing AS 2885-qualified welders are acceptable or if re-certification to ISO standard is required.', 'Lydon Hollitt', 'Interforge', '2026-04-25', 'open');
+
+    INSERT INTO project_notes (project_id, author, body) VALUES
+    (8, 'Lydon Hollitt', 'FMG confirmed extension of road maintenance scope through to December 2026. Headcount likely to increase from 20 to 24 from May. Dan to prepare updated rate card.'),
+    (10, 'Lydon Hollitt', 'Iron Bridge site visit completed 15 April. Works progressing well on CRWP section. Client satisfied with quality. Minor issue with fusion temps in cold weather — RFI-002 raised.'),
+    (10, 'Brian Cox', 'Section 1 and 2 HDPE welds inspected and signed off. Moving to Section 3 this week. All welders compliant with induction requirements.'),
+    (12, 'Dan Johnstone', 'Scope increase agreed verbally with PPS — additional 200m of DN110. Awaiting written variation. Do not start additional works until VO is signed.');
+
+    INSERT INTO project_milestones (project_id, title, target_date, status) VALUES
+    (10, 'CRWP Section 1 complete', '2026-03-31', 'achieved'),
+    (10, 'CRWP Section 2 complete', '2026-04-30', 'pending'),
+    (10, 'RAW works commence', '2026-05-15', 'pending'),
+    (10, 'Practical completion', '2026-07-31', 'pending'),
+    (8, 'Year 4 mobilisation complete', '2026-01-15', 'achieved'),
+    (8, 'Mid-year headcount review', '2026-06-30', 'pending'),
+    (12, 'Scope 1 welds complete', '2026-03-15', 'achieved'),
+    (12, 'Practical completion', '2026-05-31', 'pending');
   `);
 }
 
 // ── Storage Interface ──────────────────────────────────────────────
 export interface IStorage {
-  // Candidates
   getCandidates(): Candidate[];
   getCandidateById(id: number): Candidate | undefined;
   createCandidate(data: InsertCandidate): Candidate;
   updateCandidate(id: number, data: Partial<InsertCandidate>): Candidate | undefined;
   deleteCandidate(id: number): void;
 
-  // Clients
   getClients(): Client[];
   getClientById(id: number): Client | undefined;
   createClient(data: InsertClient): Client;
   updateClient(id: number, data: Partial<InsertClient>): Client | undefined;
   deleteClient(id: number): void;
 
-  // Projects
   getProjects(): Project[];
   getProjectById(id: number): Project | undefined;
   getProjectsByClient(clientId: number): Project[];
@@ -224,21 +301,41 @@ export interface IStorage {
   updateProject(id: number, data: Partial<InsertProject>): Project | undefined;
   deleteProject(id: number): void;
 
-  // Placements
+  // Project Tasks
+  getTasksByProject(projectId: number): ProjectTask[];
+  createTask(data: InsertProjectTask): ProjectTask;
+  updateTask(id: number, data: Partial<InsertProjectTask>): ProjectTask | undefined;
+  deleteTask(id: number): void;
+
+  // Project RFIs
+  getRfisByProject(projectId: number): ProjectRfi[];
+  createRfi(data: InsertProjectRfi): ProjectRfi;
+  updateRfi(id: number, data: Partial<InsertProjectRfi>): ProjectRfi | undefined;
+  deleteRfi(id: number): void;
+
+  // Project Notes
+  getNotesByProject(projectId: number): ProjectNote[];
+  createNote(data: InsertProjectNote): ProjectNote;
+  deleteNote(id: number): void;
+
+  // Milestones
+  getMilestonesByProject(projectId: number): ProjectMilestone[];
+  createMilestone(data: InsertProjectMilestone): ProjectMilestone;
+  updateMilestone(id: number, data: Partial<InsertProjectMilestone>): ProjectMilestone | undefined;
+  deleteMilestone(id: number): void;
+
   getPlacements(): Placement[];
   getPlacementById(id: number): Placement | undefined;
   createPlacement(data: InsertPlacement): Placement;
   updatePlacement(id: number, data: Partial<InsertPlacement>): Placement | undefined;
   deletePlacement(id: number): void;
 
-  // Quotes
   getQuotes(): Quote[];
   getQuoteById(id: number): Quote | undefined;
   createQuote(data: InsertQuote): Quote;
   updateQuote(id: number, data: Partial<InsertQuote>): Quote | undefined;
   deleteQuote(id: number): void;
 
-  // Timesheets
   getTimesheets(): Timesheet[];
   getTimesheetById(id: number): Timesheet | undefined;
   getTimesheetsByCandidate(candidateId: number): Timesheet[];
@@ -246,7 +343,6 @@ export interface IStorage {
   updateTimesheet(id: number, data: Partial<InsertTimesheet>): Timesheet | undefined;
   deleteTimesheet(id: number): void;
 
-  // Dashboard stats
   getDashboardStats(): {
     totalCandidates: number;
     activePlacements: number;
@@ -259,108 +355,74 @@ export interface IStorage {
 }
 
 export class SqliteStorage implements IStorage {
-  getCandidates(): Candidate[] {
-    return db.select().from(candidates).orderBy(desc(candidates.createdAt)).all();
-  }
-  getCandidateById(id: number): Candidate | undefined {
-    return db.select().from(candidates).where(eq(candidates.id, id)).get();
-  }
-  createCandidate(data: InsertCandidate): Candidate {
-    return db.insert(candidates).values({ ...data, createdAt: new Date().toISOString() }).returning().get();
-  }
-  updateCandidate(id: number, data: Partial<InsertCandidate>): Candidate | undefined {
-    return db.update(candidates).set(data).where(eq(candidates.id, id)).returning().get();
-  }
-  deleteCandidate(id: number): void {
-    db.delete(candidates).where(eq(candidates.id, id)).run();
-  }
+  // ── Candidates ──────────────────────────────────────────────────
+  getCandidates(): Candidate[] { return db.select().from(candidates).orderBy(desc(candidates.createdAt)).all(); }
+  getCandidateById(id: number): Candidate | undefined { return db.select().from(candidates).where(eq(candidates.id, id)).get(); }
+  createCandidate(data: InsertCandidate): Candidate { return db.insert(candidates).values({ ...data, createdAt: new Date().toISOString() }).returning().get(); }
+  updateCandidate(id: number, data: Partial<InsertCandidate>): Candidate | undefined { return db.update(candidates).set(data).where(eq(candidates.id, id)).returning().get(); }
+  deleteCandidate(id: number): void { db.delete(candidates).where(eq(candidates.id, id)).run(); }
 
-  getClients(): Client[] {
-    return db.select().from(clients).orderBy(desc(clients.createdAt)).all();
-  }
-  getClientById(id: number): Client | undefined {
-    return db.select().from(clients).where(eq(clients.id, id)).get();
-  }
-  createClient(data: InsertClient): Client {
-    return db.insert(clients).values({ ...data, createdAt: new Date().toISOString() }).returning().get();
-  }
-  updateClient(id: number, data: Partial<InsertClient>): Client | undefined {
-    return db.update(clients).set(data).where(eq(clients.id, id)).returning().get();
-  }
-  deleteClient(id: number): void {
-    db.delete(clients).where(eq(clients.id, id)).run();
-  }
+  // ── Clients ──────────────────────────────────────────────────────
+  getClients(): Client[] { return db.select().from(clients).orderBy(desc(clients.createdAt)).all(); }
+  getClientById(id: number): Client | undefined { return db.select().from(clients).where(eq(clients.id, id)).get(); }
+  createClient(data: InsertClient): Client { return db.insert(clients).values({ ...data, createdAt: new Date().toISOString() }).returning().get(); }
+  updateClient(id: number, data: Partial<InsertClient>): Client | undefined { return db.update(clients).set(data).where(eq(clients.id, id)).returning().get(); }
+  deleteClient(id: number): void { db.delete(clients).where(eq(clients.id, id)).run(); }
 
-  getProjects(): Project[] {
-    return db.select().from(projects).orderBy(desc(projects.createdAt)).all();
-  }
-  getProjectById(id: number): Project | undefined {
-    return db.select().from(projects).where(eq(projects.id, id)).get();
-  }
-  getProjectsByClient(clientId: number): Project[] {
-    return db.select().from(projects).where(eq(projects.clientId, clientId)).all();
-  }
-  createProject(data: InsertProject): Project {
-    return db.insert(projects).values({ ...data, createdAt: new Date().toISOString() }).returning().get();
-  }
-  updateProject(id: number, data: Partial<InsertProject>): Project | undefined {
-    return db.update(projects).set(data).where(eq(projects.id, id)).returning().get();
-  }
-  deleteProject(id: number): void {
-    db.delete(projects).where(eq(projects.id, id)).run();
-  }
+  // ── Projects ─────────────────────────────────────────────────────
+  getProjects(): Project[] { return db.select().from(projects).orderBy(desc(projects.createdAt)).all(); }
+  getProjectById(id: number): Project | undefined { return db.select().from(projects).where(eq(projects.id, id)).get(); }
+  getProjectsByClient(clientId: number): Project[] { return db.select().from(projects).where(eq(projects.clientId, clientId)).all(); }
+  createProject(data: InsertProject): Project { return db.insert(projects).values({ ...data, createdAt: new Date().toISOString() }).returning().get(); }
+  updateProject(id: number, data: Partial<InsertProject>): Project | undefined { return db.update(projects).set(data).where(eq(projects.id, id)).returning().get(); }
+  deleteProject(id: number): void { db.delete(projects).where(eq(projects.id, id)).run(); }
 
-  getPlacements(): Placement[] {
-    return db.select().from(placements).orderBy(desc(placements.createdAt)).all();
-  }
-  getPlacementById(id: number): Placement | undefined {
-    return db.select().from(placements).where(eq(placements.id, id)).get();
-  }
-  createPlacement(data: InsertPlacement): Placement {
-    return db.insert(placements).values({ ...data, createdAt: new Date().toISOString() }).returning().get();
-  }
-  updatePlacement(id: number, data: Partial<InsertPlacement>): Placement | undefined {
-    return db.update(placements).set(data).where(eq(placements.id, id)).returning().get();
-  }
-  deletePlacement(id: number): void {
-    db.delete(placements).where(eq(placements.id, id)).run();
-  }
+  // ── Project Tasks ────────────────────────────────────────────────
+  getTasksByProject(projectId: number): ProjectTask[] { return db.select().from(projectTasks).where(eq(projectTasks.projectId, projectId)).orderBy(desc(projectTasks.createdAt)).all(); }
+  createTask(data: InsertProjectTask): ProjectTask { return db.insert(projectTasks).values({ ...data, createdAt: new Date().toISOString() }).returning().get(); }
+  updateTask(id: number, data: Partial<InsertProjectTask>): ProjectTask | undefined { return db.update(projectTasks).set(data).where(eq(projectTasks.id, id)).returning().get(); }
+  deleteTask(id: number): void { db.delete(projectTasks).where(eq(projectTasks.id, id)).run(); }
 
-  getQuotes(): Quote[] {
-    return db.select().from(quotes).orderBy(desc(quotes.createdAt)).all();
-  }
-  getQuoteById(id: number): Quote | undefined {
-    return db.select().from(quotes).where(eq(quotes.id, id)).get();
-  }
-  createQuote(data: InsertQuote): Quote {
-    return db.insert(quotes).values({ ...data, createdAt: new Date().toISOString() }).returning().get();
-  }
-  updateQuote(id: number, data: Partial<InsertQuote>): Quote | undefined {
-    return db.update(quotes).set(data).where(eq(quotes.id, id)).returning().get();
-  }
-  deleteQuote(id: number): void {
-    db.delete(quotes).where(eq(quotes.id, id)).run();
-  }
+  // ── Project RFIs ──────────────────────────────────────────────────
+  getRfisByProject(projectId: number): ProjectRfi[] { return db.select().from(projectRfis).where(eq(projectRfis.projectId, projectId)).orderBy(desc(projectRfis.createdAt)).all(); }
+  createRfi(data: InsertProjectRfi): ProjectRfi { return db.insert(projectRfis).values({ ...data, createdAt: new Date().toISOString() }).returning().get(); }
+  updateRfi(id: number, data: Partial<InsertProjectRfi>): ProjectRfi | undefined { return db.update(projectRfis).set(data).where(eq(projectRfis.id, id)).returning().get(); }
+  deleteRfi(id: number): void { db.delete(projectRfis).where(eq(projectRfis.id, id)).run(); }
 
-  getTimesheets(): Timesheet[] {
-    return db.select().from(timesheets).orderBy(desc(timesheets.weekEnding)).all();
-  }
-  getTimesheetById(id: number): Timesheet | undefined {
-    return db.select().from(timesheets).where(eq(timesheets.id, id)).get();
-  }
-  getTimesheetsByCandidate(candidateId: number): Timesheet[] {
-    return db.select().from(timesheets).where(eq(timesheets.candidateId, candidateId)).all();
-  }
-  createTimesheet(data: InsertTimesheet): Timesheet {
-    return db.insert(timesheets).values({ ...data, createdAt: new Date().toISOString() }).returning().get();
-  }
-  updateTimesheet(id: number, data: Partial<InsertTimesheet>): Timesheet | undefined {
-    return db.update(timesheets).set(data).where(eq(timesheets.id, id)).returning().get();
-  }
-  deleteTimesheet(id: number): void {
-    db.delete(timesheets).where(eq(timesheets.id, id)).run();
-  }
+  // ── Project Notes ─────────────────────────────────────────────────
+  getNotesByProject(projectId: number): ProjectNote[] { return db.select().from(projectNotes).where(eq(projectNotes.projectId, projectId)).orderBy(desc(projectNotes.createdAt)).all(); }
+  createNote(data: InsertProjectNote): ProjectNote { return db.insert(projectNotes).values({ ...data, createdAt: new Date().toISOString() }).returning().get(); }
+  deleteNote(id: number): void { db.delete(projectNotes).where(eq(projectNotes.id, id)).run(); }
 
+  // ── Milestones ────────────────────────────────────────────────────
+  getMilestonesByProject(projectId: number): ProjectMilestone[] { return db.select().from(projectMilestones).where(eq(projectMilestones.projectId, projectId)).orderBy(projectMilestones.targetDate).all(); }
+  createMilestone(data: InsertProjectMilestone): ProjectMilestone { return db.insert(projectMilestones).values({ ...data, createdAt: new Date().toISOString() }).returning().get(); }
+  updateMilestone(id: number, data: Partial<InsertProjectMilestone>): ProjectMilestone | undefined { return db.update(projectMilestones).set(data).where(eq(projectMilestones.id, id)).returning().get(); }
+  deleteMilestone(id: number): void { db.delete(projectMilestones).where(eq(projectMilestones.id, id)).run(); }
+
+  // ── Placements ────────────────────────────────────────────────────
+  getPlacements(): Placement[] { return db.select().from(placements).orderBy(desc(placements.createdAt)).all(); }
+  getPlacementById(id: number): Placement | undefined { return db.select().from(placements).where(eq(placements.id, id)).get(); }
+  createPlacement(data: InsertPlacement): Placement { return db.insert(placements).values({ ...data, createdAt: new Date().toISOString() }).returning().get(); }
+  updatePlacement(id: number, data: Partial<InsertPlacement>): Placement | undefined { return db.update(placements).set(data).where(eq(placements.id, id)).returning().get(); }
+  deletePlacement(id: number): void { db.delete(placements).where(eq(placements.id, id)).run(); }
+
+  // ── Quotes ────────────────────────────────────────────────────────
+  getQuotes(): Quote[] { return db.select().from(quotes).orderBy(desc(quotes.createdAt)).all(); }
+  getQuoteById(id: number): Quote | undefined { return db.select().from(quotes).where(eq(quotes.id, id)).get(); }
+  createQuote(data: InsertQuote): Quote { return db.insert(quotes).values({ ...data, createdAt: new Date().toISOString() }).returning().get(); }
+  updateQuote(id: number, data: Partial<InsertQuote>): Quote | undefined { return db.update(quotes).set(data).where(eq(quotes.id, id)).returning().get(); }
+  deleteQuote(id: number): void { db.delete(quotes).where(eq(quotes.id, id)).run(); }
+
+  // ── Timesheets ────────────────────────────────────────────────────
+  getTimesheets(): Timesheet[] { return db.select().from(timesheets).orderBy(desc(timesheets.weekEnding)).all(); }
+  getTimesheetById(id: number): Timesheet | undefined { return db.select().from(timesheets).where(eq(timesheets.id, id)).get(); }
+  getTimesheetsByCandidate(candidateId: number): Timesheet[] { return db.select().from(timesheets).where(eq(timesheets.candidateId, candidateId)).all(); }
+  createTimesheet(data: InsertTimesheet): Timesheet { return db.insert(timesheets).values({ ...data, createdAt: new Date().toISOString() }).returning().get(); }
+  updateTimesheet(id: number, data: Partial<InsertTimesheet>): Timesheet | undefined { return db.update(timesheets).set(data).where(eq(timesheets.id, id)).returning().get(); }
+  deleteTimesheet(id: number): void { db.delete(timesheets).where(eq(timesheets.id, id)).run(); }
+
+  // ── Dashboard stats ───────────────────────────────────────────────
   getDashboardStats() {
     const totalCandidates = (sqlite.prepare("SELECT COUNT(*) as c FROM candidates").get() as any).c;
     const activePlacements = (sqlite.prepare("SELECT COUNT(*) as c FROM placements WHERE status='active'").get() as any).c;
@@ -369,10 +431,7 @@ export class SqliteStorage implements IStorage {
     const pendingTimesheets = (sqlite.prepare("SELECT COUNT(*) as c FROM timesheets WHERE status='pending'").get() as any).c;
     const draftQuotes = (sqlite.prepare("SELECT COUNT(*) as c FROM quotes WHERE status='draft'").get() as any).c;
     const hoursRow = (sqlite.prepare("SELECT COALESCE(SUM(total_hours),0) as h FROM timesheets WHERE week_ending >= date('now','-7 days')").get() as any);
-    return {
-      totalCandidates, activePlacements, activeProjects, totalClients,
-      pendingTimesheets, draftQuotes, totalHoursThisWeek: hoursRow.h,
-    };
+    return { totalCandidates, activePlacements, activeProjects, totalClients, pendingTimesheets, draftQuotes, totalHoursThisWeek: hoursRow.h };
   }
 }
 

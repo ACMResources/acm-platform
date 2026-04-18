@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useQuery, useMutation } from '@tanstack/react-query';
+import { useLocation } from 'wouter';
 import { queryClient, apiRequest } from '@/lib/queryClient';
 import { useToast } from '@/hooks/use-toast';
 import { useForm } from 'react-hook-form';
@@ -14,7 +15,7 @@ import { Form, FormField, FormItem, FormLabel, FormControl, FormMessage } from '
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Textarea } from '@/components/ui/textarea';
 import { Skeleton } from '@/components/ui/skeleton';
-import { Plus, Search, Pencil, Trash2, MapPin, Users, DollarSign } from 'lucide-react';
+import { Plus, Search, Pencil, Trash2, MapPin, Users, DollarSign, ChevronRight } from 'lucide-react';
 
 const statusColors: Record<string, string> = {
   active: 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400',
@@ -22,6 +23,8 @@ const statusColors: Record<string, string> = {
   pending: 'bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400',
   cancelled: 'bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400',
 };
+
+const SCOPES = ['Labour Hire', 'HDPE Pipeline', 'Civil', 'Shutdown', 'Mixed'];
 
 function ProjectForm({ project, clients, onClose }: { project?: Project; clients: Client[]; onClose: () => void }) {
   const { toast } = useToast();
@@ -77,7 +80,7 @@ function ProjectForm({ project, clients, onClose }: { project?: Project; clients
               <Select onValueChange={field.onChange} defaultValue={field.value ?? 'Labour Hire'}>
                 <FormControl><SelectTrigger><SelectValue /></SelectTrigger></FormControl>
                 <SelectContent>
-                  {['Labour Hire','HDPE Pipeline','Civil','Shutdown','Mixed'].map(s => <SelectItem key={s} value={s}>{s}</SelectItem>)}
+                  {SCOPES.map(s => <SelectItem key={s} value={s}>{s}</SelectItem>)}
                 </SelectContent>
               </Select><FormMessage />
             </FormItem>
@@ -129,13 +132,14 @@ function ProjectForm({ project, clients, onClose }: { project?: Project; clients
 export default function ProjectsPage() {
   const [search, setSearch] = useState('');
   const [statusFilter, setStatusFilter] = useState('all');
+  const [scopeFilter, setScopeFilter] = useState('all');
   const [dialogOpen, setDialogOpen] = useState(false);
   const [editing, setEditing] = useState<Project | undefined>();
   const { toast } = useToast();
+  const [, navigate] = useLocation();
 
   const { data: projects, isLoading } = useQuery<Project[]>({ queryKey: ['/api/projects'] });
   const { data: clients } = useQuery<Client[]>({ queryKey: ['/api/clients'] });
-
   const clientMap = Object.fromEntries(clients?.map(c => [c.id, c.name]) ?? []);
 
   const deleteMutation = useMutation({
@@ -146,21 +150,62 @@ export default function ProjectsPage() {
   const filtered = projects?.filter(p => {
     const matchSearch = `${p.name} ${p.location ?? ''} ${clientMap[p.clientId] ?? ''}`.toLowerCase().includes(search.toLowerCase());
     const matchStatus = statusFilter === 'all' || p.status === statusFilter;
-    return matchSearch && matchStatus;
+    const matchScope = scopeFilter === 'all' || p.scope === scopeFilter;
+    return matchSearch && matchStatus && matchScope;
   }) ?? [];
+
+  // Summary stats
+  const activeProjects = projects?.filter(p => p.status === 'active') ?? [];
+  const totalContractValue = activeProjects.reduce((sum, p) => sum + (p.contractValue ?? 0), 0);
+  const totalHeadcount = activeProjects.reduce((sum, p) => sum + (p.headcount ?? 0), 0);
 
   return (
     <div className="p-6 space-y-5 max-w-7xl">
+      {/* Header */}
       <div className="flex items-center justify-between gap-4 flex-wrap">
         <div>
           <h1 className="text-xl font-bold">Projects</h1>
-          <p className="text-sm text-muted-foreground">{projects?.length ?? 0} projects</p>
+          <p className="text-sm text-muted-foreground">{projects?.length ?? 0} total · {activeProjects.length} active</p>
         </div>
         <Button onClick={() => { setEditing(undefined); setDialogOpen(true); }} data-testid="button-add-project">
           <Plus className="w-4 h-4 mr-2" /> Add Project
         </Button>
       </div>
 
+      {/* Summary strip */}
+      <div className="grid grid-cols-3 gap-3">
+        <Card>
+          <CardContent className="p-3 flex items-center gap-3">
+            <div className="w-8 h-8 rounded-lg bg-green-100 dark:bg-green-900/30 flex items-center justify-center shrink-0">
+              <span className="text-xs font-bold text-green-700 dark:text-green-400">{activeProjects.length}</span>
+            </div>
+            <div>
+              <p className="text-xs text-muted-foreground">Active Projects</p>
+              <p className="text-sm font-semibold">Running now</p>
+            </div>
+          </CardContent>
+        </Card>
+        <Card>
+          <CardContent className="p-3 flex items-center gap-3">
+            <DollarSign className="w-5 h-5 text-[hsl(38,91%,54%)] shrink-0" />
+            <div>
+              <p className="text-xs text-muted-foreground">Active Contract Value</p>
+              <p className="text-sm font-semibold">${totalContractValue.toLocaleString()}</p>
+            </div>
+          </CardContent>
+        </Card>
+        <Card>
+          <CardContent className="p-3 flex items-center gap-3">
+            <Users className="w-5 h-5 text-[hsl(38,91%,54%)] shrink-0" />
+            <div>
+              <p className="text-xs text-muted-foreground">People on Active Jobs</p>
+              <p className="text-sm font-semibold">{totalHeadcount} workers</p>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+
+      {/* Filters */}
       <div className="flex gap-3 flex-wrap">
         <div className="relative flex-1 min-w-[200px]">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
@@ -173,25 +218,44 @@ export default function ProjectsPage() {
             <SelectItem value="active">Active</SelectItem>
             <SelectItem value="completed">Completed</SelectItem>
             <SelectItem value="pending">Pending</SelectItem>
+            <SelectItem value="cancelled">Cancelled</SelectItem>
+          </SelectContent>
+        </Select>
+        <Select value={scopeFilter} onValueChange={setScopeFilter}>
+          <SelectTrigger className="w-40"><SelectValue placeholder="All Scopes" /></SelectTrigger>
+          <SelectContent>
+            <SelectItem value="all">All Scopes</SelectItem>
+            {SCOPES.map(s => <SelectItem key={s} value={s}>{s}</SelectItem>)}
           </SelectContent>
         </Select>
       </div>
 
+      {/* Grid */}
       {isLoading ? (
         <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-4">
           {Array.from({ length: 6 }).map((_, i) => <Card key={i}><CardContent className="p-4"><Skeleton className="h-28 w-full" /></CardContent></Card>)}
         </div>
+      ) : filtered.length === 0 ? (
+        <p className="text-sm text-muted-foreground py-8 text-center">No projects match your filters.</p>
       ) : (
         <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-4">
           {filtered.map(p => (
-            <Card key={p.id} className="hover:shadow-md transition-shadow" data-testid={`card-project-${p.id}`}>
+            <Card
+              key={p.id}
+              className="hover:shadow-md transition-shadow cursor-pointer group"
+              onClick={() => navigate(`/projects/${p.id}`)}
+              data-testid={`card-project-${p.id}`}
+            >
               <CardContent className="p-4">
                 <div className="flex items-start justify-between gap-2 mb-2">
-                  <div className="min-w-0">
-                    <p className="font-semibold text-sm truncate">{p.name}</p>
+                  <div className="min-w-0 flex-1">
+                    <p className="font-semibold text-sm truncate group-hover:text-[hsl(38,91%,54%)] transition-colors">{p.name}</p>
                     <p className="text-xs text-muted-foreground">{clientMap[p.clientId] ?? `Client #${p.clientId}`}</p>
                   </div>
-                  <Badge className={`text-xs capitalize shrink-0 ${statusColors[p.status] ?? ''}`} variant="secondary">{p.status}</Badge>
+                  <div className="flex items-center gap-1 shrink-0">
+                    <Badge className={`text-xs capitalize ${statusColors[p.status] ?? ''}`} variant="secondary">{p.status}</Badge>
+                    <ChevronRight className="w-3.5 h-3.5 text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity" />
+                  </div>
                 </div>
                 <div className="space-y-1 text-xs text-muted-foreground mb-3">
                   {p.location && <div className="flex items-center gap-1.5"><MapPin className="w-3 h-3" />{p.location}</div>}
@@ -199,7 +263,7 @@ export default function ProjectsPage() {
                   {p.contractValue && <div className="flex items-center gap-1.5"><DollarSign className="w-3 h-3" />${p.contractValue.toLocaleString()}</div>}
                 </div>
                 {p.scope && <Badge variant="outline" className="text-[10px] mb-3">{p.scope}</Badge>}
-                <div className="flex gap-2">
+                <div className="flex gap-2" onClick={e => e.stopPropagation()}>
                   <Button size="sm" variant="outline" className="flex-1 h-7 text-xs" onClick={() => { setEditing(p); setDialogOpen(true); }} data-testid={`button-edit-project-${p.id}`}>
                     <Pencil className="w-3 h-3 mr-1" /> Edit
                   </Button>

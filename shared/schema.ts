@@ -9,11 +9,11 @@ export const candidates = sqliteTable("candidates", {
   lastName: text("last_name").notNull(),
   email: text("email"),
   phone: text("phone"),
-  trade: text("trade").notNull(), // Poly Welder, Civil Operator, PM, Supervisor, etc.
-  classification: text("classification"), // e.g. CW3, EW3
-  status: text("status").notNull().default("available"), // available | placed | unavailable | blacklisted
-  location: text("location"), // Perth, FIFO, etc.
-  tickets: text("tickets"), // JSON array of ticket names
+  trade: text("trade").notNull(),
+  classification: text("classification"),
+  status: text("status").notNull().default("available"),
+  location: text("location"),
+  tickets: text("tickets"),
   notes: text("notes"),
   createdAt: text("created_at").notNull().default(""),
 });
@@ -26,11 +26,11 @@ export type Candidate = typeof candidates.$inferSelect;
 export const clients = sqliteTable("clients", {
   id: integer("id").primaryKey({ autoIncrement: true }),
   name: text("name").notNull(),
-  tier: text("tier").notNull().default("Tier 2"), // Tier 1 | Tier 2 | Tier 3
+  tier: text("tier").notNull().default("Tier 2"),
   contactName: text("contact_name"),
   contactEmail: text("contact_email"),
   contactPhone: text("contact_phone"),
-  industry: text("industry"), // Mining | Civil | Oil & Gas | Water | Rail
+  industry: text("industry"),
   state: text("state"),
   notes: text("notes"),
   createdAt: text("created_at").notNull().default(""),
@@ -46,8 +46,8 @@ export const projects = sqliteTable("projects", {
   clientId: integer("client_id").notNull(),
   name: text("name").notNull(),
   location: text("location"),
-  scope: text("scope"), // Labour Hire | HDPE Pipeline | Civil | Shutdown | Mixed
-  status: text("status").notNull().default("active"), // active | completed | pending | cancelled
+  scope: text("scope"),
+  status: text("status").notNull().default("active"),
   startDate: text("start_date"),
   endDate: text("end_date"),
   contractValue: real("contract_value"),
@@ -60,19 +60,83 @@ export const insertProjectSchema = createInsertSchema(projects).omit({ id: true,
 export type InsertProject = z.infer<typeof insertProjectSchema>;
 export type Project = typeof projects.$inferSelect;
 
+// ── PROJECT TASKS ──────────────────────────────────────────────────
+export const projectTasks = sqliteTable("project_tasks", {
+  id: integer("id").primaryKey({ autoIncrement: true }),
+  projectId: integer("project_id").notNull(),
+  title: text("title").notNull(),
+  description: text("description"),
+  assignedTo: text("assigned_to"),   // free text name
+  priority: text("priority").notNull().default("medium"), // low | medium | high | critical
+  status: text("status").notNull().default("open"),       // open | in_progress | done | cancelled
+  dueDate: text("due_date"),
+  createdAt: text("created_at").notNull().default(""),
+});
+
+export const insertProjectTaskSchema = createInsertSchema(projectTasks).omit({ id: true, createdAt: true });
+export type InsertProjectTask = z.infer<typeof insertProjectTaskSchema>;
+export type ProjectTask = typeof projectTasks.$inferSelect;
+
+// ── PROJECT RFIs ───────────────────────────────────────────────────
+export const projectRfis = sqliteTable("project_rfis", {
+  id: integer("id").primaryKey({ autoIncrement: true }),
+  projectId: integer("project_id").notNull(),
+  rfiNumber: text("rfi_number"),      // e.g. RFI-001
+  subject: text("subject").notNull(),
+  question: text("question").notNull(),
+  raisedBy: text("raised_by"),
+  assignedTo: text("assigned_to"),
+  dueDate: text("due_date"),
+  response: text("response"),
+  status: text("status").notNull().default("open"), // open | under_review | answered | closed
+  createdAt: text("created_at").notNull().default(""),
+});
+
+export const insertProjectRfiSchema = createInsertSchema(projectRfis).omit({ id: true, createdAt: true });
+export type InsertProjectRfi = z.infer<typeof insertProjectRfiSchema>;
+export type ProjectRfi = typeof projectRfis.$inferSelect;
+
+// ── PROJECT NOTES ──────────────────────────────────────────────────
+export const projectNotes = sqliteTable("project_notes", {
+  id: integer("id").primaryKey({ autoIncrement: true }),
+  projectId: integer("project_id").notNull(),
+  author: text("author").notNull().default("Lydon Hollitt"),
+  body: text("body").notNull(),
+  createdAt: text("created_at").notNull().default(""),
+});
+
+export const insertProjectNoteSchema = createInsertSchema(projectNotes).omit({ id: true, createdAt: true });
+export type InsertProjectNote = z.infer<typeof insertProjectNoteSchema>;
+export type ProjectNote = typeof projectNotes.$inferSelect;
+
+// ── MILESTONES ─────────────────────────────────────────────────────
+export const projectMilestones = sqliteTable("project_milestones", {
+  id: integer("id").primaryKey({ autoIncrement: true }),
+  projectId: integer("project_id").notNull(),
+  title: text("title").notNull(),
+  targetDate: text("target_date"),
+  completedDate: text("completed_date"),
+  status: text("status").notNull().default("pending"), // pending | achieved | overdue
+  createdAt: text("created_at").notNull().default(""),
+});
+
+export const insertProjectMilestoneSchema = createInsertSchema(projectMilestones).omit({ id: true, createdAt: true });
+export type InsertProjectMilestone = z.infer<typeof insertProjectMilestoneSchema>;
+export type ProjectMilestone = typeof projectMilestones.$inferSelect;
+
 // ── PLACEMENTS ─────────────────────────────────────────────────────
 export const placements = sqliteTable("placements", {
   id: integer("id").primaryKey({ autoIncrement: true }),
   candidateId: integer("candidate_id").notNull(),
   clientId: integer("client_id").notNull(),
   projectId: integer("project_id"),
-  type: text("type").notNull().default("casual"), // casual | permanent
+  type: text("type").notNull().default("casual"),
   role: text("role").notNull(),
   startDate: text("start_date"),
   endDate: text("end_date"),
-  rate: real("rate"), // hourly or weekly
-  rateType: text("rate_type").default("hourly"), // hourly | weekly | daily
-  status: text("status").notNull().default("active"), // active | completed | cancelled
+  rate: real("rate"),
+  rateType: text("rate_type").default("hourly"),
+  status: text("status").notNull().default("active"),
   notes: text("notes"),
   createdAt: text("created_at").notNull().default(""),
 });
@@ -85,15 +149,15 @@ export type Placement = typeof placements.$inferSelect;
 export const quotes = sqliteTable("quotes", {
   id: integer("id").primaryKey({ autoIncrement: true }),
   clientId: integer("client_id"),
-  clientName: text("client_name").notNull(), // allow freetext for new clients
+  clientName: text("client_name").notNull(),
   projectName: text("project_name").notNull(),
   location: text("location"),
   scope: text("scope"),
-  lineItems: text("line_items").notNull().default("[]"), // JSON array
+  lineItems: text("line_items").notNull().default("[]"),
   subtotal: real("subtotal").default(0),
-  margin: real("margin").default(20), // percentage
+  margin: real("margin").default(20),
   total: real("total").default(0),
-  status: text("status").notNull().default("draft"), // draft | sent | accepted | declined
+  status: text("status").notNull().default("draft"),
   validUntil: text("valid_until"),
   notes: text("notes"),
   createdAt: text("created_at").notNull().default(""),
@@ -118,7 +182,7 @@ export const timesheets = sqliteTable("timesheets", {
   hoursSaturday: real("hours_saturday").default(0),
   hoursSunday: real("hours_sunday").default(0),
   totalHours: real("total_hours").default(0),
-  status: text("status").notNull().default("pending"), // pending | approved | invoiced
+  status: text("status").notNull().default("pending"),
   notes: text("notes"),
   createdAt: text("created_at").notNull().default(""),
 });
