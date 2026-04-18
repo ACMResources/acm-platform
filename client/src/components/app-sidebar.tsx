@@ -1,7 +1,7 @@
 import { useLocation, Link } from 'wouter';
 import {
   LayoutDashboard, Users, Building2, FolderOpen, Briefcase,
-  Clock, FileText, ChevronRight,
+  Clock, FileText, ChevronRight, DollarSign,
 } from 'lucide-react';
 import {
   Sidebar, SidebarContent, SidebarGroup, SidebarGroupLabel,
@@ -17,6 +17,7 @@ const navItems = [
   { title: 'Placements', url: '/placements', icon: Briefcase },
   { title: 'Timesheets', url: '/timesheets', icon: Clock },
   { title: 'Quotes', url: '/quotes', icon: FileText },
+  { title: 'Finance', url: '/finance', icon: DollarSign },
 ];
 
 export function AppSidebar() {

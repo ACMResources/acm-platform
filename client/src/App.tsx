@@ -17,6 +17,7 @@ import ProjectDetailPage from '@/pages/project-detail';
 import PlacementsPage from '@/pages/placements';
 import TimesheetsPage from '@/pages/timesheets';
 import QuotesPage from '@/pages/quotes';
+import FinancePage from '@/pages/finance';
 import NotFound from '@/pages/not-found';
 
 function ThemeToggle() {
@@ -44,6 +45,7 @@ function AppRouter() {
       <Route path="/placements" component={PlacementsPage} />
       <Route path="/timesheets" component={TimesheetsPage} />
       <Route path="/quotes" component={QuotesPage} />
+      <Route path="/finance" component={FinancePage} />
       <Route component={NotFound} />
     </Switch>
   );

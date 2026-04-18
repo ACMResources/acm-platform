@@ -191,6 +191,56 @@ export const insertTimesheetSchema = createInsertSchema(timesheets).omit({ id: t
 export type InsertTimesheet = z.infer<typeof insertTimesheetSchema>;
 export type Timesheet = typeof timesheets.$inferSelect;
 
+// ── XERO INVOICES (synced from Xero) ─────────────────────────────
+export const xeroInvoices = sqliteTable("xero_invoices", {
+  id: integer("id").primaryKey({ autoIncrement: true }),
+  xeroInvoiceId: text("xero_invoice_id").notNull().unique(),
+  invoiceNumber: text("invoice_number"),
+  reference: text("reference"),
+  contactId: text("contact_id"),
+  contactName: text("contact_name"),
+  // Tracking category match
+  trackingOption: text("tracking_option"), // e.g. "P0139 - PPS - Cloudbreak"
+  projectId: integer("project_id"),        // matched ACM project
+  status: text("status").notNull().default("AUTHORISED"), // DRAFT | AUTHORISED | PAID | VOIDED
+  type: text("type").notNull().default("ACCREC"),         // ACCREC | ACCPAY
+  date: text("date"),
+  dueDate: text("due_date"),
+  subTotal: real("sub_total").default(0),
+  totalTax: real("total_tax").default(0),
+  total: real("total").default(0),
+  amountDue: real("amount_due").default(0),
+  amountPaid: real("amount_paid").default(0),
+  currencyCode: text("currency_code").default("AUD"),
+  lineItemsJson: text("line_items_json").default("[]"),
+  syncedAt: text("synced_at").notNull().default(""),
+});
+
+export const insertXeroInvoiceSchema = createInsertSchema(xeroInvoices).omit({ id: true });
+export type InsertXeroInvoice = z.infer<typeof insertXeroInvoiceSchema>;
+export type XeroInvoice = typeof xeroInvoices.$inferSelect;
+
+// ── XERO CONTACTS (synced from Xero) ──────────────────────────────
+export const xeroContacts = sqliteTable("xero_contacts", {
+  id: integer("id").primaryKey({ autoIncrement: true }),
+  xeroContactId: text("xero_contact_id").notNull().unique(),
+  name: text("name").notNull(),
+  email: text("email"),
+  phone: text("phone"),
+  city: text("city"),
+  state: text("state"),
+  isCustomer: integer("is_customer", { mode: "boolean" }).default(false),
+  isSupplier: integer("is_supplier", { mode: "boolean" }).default(false),
+  outstandingAR: real("outstanding_ar").default(0),
+  overdueAR: real("overdue_ar").default(0),
+  clientId: integer("client_id"),  // matched ACM client
+  syncedAt: text("synced_at").notNull().default(""),
+});
+
+export const insertXeroContactSchema = createInsertSchema(xeroContacts).omit({ id: true });
+export type InsertXeroContact = z.infer<typeof insertXeroContactSchema>;
+export type XeroContact = typeof xeroContacts.$inferSelect;
+
 // ── QUOTE LINE ITEM TYPE (frontend only) ───────────────────────────
 export interface QuoteLineItem {
   id: string;

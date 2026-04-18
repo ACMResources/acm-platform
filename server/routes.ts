@@ -196,6 +196,44 @@ export async function registerRoutes(httpServer: Server, app: Express): Promise<
     res.json({ success: true });
   });
 
+  // ── XERO FINANCE ─────────────────────────────────────────
+  // GET all invoices
+  app.get("/api/xero/invoices", (_req, res) => {
+    res.json((storage as any).getXeroInvoices());
+  });
+  // GET invoices for a specific project
+  app.get("/api/xero/invoices/project/:id", (req, res) => {
+    res.json((storage as any).getXeroInvoicesByProject(Number(req.params.id)));
+  });
+  // GET AR summary totals
+  app.get("/api/xero/summary", (_req, res) => {
+    res.json((storage as any).getXeroInvoiceSummary());
+  });
+  // GET contacts
+  app.get("/api/xero/contacts", (_req, res) => {
+    res.json((storage as any).getXeroContacts());
+  });
+  // POST sync — accepts batched invoice + contact data from external sync
+  app.post("/api/xero/sync", (req, res) => {
+    const { invoices = [], contacts = [] } = req.body;
+    const syncedAt = new Date().toISOString();
+    let invoicesSynced = 0;
+    let contactsSynced = 0;
+    for (const inv of invoices) {
+      try {
+        (storage as any).upsertXeroInvoice({ ...inv, syncedAt });
+        invoicesSynced++;
+      } catch (e) { /* skip bad records */ }
+    }
+    for (const c of contacts) {
+      try {
+        (storage as any).upsertXeroContact({ ...c, syncedAt });
+        contactsSynced++;
+      } catch (e) { /* skip */ }
+    }
+    res.json({ success: true, invoicesSynced, contactsSynced, syncedAt });
+  });
+
   // ── TIMESHEETS ───────────────────────────────────────────────────
   app.get("/api/timesheets", (_req, res) => { res.json(storage.getTimesheets()); });
   app.get("/api/timesheets/:id", (req, res) => {

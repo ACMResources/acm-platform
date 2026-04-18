@@ -4,6 +4,7 @@ import { eq, desc } from "drizzle-orm";
 import {
   candidates, clients, projects, placements, quotes, timesheets,
   projectTasks, projectRfis, projectNotes, projectMilestones,
+  xeroInvoices, xeroContacts,
   type Candidate, type InsertCandidate,
   type Client, type InsertClient,
   type Project, type InsertProject,
@@ -14,6 +15,8 @@ import {
   type ProjectRfi, type InsertProjectRfi,
   type ProjectNote, type InsertProjectNote,
   type ProjectMilestone, type InsertProjectMilestone,
+  type XeroInvoice, type InsertXeroInvoice,
+  type XeroContact, type InsertXeroContact,
 } from "@shared/schema";
 
 const sqlite = new Database("acm.db");
@@ -158,6 +161,45 @@ sqlite.exec(`
     status TEXT NOT NULL DEFAULT 'pending',
     notes TEXT,
     created_at TEXT NOT NULL DEFAULT (datetime('now'))
+  );
+
+  CREATE TABLE IF NOT EXISTS xero_invoices (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    xero_invoice_id TEXT NOT NULL UNIQUE,
+    invoice_number TEXT,
+    reference TEXT,
+    contact_id TEXT,
+    contact_name TEXT,
+    tracking_option TEXT,
+    project_id INTEGER,
+    status TEXT NOT NULL DEFAULT 'AUTHORISED',
+    type TEXT NOT NULL DEFAULT 'ACCREC',
+    date TEXT,
+    due_date TEXT,
+    sub_total REAL DEFAULT 0,
+    total_tax REAL DEFAULT 0,
+    total REAL DEFAULT 0,
+    amount_due REAL DEFAULT 0,
+    amount_paid REAL DEFAULT 0,
+    currency_code TEXT DEFAULT 'AUD',
+    line_items_json TEXT DEFAULT '[]',
+    synced_at TEXT NOT NULL DEFAULT (datetime('now'))
+  );
+
+  CREATE TABLE IF NOT EXISTS xero_contacts (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    xero_contact_id TEXT NOT NULL UNIQUE,
+    name TEXT NOT NULL,
+    email TEXT,
+    phone TEXT,
+    city TEXT,
+    state TEXT,
+    is_customer INTEGER DEFAULT 0,
+    is_supplier INTEGER DEFAULT 0,
+    outstanding_ar REAL DEFAULT 0,
+    overdue_ar REAL DEFAULT 0,
+    client_id INTEGER,
+    synced_at TEXT NOT NULL DEFAULT (datetime('now'))
   );
 `);
 
@@ -423,6 +465,36 @@ export class SqliteStorage implements IStorage {
   deleteTimesheet(id: number): void { db.delete(timesheets).where(eq(timesheets.id, id)).run(); }
 
   // ── Dashboard stats ───────────────────────────────────────────────
+  // ── Xero Invoices ──────────────────────────────────────────────────
+  getXeroInvoices(): XeroInvoice[] { return db.select().from(xeroInvoices).orderBy(desc(xeroInvoices.date)).all(); }
+  getXeroInvoicesByProject(projectId: number): XeroInvoice[] { return db.select().from(xeroInvoices).where(eq(xeroInvoices.projectId, projectId)).orderBy(desc(xeroInvoices.date)).all(); }
+  upsertXeroInvoice(data: InsertXeroInvoice): XeroInvoice {
+    const existing = db.select().from(xeroInvoices).where(eq(xeroInvoices.xeroInvoiceId, data.xeroInvoiceId)).get();
+    if (existing) {
+      return db.update(xeroInvoices).set({ ...data, syncedAt: new Date().toISOString() }).where(eq(xeroInvoices.xeroInvoiceId, data.xeroInvoiceId)).returning().get()!;
+    }
+    return db.insert(xeroInvoices).values({ ...data, syncedAt: new Date().toISOString() }).returning().get();
+  }
+  deleteXeroInvoice(id: number): void { db.delete(xeroInvoices).where(eq(xeroInvoices.id, id)).run(); }
+  getXeroInvoiceSummary() {
+    const rows = db.select().from(xeroInvoices).where(eq(xeroInvoices.type, 'ACCREC')).all();
+    const today = new Date().toISOString().slice(0, 10);
+    const totalRevenue = rows.filter(r => r.status === 'PAID').reduce((s, r) => s + (r.total ?? 0), 0);
+    const outstanding = rows.filter(r => r.status === 'AUTHORISED').reduce((s, r) => s + (r.amountDue ?? 0), 0);
+    const overdue = rows.filter(r => r.status === 'AUTHORISED' && r.dueDate && r.dueDate < today).reduce((s, r) => s + (r.amountDue ?? 0), 0);
+    return { totalRevenue, outstanding, overdue, invoiceCount: rows.length };
+  }
+
+  // ── Xero Contacts ───────────────────────────────────────────────────
+  getXeroContacts(): XeroContact[] { return db.select().from(xeroContacts).orderBy(xeroContacts.name).all(); }
+  upsertXeroContact(data: InsertXeroContact): XeroContact {
+    const existing = db.select().from(xeroContacts).where(eq(xeroContacts.xeroContactId, data.xeroContactId)).get();
+    if (existing) {
+      return db.update(xeroContacts).set({ ...data, syncedAt: new Date().toISOString() }).where(eq(xeroContacts.xeroContactId, data.xeroContactId)).returning().get()!;
+    }
+    return db.insert(xeroContacts).values({ ...data, syncedAt: new Date().toISOString() }).returning().get();
+  }
+
   getDashboardStats() {
     const totalCandidates = (sqlite.prepare("SELECT COUNT(*) as c FROM candidates").get() as any).c;
     const activePlacements = (sqlite.prepare("SELECT COUNT(*) as c FROM placements WHERE status='active'").get() as any).c;
