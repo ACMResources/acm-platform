@@ -68,7 +68,7 @@ export default function App() {
                 <ThemeToggle />
               </header>
               <main className="flex-1 overflow-auto">
-                <Router hook={useHashLocation}>
+                          <Router>
                   <AppRouter />
                 </Router>
               </main>
