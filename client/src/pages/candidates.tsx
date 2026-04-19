@@ -15,7 +15,8 @@ import { Form, FormField, FormItem, FormLabel, FormControl, FormMessage } from '
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Textarea } from '@/components/ui/textarea';
 import { Skeleton } from '@/components/ui/skeleton';
-import { Plus, Search, Pencil, Trash2, Phone, Mail, MapPin } from 'lucide-react';
+import { Plus, Search, Pencil, Trash2, Phone, Mail, MapPin, ChevronRight } from 'lucide-react';
+import { useLocation } from 'wouter';
 
 const statusColors: Record<string, string> = {
   available: 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400',
@@ -147,6 +148,7 @@ export default function CandidatesPage() {
   const [dialogOpen, setDialogOpen] = useState(false);
   const [editing, setEditing] = useState<Candidate | undefined>();
   const { toast } = useToast();
+  const [, navigate] = useLocation();
 
   const { data: candidates, isLoading } = useQuery<Candidate[]>({ queryKey: ['/api/candidates'] });
 
@@ -215,16 +217,24 @@ export default function CandidatesPage() {
           {filtered.map(c => {
             const ticketList: string[] = c.tickets ? JSON.parse(c.tickets) : [];
             return (
-              <Card key={c.id} className="hover:shadow-md transition-shadow" data-testid={`card-candidate-${c.id}`}>
+              <Card
+                key={c.id}
+                className="hover:shadow-md transition-shadow cursor-pointer group border-l-2 border-l-transparent hover:border-l-[#f5a623]"
+                data-testid={`card-candidate-${c.id}`}
+                onClick={() => navigate(`/candidates/${c.id}`)}
+              >
                 <CardContent className="p-4">
                   <div className="flex items-start justify-between gap-2 mb-3">
                     <div className="min-w-0">
                       <p className="font-semibold text-sm truncate">{c.firstName} {c.lastName}</p>
                       <p className="text-xs text-muted-foreground">{c.trade}{c.classification ? ` — ${c.classification}` : ''}</p>
                     </div>
-                    <Badge className={`text-xs capitalize shrink-0 ${statusColors[c.status] ?? ''}`} variant="secondary">
-                      {c.status}
-                    </Badge>
+                    <div className="flex items-center gap-1.5 shrink-0">
+                      <Badge className={`text-xs capitalize ${statusColors[c.status] ?? ''}`} variant="secondary">
+                        {c.status}
+                      </Badge>
+                      <ChevronRight className="w-3.5 h-3.5 text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity" />
+                    </div>
                   </div>
                   <div className="space-y-1 text-xs text-muted-foreground mb-3">
                     {c.location && <div className="flex items-center gap-1.5"><MapPin className="w-3 h-3 shrink-0" /><span className="truncate">{c.location}</span></div>}
@@ -237,9 +247,12 @@ export default function CandidatesPage() {
                       {ticketList.length > 3 && <Badge variant="outline" className="text-[10px] px-1.5 py-0">+{ticketList.length - 3}</Badge>}
                     </div>
                   )}
-                  <div className="flex gap-2">
-                    <Button size="sm" variant="outline" className="flex-1 h-7 text-xs" onClick={() => { setEditing(c); setDialogOpen(true); }} data-testid={`button-edit-candidate-${c.id}`}>
-                      <Pencil className="w-3 h-3 mr-1" /> Edit
+                  <div className="flex gap-2" onClick={e => e.stopPropagation()}>
+                    <Button size="sm" variant="outline" className="flex-1 h-7 text-xs" onClick={() => navigate(`/candidates/${c.id}`)} data-testid={`button-view-candidate-${c.id}`}>
+                      <ChevronRight className="w-3 h-3 mr-1" /> View Profile
+                    </Button>
+                    <Button size="sm" variant="outline" className="h-7 text-xs" onClick={() => { setEditing(c); setDialogOpen(true); }} data-testid={`button-edit-candidate-${c.id}`}>
+                      <Pencil className="w-3 h-3" />
                     </Button>
                     <Button size="sm" variant="outline" className="h-7 text-xs text-destructive hover:text-destructive" onClick={() => deleteMutation.mutate(c.id)} data-testid={`button-delete-candidate-${c.id}`}>
                       <Trash2 className="w-3 h-3" />

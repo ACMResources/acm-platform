@@ -13,8 +13,28 @@ export const candidates = sqliteTable("candidates", {
   classification: text("classification"),
   status: text("status").notNull().default("available"),
   location: text("location"),
-  tickets: text("tickets"),
+  tickets: text("tickets"),           // JSON array of ticket/licence strings
   notes: text("notes"),
+  // Extended profile fields
+  address: text("address"),
+  dateOfBirth: text("date_of_birth"),
+  emergencyContact: text("emergency_contact"),  // JSON {name, phone, relation}
+  rightToWork: text("right_to_work"),           // citizen | PR | visa
+  visaDetails: text("visa_details"),
+  availability: text("availability"),           // full_time | part_time | casual | unavailable
+  preferredRoster: text("preferred_roster"),    // 2/1 | 3/1 | 4/1 | residential etc
+  objective: text("objective"),                 // professional summary
+  employmentHistory: text("employment_history"), // JSON array of employment records
+  certifications: text("certifications"),       // JSON array of cert records (structured)
+  skills: text("skills"),                       // JSON array of {area, detail}
+  // ACM CV / Document tracking
+  docRef: text("doc_ref"),                      // ACM-HR-CV-001 etc
+  cvClientUrl: text("cv_client_url"),           // SharePoint URL for client PDF
+  cvInternalUrl: text("cv_internal_url"),       // SharePoint URL for internal PDF
+  sharepointFolderUrl: text("sharepoint_folder_url"), // HR SharePoint folder link
+  rawCvUrl: text("raw_cv_url"),                 // Original CV SharePoint URL
+  linkedinUrl: text("linkedin_url"),
+  cvGeneratedAt: text("cv_generated_at"),
   createdAt: text("created_at").notNull().default(""),
 });
 

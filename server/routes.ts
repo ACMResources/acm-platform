@@ -161,6 +161,194 @@ export async function registerRoutes(httpServer: Server, app: Express): Promise<
     res.json({ success: true });
   });
 
+  // Generate ACM-branded CV via Python script
+  app.post("/api/candidates/:id/generate-cv", async (req, res) => {
+    const candidate = storage.getCandidateById(Number(req.params.id));
+    if (!candidate) return res.status(404).json({ error: "Candidate not found" });
+
+    const { execSync } = require("child_process");
+    const fs = require("fs");
+    const path = require("path");
+
+    const cvBase = path.resolve(__dirname, "../../ACM_CV_System");
+    const candidatesDir = path.join(cvBase, "candidates");
+    const outputClient   = path.join(cvBase, "output/client");
+    const outputInternal = path.join(cvBase, "output/internal");
+
+    fs.mkdirSync(candidatesDir,  { recursive: true });
+    fs.mkdirSync(outputClient,   { recursive: true });
+    fs.mkdirSync(outputInternal, { recursive: true });
+
+    // Assign doc ref
+    const existing = fs.readdirSync(candidatesDir)
+      .filter((f: string) => f.endsWith(".json"))
+      .map((f: string) => {
+        const d = JSON.parse(fs.readFileSync(path.join(candidatesDir, f), "utf8"));
+        return d._meta?.doc_ref ?? "";
+      })
+      .filter((r: string) => r.startsWith("ACM-HR-CV-"))
+      .map((r: string) => parseInt(r.replace("ACM-HR-CV-", ""), 10))
+      .filter((n: number) => !isNaN(n));
+    const nextNum = existing.length > 0 ? Math.max(...existing) + 1 : 1;
+    const docRef = `ACM-HR-CV-${String(nextNum).padStart(3, "0")}`;
+
+    const key = `${candidate.firstName}_${candidate.lastName}`.toLowerCase().replace(/[^a-z_]/g, "");
+
+    // Parse JSON fields safely
+    const parseJ = (v: any) => { try { return JSON.parse(v || "[]"); } catch { return []; } };
+    const tickets = parseJ(candidate.tickets);
+    const employment = parseJ((candidate as any).employmentHistory);
+    const certifications = parseJ((candidate as any).certifications);
+    const skills = parseJ((candidate as any).skills);
+
+    // Build CV data JSON
+    const cvData = {
+      _meta: {
+        doc_ref: docRef,
+        date: new Date().toLocaleDateString("en-AU", { month: "long", year: "numeric" }),
+        classification: "ACM INTERNAL — PERSONNEL FILE",
+        submitted_by: "ACM Resources (Australia) Pty Ltd",
+        contact: "jobs@acmresources.com.au",
+      },
+      candidate: {
+        full_name: `${candidate.firstName} ${candidate.lastName}`,
+        address: (candidate as any).address || "",
+        phone: candidate.phone || "",
+        email: candidate.email || "",
+        visa: (candidate as any).visaDetails || "",
+        availability: (candidate as any).availability || "Full Time",
+        positions: candidate.trade ? [candidate.trade, candidate.classification].filter(Boolean) : ["Trade Specialist"],
+        objective: (candidate as any).objective || `${candidate.firstName} ${candidate.lastName} is an experienced ${candidate.trade} with a strong background in mining and civil construction. Available for immediate placement through ACM Resources.`,
+      },
+      employment: employment.length > 0 ? employment : [{
+        employer: "Previous Employment",
+        role: candidate.trade,
+        location: candidate.location || "Western Australia",
+        start: "2020",
+        end: "Present",
+        duties: ["Performed duties as per role requirements.", "Maintained compliance with site safety standards."],
+      }],
+      skills: skills.length > 0 ? skills : [
+        { area: "Trade", detail: `Experienced ${candidate.trade}${candidate.classification ? " — " + candidate.classification : ""}` },
+        ...(tickets.map((t: string) => ({ area: "Ticket / Licence", detail: t }))),
+      ],
+      certifications: certifications.length > 0 ? certifications : tickets.map((t: string) => ({
+        ticket: t,
+        category: t.toLowerCase().includes("white card") ? "Safety"
+          : t.toLowerCase().includes("first aid") ? "Safety"
+          : t.toLowerCase().includes("licence") || t.toLowerCase().includes("license") ? "Licence"
+          : "Competency",
+        details: t,
+      })),
+      referees: "Professional references available upon request. Please contact ACM Resources to facilitate introduction.",
+    };
+
+    const jsonPath = path.join(candidatesDir, `${key}.json`);
+    fs.writeFileSync(jsonPath, JSON.stringify(cvData, null, 2));
+
+    try {
+      execSync(`python3 ${path.join(cvBase, "generate_cv.py")} ${key}`, {
+        cwd: cvBase, timeout: 30000,
+      });
+    } catch (err: any) {
+      return res.status(500).json({ error: "CV generation failed", detail: err.message });
+    }
+
+    const clientPdf   = path.join(outputClient,   `${docRef}_client.pdf`);
+    const internalPdf = path.join(outputInternal, `${docRef}_internal.pdf`);
+
+    // Update candidate record with doc ref and generated timestamp
+    storage.updateCandidate(Number(req.params.id), {
+      ...(candidate as any),
+      docRef,
+      cvGeneratedAt: new Date().toISOString(),
+    });
+
+    res.json({
+      success: true,
+      docRef,
+      clientPdf:   fs.existsSync(clientPdf)   ? `/cv-output/client/${docRef}_client.pdf`   : null,
+      internalPdf: fs.existsSync(internalPdf) ? `/cv-output/internal/${docRef}_internal.pdf` : null,
+    });
+  });
+
+  // Share candidate CV/profile via email (Outlook via Microsoft Graph)
+  app.post("/api/candidates/:id/share-cv", async (req, res) => {
+    const candidate = storage.getCandidateById(Number(req.params.id));
+    if (!candidate) return res.status(404).json({ error: "Candidate not found" });
+
+    const { to, subject, body } = req.body;
+    if (!to) return res.status(400).json({ error: "Recipient email required" });
+
+    const c = candidate as any;
+    const nodemailer = (() => { try { return require("nodemailer"); } catch { return null; } })();
+    const path = require("path");
+    const fs = require("fs");
+
+    // Build attachments list — attach client PDF if it exists
+    const attachments: any[] = [];
+    if (c.docRef && c.cvClientUrl) {
+      const clientPdfPath = path.resolve(
+        __dirname,
+        `../../ACM_CV_System/output/client/${c.docRef}_client.pdf`
+      );
+      if (fs.existsSync(clientPdfPath)) {
+        attachments.push({
+          filename: `${c.docRef}_ACM_CV_Client.pdf`,
+          path: clientPdfPath,
+          contentType: "application/pdf",
+        });
+      }
+    }
+
+    // Attempt to send via SMTP env vars (set SMTP_HOST, SMTP_USER, SMTP_PASS on Railway)
+    // Falls back to a JSON success response so UI still works in dev (no SMTP configured)
+    if (!process.env.SMTP_HOST) {
+      // No SMTP configured — log and return success (dev mode)
+      console.log(`[share-cv] SMTP not configured. Would send to: ${to}`);
+      console.log(`[share-cv] Subject: ${subject}`);
+      console.log(`[share-cv] Body:\n${body}`);
+      return res.json({
+        success: true,
+        note: "SMTP not configured — email logged to server console. Set SMTP_HOST, SMTP_USER, SMTP_PASS env vars on Railway to enable live sending.",
+      });
+    }
+
+    if (!nodemailer) {
+      return res.status(500).json({ error: "nodemailer not installed" });
+    }
+
+    try {
+      const transporter = nodemailer.createTransport({
+        host: process.env.SMTP_HOST,
+        port: Number(process.env.SMTP_PORT ?? 587),
+        secure: process.env.SMTP_SECURE === "true",
+        auth: {
+          user: process.env.SMTP_USER,
+          pass: process.env.SMTP_PASS,
+        },
+      });
+
+      await transporter.sendMail({
+        from: process.env.SMTP_FROM ?? `"ACM Resources" <${process.env.SMTP_USER}>`,
+        to,
+        subject,
+        text: body,
+        html: `<pre style="font-family:sans-serif;white-space:pre-wrap">${body}</pre>`,
+        attachments,
+      });
+
+      res.json({ success: true, to, attachmentCount: attachments.length });
+    } catch (err: any) {
+      res.status(500).json({ error: "Email send failed", detail: err.message });
+    }
+  });
+
+  // Serve generated CV PDFs
+  app.use("/cv-output", require("express").static(
+    require("path").resolve(__dirname, "../../ACM_CV_System/output")
+  ));
+
   // ── CLIENTS ──────────────────────────────────────────────────────
   app.get("/api/clients", (_req, res) => { res.json(storage.getClients()); });
   app.get("/api/clients/:id", (req, res) => {
