@@ -1,0 +1,107 @@
+{
+  "_meta": {
+    "doc_ref": "ACM-HR-CV-032",
+    "date": "April 2026",
+    "classification": "ACM INTERNAL — PERSONNEL FILE",
+    "submitted_by": "ACM Resources (Australia) Pty Ltd",
+    "contact": "jobs@acmresources.com.au"
+  },
+  "candidate": {
+    "full_name": "Steven Taylor",
+    "address": "Western Australia",
+    "phone": "",
+    "email": "",
+    "visa": "Australian Citizen",
+    "availability": "Immediate",
+    "positions": ["Poly Welder", "Operator"],
+    "objective": "Highly experienced Poly Welder and Operator with over 15 years of continuous experience in HDPE pipeline welding, fabrication, and plant operations. Steven's career spans roles with Aussie Civil & Mining Resources, Polyfit Fabrication, and Polywest Engineering, covering butt fusion, electrofusion, fabrication of mitred bends, fabricated tees, and isometric interpretation. Holds FMG and Rio Tinto site inductions, a Section 44 certificate, and tickets for Roller and Loader. A strong safety record with proven competency across on-site and workshop-based welding environments. Available immediately."
+  },
+  "employment": [
+    {
+      "employer": "Aussie Civil & Mining Resources",
+      "role": "Poly Welder / Operator",
+      "location": "Western Australia",
+      "start": "2020",
+      "end": "Present",
+      "duties": [
+        "Performed butt fusion welding both on-site and in the workshop environment.",
+        "Conducted electrofusion welding on-site and in the workshop.",
+        "Fabricated mitred bends and fabricated tees to project specifications.",
+        "Operated lifting equipment to support welding and installation activities.",
+        "Interpreted isometric drawings for fabrication and installation purposes.",
+        "Completed equipment maintenance and reported to Workshop Manager on activities and progress.",
+        "Completed all HSEQ paperwork, managed stock, and carried out general workshop duties."
+      ]
+    },
+    {
+      "employer": "Polyfit Fabrication",
+      "role": "Poly Welder / Operator",
+      "location": "Western Australia",
+      "start": "2017",
+      "end": "2020",
+      "duties": [
+        "Performed butt fusion and electrofusion welding on-site and in a workshop environment.",
+        "Fabricated mitred bends and fabricated tees to specification.",
+        "Operated lifting equipment and completed isometric interpretation for fabrication.",
+        "Maintained welding equipment and reported progress to Workshop Manager.",
+        "Completed HSEQ documentation and managed workshop stock levels."
+      ]
+    },
+    {
+      "employer": "Polywest Engineering",
+      "role": "Poly Welder",
+      "location": "Western Australia",
+      "start": "2015",
+      "end": "2017",
+      "duties": [
+        "Carried out butt fusion and electrofusion welding on-site and in the workshop.",
+        "Performed pre-fabrication of spools from isometric drawings.",
+        "Maintained equipment in accordance with manufacturer and project requirements.",
+        "Completed HSEQ paperwork and worked autonomously to deliver project outcomes."
+      ]
+    },
+    {
+      "employer": "Polyfit Fabrication",
+      "role": "Poly Welder / Operator",
+      "location": "Western Australia",
+      "start": "2011",
+      "end": "2013",
+      "duties": [
+        "Performed butt fusion and electrofusion welding on-site and in the workshop.",
+        "Fabricated mitred bends and fabricated tees.",
+        "Operated lifting equipment and conducted isometric interpretation.",
+        "Completed HSEQ documentation, managed stock, and performed general workshop duties."
+      ]
+    },
+    {
+      "employer": "Mick Taylor Concrete",
+      "role": "Concreter / Labourer",
+      "location": "Western Australia",
+      "start": "2004",
+      "end": "2014",
+      "duties": [
+        "Completed on-site construction of sheds, patios, driveways, and house slabs.",
+        "Carried out earthworks and applied a variety of concrete finishes.",
+        "Trained and mentored new personnel in site procedures.",
+        "Performed general on-site duties in support of project delivery."
+      ]
+    }
+  ],
+  "skills": [
+    { "area": "Poly Welding", "detail": "Highly proficient in butt fusion and electrofusion welding of HDPE pipelines, in both on-site and workshop settings. Experienced in pipe sizes from 63mm to 800mm+" },
+    { "area": "Fabrication", "detail": "Skilled in the fabrication of mitred bends, fabricated tees, and custom spool work using isometric drawings. Experienced in pre-fabrication for on-site installation." },
+    { "area": "Plant Operation", "detail": "Holds tickets for Roller and Loader. Experienced in the operation of lifting equipment to support pipeline welding and installation activities." },
+    { "area": "HSEQ Compliance", "detail": "Consistently completes HSEQ documentation, attends safety meetings, and upholds zero-harm standards across all project environments." }
+  ],
+  "certifications": [
+    { "ticket": "PMBWELD301 — Butt Fusion Welding (HDPE)", "category": "Competency", "details": "Accredited butt fusion welding of polyethylene pipelines." },
+    { "ticket": "PMBWELD302 — Electrofusion Welding (HDPE)", "category": "Competency", "details": "Accredited electrofusion welding of polyethylene pipelines." },
+    { "ticket": "Section 44 — Appointed Person", "category": "Safety", "details": "Section 44 certificate — Appointed Person for lifting operations." },
+    { "ticket": "Roller", "category": "Plant", "details": "Certified to operate roller / compactor plant." },
+    { "ticket": "Loader", "category": "Plant", "details": "Certified to operate front end loader plant." },
+    { "ticket": "Safe Tilt-Up Work", "category": "Safety", "details": "Certified for safe tilt-up concrete panel operations." },
+    { "ticket": "FMG Site Induction", "category": "Safety", "details": "Fortescue Metals Group site induction — current." },
+    { "ticket": "Rio Tinto Site Induction", "category": "Safety", "details": "Rio Tinto site induction — current." }
+  ],
+  "referees": "Professional references available upon request. Please contact ACM Resources to facilitate introduction."
+}

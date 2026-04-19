@@ -1,0 +1,81 @@
+{
+  "_meta": {
+    "doc_ref": "ACM-HR-CV-036",
+    "date": "April 2026",
+    "classification": "ACM INTERNAL — PERSONNEL FILE",
+    "submitted_by": "ACM Resources (Australia) Pty Ltd",
+    "contact": "jobs@acmresources.com.au"
+  },
+  "candidate": {
+    "full_name": "Evan Beirne",
+    "address": "Perth, Western Australia",
+    "phone": "",
+    "email": "",
+    "visa": "Australian Citizen",
+    "availability": "Full Time",
+    "positions": ["Civil Operator", "Trade Assistant"],
+    "objective": "Dedicated Civil Operator and Trade Assistant with extensive experience in heavy equipment operation across mining, civil, and pipeline construction environments. Evan has demonstrated proficiency operating Excavators, Posi-Tracks, Loaders, and Rollers across multiple projects including the Onslow Iron Project, Western Ranges pipeline works, and labour hire operations. A committed safety professional with a strong track record in culvert installation, stormwater works, pipe laying, and earthworks. Holds a current Dogging HRWL, Apprenticeship in Mechanical Automation and Maintenance Fitting, and plant tickets across excavator, skid steer, roller, front end loader, and integrated tool carrier. Rio Tinto site inducted."
+  },
+  "employment": [
+    {
+      "employer": "Fitzgerald Civil — Onslow Iron Project",
+      "role": "Operator / Trade Assistant",
+      "location": "Onslow, Western Australia",
+      "start": "August 2023",
+      "end": "February 2024",
+      "duties": [
+        "Undertook a diverse range of responsibilities with a strong emphasis on integrated tool carrier management and the operation of PoziTrack machinery.",
+        "Performed meticulous site clean-up, proficient loading and unloading of road trains using excavators, and precise material loading into moxies.",
+        "Conducted expert backfill operations using PoziTrack machinery.",
+        "Ensured seamless progression of project tasks and contributed significantly to the project's overall efficiency and success."
+      ]
+    },
+    {
+      "employer": "Mass Resources",
+      "role": "Operator / Trade Assistant",
+      "location": "Western Australia",
+      "start": "May 2023",
+      "end": "August 2024",
+      "duties": [
+        "Conducted excavator operations including precise levelling of roads and pads.",
+        "Operated PoziTrack machinery for pad rolling and material backfilling.",
+        "Executed pipe laying tasks with precision, contributing to successful pipeline project completion.",
+        "Operated excavators, posi-tracks, and loaders to carry out diverse project tasks.",
+        "Completed culvert and stormwater installations in strict adherence to project specifications and quality standards."
+      ]
+    },
+    {
+      "employer": "Pipeline Technics",
+      "role": "Civil Operator",
+      "location": "Western Ranges, Western Australia",
+      "start": "June 2022",
+      "end": "March 2023",
+      "duties": [
+        "Set up levels for precision work and conducted excavation work for drainage systems.",
+        "Managed PoziTrack operations and loaded out materials for the project.",
+        "Rolled pads and roads to ensure a smooth working surface.",
+        "Participated in the installation of steel and concrete culverts.",
+        "Completed installation and maintenance of below-ground drainage systems including culverts, sewage, and stormwater infrastructure.",
+        "Maintained a safe workplace and adhered to all site safety requirements throughout project delivery."
+      ]
+    }
+  ],
+  "skills": [
+    { "area": "Heavy Equipment Operation", "detail": "Proficient operator of Excavators, PoziTrack/Posi-Tracks, Loaders, Rollers, and Integrated Tool Carriers. Experienced in load and haul, backfilling, road and pad levelling, and material loading." },
+    { "area": "Pipeline & Civil Works", "detail": "Experienced in below-ground pipe laying, culvert installation, stormwater installation, drainage systems, and earthworks across mining and civil construction environments." },
+    { "area": "Safety & Compliance", "detail": "Strong commitment to workplace health and safety with consistent adherence to all site safety requirements across mining and civil project environments." },
+    { "area": "Mechanical Maintenance", "detail": "Background in mechanical automation and maintenance fitting through apprenticeship training, providing strong technical awareness for equipment care and fault identification." }
+  ],
+  "certifications": [
+    { "ticket": "Excavator Operations (RIIMP0320E)", "category": "Plant", "details": "Certified to conduct civil construction excavator operations." },
+    { "ticket": "Skid Steer Loader Operations (RIIMP0318E)", "category": "Plant", "details": "Certified to conduct civil construction skid steer loader operations." },
+    { "ticket": "Roller Operations (RIIMPO317F)", "category": "Plant", "details": "Certified to conduct roller operations." },
+    { "ticket": "Integrated Tool Carrier Operations (RIIHAN303A)", "category": "Plant", "details": "Certified to conduct integrated tool carrier operations." },
+    { "ticket": "Front End Loader Operations (RIIMP0321F)", "category": "Plant", "details": "Certified to conduct civil construction front end loader operations." },
+    { "ticket": "Dogging Licence (CPCCLDG3001 — HRWL)", "category": "Safety", "details": "High Risk Work Licence — Dogging, licence to perform dogging operations." },
+    { "ticket": "Apprenticeship — Mechanical Automation and Maintenance Fitting", "category": "Qualification", "details": "Apprenticeship in Mechanical Automation and Maintenance Fitting." },
+    { "ticket": "WA Drivers Licence — C Class", "category": "Licence", "details": "Western Australia C Class drivers licence." },
+    { "ticket": "Rio Tinto (RTIO) Site Induction", "category": "Safety", "details": "Rio Tinto site induction — current." }
+  ],
+  "referees": "Professional references available upon request. Please contact ACM Resources to facilitate introduction."
+}

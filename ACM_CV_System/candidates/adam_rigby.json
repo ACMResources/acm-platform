@@ -1,0 +1,87 @@
+{
+  "_meta": {
+    "doc_ref": "ACM-HR-CV-030",
+    "date": "April 2026",
+    "classification": "ACM INTERNAL — PERSONNEL FILE",
+    "submitted_by": "ACM Resources (Australia) Pty Ltd",
+    "contact": "jobs@acmresources.com.au"
+  },
+  "candidate": {
+    "full_name": "Adam Rigby",
+    "address": "Western Australia",
+    "phone": "",
+    "email": "",
+    "visa": "Australian Citizen",
+    "availability": "Immediate",
+    "positions": ["Civil Operator", "All Rounder"],
+    "objective": "Experienced Civil Operator and All Rounder with a demonstrated history across major and minor bulk earthworks, civil construction, and HDPE pipeline installation. Adam has held operational roles with leading contractors including Aussie Civil & Mining Resources, MPC Kinetics, and Suffcon, and brings a strong foundation in load and haul operations, civil asset maintenance, and site preparation. Holds a Certificate III in Civil Construction Plant Operations and an HR Drivers Licence, with tickets covering Roller, Skid Steer, Loader, Dozer, Grader, Scraper, and Tractor operations."
+  },
+  "employment": [
+    {
+      "employer": "Aussie Civil & Mining Resources",
+      "role": "All Rounder / Operator",
+      "location": "Western Australia",
+      "start": "March 2023",
+      "end": "Present",
+      "duties": [
+        "Undertook major and minor civil earthworks in support of HDPE pipeline installation projects.",
+        "Installed HDPE pipelines across a range of civil construction sites.",
+        "Conducted site preparation and reinstatement activities to project specifications."
+      ]
+    },
+    {
+      "employer": "MPC Kinetics",
+      "role": "Operator",
+      "location": "Western Australia",
+      "start": "2021",
+      "end": "March 2023",
+      "duties": [
+        "Performed major and minor bulk earthworks across multiple project sites.",
+        "Conducted load and haul operations using heavy mobile plant.",
+        "Carried out civil asset maintenance and construction tasks."
+      ]
+    },
+    {
+      "employer": "Suffcon",
+      "role": "Operator",
+      "location": "Western Australia",
+      "start": "2019",
+      "end": "2021",
+      "duties": [
+        "Performed major and minor bulk earthworks in civil and mining environments.",
+        "Conducted load and haul operations using a range of heavy plant equipment.",
+        "Undertook civil asset maintenance and construction activities."
+      ]
+    },
+    {
+      "employer": "Rio Tinto",
+      "role": "Operator",
+      "location": "Western Australia",
+      "start": "2018",
+      "end": "2019",
+      "duties": [
+        "Operated haul trucks in an open pit mining environment.",
+        "Performed water cart operations across site.",
+        "Operated auxiliary equipment as required to support site activities."
+      ]
+    }
+  ],
+  "skills": [
+    { "area": "Civil Earthworks", "detail": "Extensive experience in major and minor bulk earthworks, site preparation, and civil reinstatement across mining and construction environments." },
+    { "area": "Mobile Plant Operation", "detail": "Competent operator of Roller, Skid Steer, Loader, Dozer, Grader, Scraper, and Tractor. Experienced in load and haul operations and auxiliary plant." },
+    { "area": "Pipeline Support", "detail": "Direct experience in civil earthworks for HDPE pipeline installation and site reinstatement associated with pipeline construction." },
+    { "area": "Safety & Compliance", "detail": "Strong commitment to workplace health and safety, with experience following JHA, SWMS, and pre-start processes across multiple site environments." }
+  ],
+  "certifications": [
+    { "ticket": "Certificate III in Civil Construction Plant Operations", "category": "Qualification", "details": "Nationally recognised qualification in civil construction plant operations." },
+    { "ticket": "HR Drivers Licence", "category": "Licence", "details": "Heavy Rigid vehicle licence — Western Australia." },
+    { "ticket": "Roller", "category": "Plant", "details": "Certified to operate roller / compactor plant." },
+    { "ticket": "Skid Steer Loader", "category": "Plant", "details": "Certified to operate skid steer loader machinery." },
+    { "ticket": "Front End Loader", "category": "Plant", "details": "Certified to operate front end loader plant." },
+    { "ticket": "Dozer", "category": "Plant", "details": "Certified to operate dozer (various models)." },
+    { "ticket": "Grader", "category": "Plant", "details": "Certified to operate motor grader plant." },
+    { "ticket": "Scraper", "category": "Plant", "details": "Certified to operate scraper plant." },
+    { "ticket": "Tractor", "category": "Plant", "details": "Certified to operate tractor." }
+  ],
+  "referees": "Professional references available upon request. Please contact ACM Resources to facilitate introduction."
+}

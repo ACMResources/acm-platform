@@ -1,0 +1,80 @@
+{
+  "_meta": {
+    "doc_ref": "ACM-HR-CV-031",
+    "date": "April 2026",
+    "classification": "ACM INTERNAL — PERSONNEL FILE",
+    "submitted_by": "ACM Resources (Australia) Pty Ltd",
+    "contact": "jobs@acmresources.com.au"
+  },
+  "candidate": {
+    "full_name": "Alex Smith",
+    "address": "Western Australia",
+    "phone": "",
+    "email": "",
+    "visa": "Australian Citizen",
+    "availability": "Immediate",
+    "positions": ["Poly Welder"],
+    "objective": "Experienced Poly Welder with a solid background in HDPE pipeline installation across both FIFO and local Western Australian projects. Alex has held welding positions with KCU and Polyfit Fabrication, developing comprehensive skills in butt fusion, electrofusion, extrusion, and socket welding across a wide range of pipe sizes from 160mm to 630mm. Holds a Trade Certificate in Wall and Ceiling Lining and is experienced with Dixon, McElroy, and Ritmo welding machines. Available immediately for placement."
+  },
+  "employment": [
+    {
+      "employer": "KCU",
+      "role": "Poly Welder",
+      "location": "Western Australia",
+      "start": "November 2023",
+      "end": "February 2025",
+      "duties": [
+        "Operated a range of poly welding machines including Dixon and McElroy to weld pipe from 160mm to 630mm diameter.",
+        "Performed liner installation across project sites.",
+        "Installed air valves, valves, and bores as required.",
+        "Read and interpreted construction plans and drawings to execute welding activities.",
+        "Conducted extrusion welding and socket welding operations."
+      ]
+    },
+    {
+      "employer": "Polyfit Fabrication",
+      "role": "Poly Welder",
+      "location": "Western Australia",
+      "start": "November 2021",
+      "end": "November 2023",
+      "duties": [
+        "Operated Dixon, McElroy, and Ritmo welding machines for poly pipeline fabrication both on-site and in the workshop.",
+        "Performed FIFO poly pipeline welding across remote project sites.",
+        "Completed electrofusion pipeline welding to project and quality specifications.",
+        "Carried out extrusion weld and socket weld pipe work.",
+        "Installed pond linings, dewatering pits, pipeline installations, valve installations, pump installations, and suction and discharge set-ups.",
+        "Constructed turkey nest set-ups and managed plant pipeline connections and disconnections."
+      ]
+    },
+    {
+      "employer": "Self Employed",
+      "role": "Gyprocker",
+      "location": "Western Australia",
+      "start": "2011",
+      "end": "2021",
+      "duties": [
+        "Quoted jobs and read job plan sheets to determine scope and materials.",
+        "Installed framework, various sheet types, and a range of cornice profiles.",
+        "Completed flush jointing and sanding in preparation for painting.",
+        "Installed large ornamental cornices, ceiling roses, and arch doorframes.",
+        "Managed client and builder relationships throughout project delivery."
+      ]
+    }
+  ],
+  "skills": [
+    { "area": "Poly Welding", "detail": "Proficient in butt fusion, electrofusion, extrusion, and socket welding of HDPE pipelines across sizes from 160mm to 630mm, using Dixon, McElroy, and Ritmo machines." },
+    { "area": "Pipeline Installation", "detail": "Experienced in liner installation, valve and bore installation, dewatering systems, pond linings, pump installation, and suction and discharge set-up." },
+    { "area": "Plan Reading", "detail": "Competent in reading and interpreting construction plans, isometric drawings, and technical documents to guide welding and installation activities." },
+    { "area": "Certifications", "detail": "Holds a Chainsaw ticket, Telehandler ticket, Dogging ticket, and a Trade Certificate in Wall and Ceiling Lining, in addition to poly welding qualifications." }
+  ],
+  "certifications": [
+    { "ticket": "PMBWELD301 — Butt Fusion Welding (HDPE)", "category": "Competency", "details": "Accredited butt fusion welding of polyethylene pipelines." },
+    { "ticket": "PMBWELD302 — Electrofusion Welding (HDPE)", "category": "Competency", "details": "Accredited electrofusion welding of polyethylene pipelines." },
+    { "ticket": "Telehandler", "category": "Plant", "details": "Certified to operate telehandler / telescopic handler machinery." },
+    { "ticket": "Dogging Licence (HRWL)", "category": "Safety", "details": "High Risk Work Licence — Dogging." },
+    { "ticket": "Chainsaw Ticket", "category": "Competency", "details": "Certified for chainsaw operation." },
+    { "ticket": "Trade Certificate — Wall and Ceiling Lining", "category": "Qualification", "details": "Trade qualification in wall and ceiling lining installation." },
+    { "ticket": "C Class Drivers Licence", "category": "Licence", "details": "Western Australia C Class drivers licence." }
+  ],
+  "referees": "Professional references available upon request. Please contact ACM Resources to facilitate introduction."
+}
