@@ -224,7 +224,7 @@ export async function registerRoutes(httpServer: Server, app: Express): Promise<
     const fs = require("fs");
     const path = require("path");
 
-    const cvBase = path.resolve(__dirname, "../../ACM_CV_System");
+    const cvBase = path.resolve(__dirname, "../ACM_CV_System");
     const candidatesDir = path.join(cvBase, "candidates");
     const outputClient   = path.join(cvBase, "output/client");
     const outputInternal = path.join(cvBase, "output/internal");
@@ -344,7 +344,7 @@ export async function registerRoutes(httpServer: Server, app: Express): Promise<
     if (c.docRef && c.cvClientUrl) {
       const clientPdfPath = path.resolve(
         __dirname,
-        `../../ACM_CV_System/output/client/${c.docRef}_client.pdf`
+        `../ACM_CV_System/output/client/${c.docRef}_client.pdf`
       );
       if (fs.existsSync(clientPdfPath)) {
         attachments.push({
@@ -399,8 +399,10 @@ export async function registerRoutes(httpServer: Server, app: Express): Promise<
   });
 
   // Serve generated CV PDFs
+  // In production: __dirname = /app/dist/, so ../ACM_CV_System resolves to /app/ACM_CV_System
+  // In dev: __dirname = /path/to/project/server/, so ../ACM_CV_System resolves correctly too
   app.use("/cv-output", require("express").static(
-    require("path").resolve(__dirname, "../../ACM_CV_System/output")
+    require("path").resolve(__dirname, "../ACM_CV_System/output")
   ));
 
   // ── CLIENTS ──────────────────────────────────────────────────────
