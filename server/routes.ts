@@ -141,6 +141,60 @@ export async function registerRoutes(httpServer: Server, app: Express): Promise<
 
   // ── CANDIDATES ───────────────────────────────────────────────────
   app.get("/api/candidates", (_req, res) => { res.json(storage.getCandidates()); });
+
+  // Bulk import — upsert by firstName+lastName; returns {created, updated, skipped}
+  app.post("/api/candidates/bulk", (req, res) => {
+    const incoming: any[] = Array.isArray(req.body) ? req.body : req.body?.candidates ?? [];
+    if (!incoming.length) return res.status(400).json({ message: "No candidates provided" });
+    const existing = storage.getCandidates();
+    const existingMap = new Map<string, number>();
+    for (const c of existing) {
+      const k = `${(c.firstName||'').toLowerCase().trim()}|${(c.lastName||'').toLowerCase().trim()}`;
+      existingMap.set(k, c.id);
+    }
+    let created = 0, updated = 0, skipped = 0;
+    for (const raw of incoming) {
+      const firstName = (raw.firstName || raw.first_name || (raw.name||'').split(' ')[0] || '').trim();
+      const lastName  = (raw.lastName  || raw.last_name  || (raw.name||'').split(' ').slice(1).join(' ') || '').trim();
+      if (!firstName || !lastName) { skipped++; continue; }
+      const k = `${firstName.toLowerCase()}|${lastName.toLowerCase()}`;
+      const payload: any = {
+        firstName, lastName,
+        email:               raw.email || null,
+        phone:               raw.phone || null,
+        trade:               raw.trade || raw.position || 'Unspecified',
+        classification:      raw.classification || null,
+        status:              raw.status || 'available',
+        location:            raw.location || null,
+        tickets:             raw.tickets ? (typeof raw.tickets === 'string' ? raw.tickets : JSON.stringify(raw.tickets)) : null,
+        notes:               raw.notes || null,
+        address:             raw.address || null,
+        rightToWork:         raw.rightToWork || raw.right_to_work || null,
+        visaDetails:         raw.visaDetails || raw.visa_details || null,
+        availability:        raw.availability || null,
+        preferredRoster:     raw.preferredRoster || null,
+        objective:           raw.objective || null,
+        employmentHistory:   raw.employmentHistory ? (typeof raw.employmentHistory === 'string' ? raw.employmentHistory : JSON.stringify(raw.employmentHistory)) : null,
+        certifications:      raw.certifications ? (typeof raw.certifications === 'string' ? raw.certifications : JSON.stringify(raw.certifications)) : null,
+        skills:              raw.skills ? (typeof raw.skills === 'string' ? raw.skills : JSON.stringify(raw.skills)) : null,
+        docRef:              raw.docRef || null,
+        cvClientUrl:         raw.cvClientUrl || null,
+        cvInternalUrl:       raw.cvInternalUrl || null,
+        sharepointFolderUrl: raw.sharepointFolderUrl || null,
+        rawCvUrl:            raw.rawCvUrl || null,
+        linkedinUrl:         raw.linkedinUrl || null,
+        cvGeneratedAt:       raw.cvGeneratedAt || null,
+      };
+      if (existingMap.has(k)) {
+        storage.updateCandidate(existingMap.get(k)!, payload);
+        updated++;
+      } else {
+        storage.createCandidate(payload);
+        created++;
+      }
+    }
+    res.json({ created, updated, skipped, total: incoming.length });
+  });
   app.get("/api/candidates/:id", (req, res) => {
     const c = storage.getCandidateById(Number(req.params.id));
     if (!c) return res.status(404).json({ message: "Not found" });
