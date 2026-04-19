@@ -15,6 +15,130 @@ export async function registerRoutes(httpServer: Server, app: Express): Promise<
     res.json(storage.getDashboardStats());
   });
 
+  // Rich dashboard endpoint — all cross-entity data in one call
+  app.get("/api/dashboard/full", (_req, res) => {
+    const base = storage.getDashboardStats();
+    const projects = storage.getProjects();
+    const placements = storage.getPlacements();
+    const candidates = storage.getCandidates();
+    const clients = storage.getClients();
+    const timesheets = storage.getTimesheets();
+    const quotes = storage.getQuotes();
+    const xeroSummary = (storage as any).getXeroInvoiceSummary();
+    const xeroInvoices = (storage as any).getXeroInvoices();
+
+    const today = new Date().toISOString().slice(0, 10);
+
+    // --- Action items (things needing attention)
+    const actionItems: any[] = [];
+
+    // Overdue RFIs
+    const rfis: any[] = (storage as any).db
+      ? [] // handled below
+      : [];
+    try {
+      const openRfis = (storage as any).db
+        .select()
+        .from(require('@shared/schema').projectRfis)
+        .all();
+      openRfis.filter((r: any) => r.status !== 'closed' && r.status !== 'answered' && r.dueDate && r.dueDate < today)
+        .forEach((r: any) => actionItems.push({ type: 'rfi', priority: 'high', label: `RFI Overdue: ${r.subject}`, sub: `Due ${r.dueDate}`, link: `/projects/${r.projectId}` }));
+    } catch {}
+
+    // Pending timesheets
+    timesheets.filter(t => t.status === 'pending')
+      .forEach(t => actionItems.push({ type: 'timesheet', priority: 'medium', label: `Timesheet pending: Candidate #${t.candidateId}`, sub: `Week ending ${t.weekEnding} · ${t.totalHours}h`, link: '/timesheets' }));
+
+    // Overdue Xero invoices
+    xeroInvoices.filter((i: any) => i.type === 'ACCREC' && i.status === 'AUTHORISED' && i.dueDate && i.dueDate < today)
+      .forEach((i: any) => actionItems.push({ type: 'invoice', priority: 'high', label: `Invoice overdue: ${i.invoiceNumber ?? i.xeroInvoiceId}`, sub: `${i.contactName} · $${Number(i.amountDue).toLocaleString('en-AU')}`, link: '/finance' }));
+
+    // Draft quotes older than 7 days
+    quotes.filter(q => q.status === 'draft' && q.createdAt && q.createdAt < new Date(Date.now() - 7*86400000).toISOString())
+      .forEach(q => actionItems.push({ type: 'quote', priority: 'low', label: `Quote stale: ${q.projectName}`, sub: `${q.clientName} · $${Number(q.total ?? 0).toLocaleString('en-AU')}`, link: '/quotes' }));
+
+    // Active projects with no recent activity (no headcount data as proxy)
+    projects.filter(p => p.status === 'active' && !p.headcount)
+      .forEach(p => actionItems.push({ type: 'project', priority: 'low', label: `Project needs headcount: ${p.name}`, sub: p.location ?? '', link: `/projects/${p.id}` }));
+
+    // --- Project health cards
+    const projectHealth = projects.filter(p => p.status === 'active').map(p => {
+      const projPlacements = placements.filter(pl => pl.projectId === p.id && pl.status === 'active');
+      const projInvoices = xeroInvoices.filter((i: any) => i.type === 'ACCREC' && String(i.projectId) === String(p.id));
+      const invoiced = projInvoices.reduce((s: number, i: any) => s + (i.total ?? 0), 0);
+      const paid = projInvoices.filter((i: any) => i.status === 'PAID').reduce((s: number, i: any) => s + (i.total ?? 0), 0);
+      const contractValue = p.contractValue ?? 0;
+      const burnPct = contractValue > 0 ? Math.min(100, Math.round((invoiced / contractValue) * 100)) : null;
+      const client = clients.find(c => c.id === p.clientId);
+      return {
+        id: p.id,
+        name: p.name,
+        location: p.location,
+        scope: p.scope,
+        status: p.status,
+        startDate: p.startDate,
+        endDate: p.endDate,
+        contractValue,
+        headcount: p.headcount ?? projPlacements.length,
+        activePlacements: projPlacements.length,
+        invoiced,
+        paid,
+        burnPct,
+        clientName: client?.name ?? null,
+      };
+    });
+
+    // --- Workforce by project
+    const workforceByProject = projects.filter(p => p.status === 'active').map(p => ({
+      projectId: p.id,
+      projectName: p.name,
+      location: p.location,
+      headcount: placements.filter(pl => pl.projectId === p.id && pl.status === 'active').length,
+    })).filter(r => r.headcount > 0).sort((a, b) => b.headcount - a.headcount);
+
+    // --- Trade breakdown
+    const tradeBreakdown = Object.entries(
+      candidates.reduce((acc, c) => { acc[c.trade] = (acc[c.trade] || 0) + 1; return acc; }, {} as Record<string, number>)
+    ).map(([trade, count]) => ({ trade, count })).sort((a, b) => b.count - a.count);
+
+    // --- Candidate availability
+    const availableByTrade = Object.entries(
+      candidates.filter(c => c.status === 'available').reduce((acc, c) => {
+        acc[c.trade] = (acc[c.trade] || 0) + 1; return acc;
+      }, {} as Record<string, number>)
+    ).map(([trade, count]) => ({ trade, count }));
+
+    // --- Revenue by month (last 6 months from Xero paid invoices)
+    const monthRevenue: Record<string, number> = {};
+    const sixMonthsAgo = new Date(); sixMonthsAgo.setMonth(sixMonthsAgo.getMonth() - 6);
+    xeroInvoices.filter((i: any) => i.status === 'PAID' && i.date && i.date >= sixMonthsAgo.toISOString().slice(0, 10))
+      .forEach((i: any) => {
+        const mo = i.date.slice(0, 7); // YYYY-MM
+        monthRevenue[mo] = (monthRevenue[mo] ?? 0) + (i.total ?? 0);
+      });
+    const revenueByMonth = Object.entries(monthRevenue)
+      .sort(([a], [b]) => a.localeCompare(b))
+      .map(([month, revenue]) => ({ month, revenue }));
+
+    // --- Recent quotes
+    const recentQuotes = quotes.slice(0, 8).map(q => ({
+      id: q.id, projectName: q.projectName, clientName: q.clientName,
+      total: q.total, status: q.status, createdAt: q.createdAt,
+    }));
+
+    res.json({
+      ...base,
+      xeroSummary,
+      actionItems: actionItems.sort((a, b) => ({ high: 0, medium: 1, low: 2 }[a.priority as string] ?? 3) - ({ high: 0, medium: 1, low: 2 }[b.priority as string] ?? 3)),
+      projectHealth,
+      workforceByProject,
+      tradeBreakdown,
+      availableByTrade,
+      revenueByMonth,
+      recentQuotes,
+    });
+  });
+
   // ── CANDIDATES ───────────────────────────────────────────────────
   app.get("/api/candidates", (_req, res) => { res.json(storage.getCandidates()); });
   app.get("/api/candidates/:id", (req, res) => {
