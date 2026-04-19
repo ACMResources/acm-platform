@@ -1,0 +1,170 @@
+{
+  "_meta": {
+    "doc_ref": "ACM-HR-CV-003",
+    "date": "April 2026",
+    "classification": "ACM INTERNAL — PERSONNEL FILE",
+    "submitted_by": "ACM Resources (Australia) Pty Ltd",
+    "contact": "jobs@acmresources.com.au"
+  },
+  "candidate": {
+    "full_name": "Antonio Borgia",
+    "address": "Western Australia",
+    "phone": "",
+    "email": "",
+    "visa": "",
+    "availability": "Full Time",
+    "positions": ["Supervisor", "Poly Welder / Operator", "HSE Assistant"],
+    "objective": "Experienced pipeline construction supervisor with a strong background in poly welding, civil operations, and safety management. Demonstrated capability in leading multi-disciplinary site crews, enforcing WHS compliance, and delivering project outcomes across dewatering, pipeline, and civil construction environments in Western Australia."
+  },
+  "employment": [
+    {
+      "employer": "ACM Resources (Australia) Pty Ltd",
+      "role": "Supervisor",
+      "location": "Western Australia",
+      "start": "June 2020",
+      "end": "Present",
+      "duties": [
+        "Conducting regular inspections of construction sites to identify and eliminate potential safety hazards.",
+        "Supervising and directing the pipeline construction team and subcontractors to ensure works are completed safely and to specification.",
+        "Educating site personnel on construction safety regulations and accident reporting protocols.",
+        "Enforcing site safety rules to minimise the risk of work-related accidents and injuries.",
+        "Managing site incidents in accordance with established incident reporting and response procedures.",
+        "Maintaining accurate records of construction employee attendance and performance.",
+        "Evaluating employee performance and instituting disciplinary measures as required.",
+        "Analysing project plans to ensure construction activities meet design, safety, and budget specifications.",
+        "Recommending changes to construction operations and procedures to improve efficiency.",
+        "Applying sound knowledge of construction safety regulations and demonstrating outstanding leadership skills."
+      ]
+    },
+    {
+      "employer": "Innotech",
+      "role": "Poly Welder / Operator / HSE Assistant",
+      "location": "Western Australia",
+      "start": "July 2018",
+      "end": "January 2020",
+      "duties": [
+        "Operating an IT loader to load and unload pipe in accordance with operational specifications.",
+        "Completing earthworks to project specifications using all required machine attachments.",
+        "Working collaboratively with crews to meet strict project deadlines in a safe and efficient manner.",
+        "Completing quality assurance checks to company specifications.",
+        "Operating poly welding machines including McElroy, Dixon, and Ritmo across various pipe diameters.",
+        "Following engineering plans to complete fabrication works.",
+        "Assisting the HSE Advisor with safety audits, review of safe working methods, and team-based risk assessments (TBRA), including serving as subject matter expert for poly welding and plant operations.",
+        "Reviewing and auditing company Safe Work Procedures (SWPs) and making relevant updates.",
+        "Performing job front inspections and discussing improvement opportunities with personnel.",
+        "Conducting pre-start meetings, emergency drills, and toolbox presentations.",
+        "Entering data into the safety and compliance matrix and ensuring all KPIs are met."
+      ]
+    },
+    {
+      "employer": "Ramono's Smash Repairs",
+      "role": "Leading Hand Spray Painter",
+      "location": "Western Australia",
+      "start": "March 2017",
+      "end": "July 2018",
+      "duties": [
+        "Leading a team of six staff members across autobody refinishing and custom paintwork operations.",
+        "Managing stock and liaising with suppliers to ensure materials availability.",
+        "Performing colour matching, full vehicle restoration, and panel spraying to manufacturer specifications.",
+        "Processing invoicing and customer transactions.",
+        "Ensuring quality assurance across all completed works."
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "area": "Pipeline Construction",
+      "detail": "Extensive experience in poly welding, pipeline installation, commissioning, and dewatering system operations across mining and civil construction environments."
+    },
+    {
+      "area": "Safety & Compliance",
+      "detail": "Proficient in WHS legislation, site safety enforcement, risk assessment (TBRA), incident management, and safe work procedure development and auditing."
+    },
+    {
+      "area": "Plant Operation",
+      "detail": "Competent in the operation of IT loaders, articulated dump trucks, and elevated work platforms (EWP)."
+    },
+    {
+      "area": "Leadership & Supervision",
+      "detail": "Strong leadership skills with demonstrated ability to supervise multi-trade construction crews, manage performance, and deliver projects to schedule and budget."
+    }
+  ],
+  "certifications": [
+    {
+      "ticket": "Poly Welding",
+      "category": "Civil",
+      "details": "Certified poly welder with experience using McElroy, Dixon, and Ritmo machines across multiple pipe diameters."
+    },
+    {
+      "ticket": "Schedule 26 (S26) Appointed Person",
+      "category": "Safety",
+      "details": "Authorised Appointed Person under Schedule 26 for site safety management."
+    },
+    {
+      "ticket": "Section 44 Appointed Person",
+      "category": "Safety",
+      "details": "Appointed Person under Section 44 for emergency fire management."
+    },
+    {
+      "ticket": "IT Loader",
+      "category": "Plant",
+      "details": "Certified operator of integrated tool carrier (IT) loaders."
+    },
+    {
+      "ticket": "Articulated Dump Truck",
+      "category": "Plant",
+      "details": "Certified operator of articulated dump trucks."
+    },
+    {
+      "ticket": "Basic Rigging",
+      "category": "Competency",
+      "details": "HRWL Basic Rigging ticket."
+    },
+    {
+      "ticket": "Dogging",
+      "category": "Competency",
+      "details": "HRWL Dogging ticket."
+    },
+    {
+      "ticket": "Elevated Work Platform (EWP)",
+      "category": "Plant",
+      "details": "Certified operator of boom-type elevated work platforms."
+    },
+    {
+      "ticket": "Working at Heights (WAH)",
+      "category": "Safety",
+      "details": "Working at Heights certification."
+    },
+    {
+      "ticket": "White Card",
+      "category": "Safety",
+      "details": "General Construction Induction Card (White Card)."
+    },
+    {
+      "ticket": "Certificate IV in Occupational Health & Safety",
+      "category": "Qualification",
+      "details": "Certificate IV in OH&S."
+    },
+    {
+      "ticket": "Certificate IV in Finance",
+      "category": "Qualification",
+      "details": "Certificate IV in Finance."
+    },
+    {
+      "ticket": "C Class Drivers Licence",
+      "category": "Licence",
+      "details": "Current Western Australian C Class Drivers Licence."
+    },
+    {
+      "ticket": "FMG Site Induction",
+      "category": "Competency",
+      "details": "Fortescue Metals Group (FMG) site induction."
+    },
+    {
+      "ticket": "Rio Tinto Site Induction",
+      "category": "Competency",
+      "details": "Rio Tinto site induction."
+    }
+  ],
+  "referees": "Professional references available upon request. Please contact ACM Resources to facilitate introduction."
+}

@@ -1,0 +1,190 @@
+{
+  "_meta": {
+    "doc_ref": "ACM-HR-CV-005",
+    "date": "April 2026",
+    "classification": "ACM INTERNAL — PERSONNEL FILE",
+    "submitted_by": "ACM Resources (Australia) Pty Ltd",
+    "contact": "jobs@acmresources.com.au"
+  },
+  "candidate": {
+    "full_name": "Jack Dimasi",
+    "address": "Western Australia",
+    "phone": "",
+    "email": "",
+    "visa": "",
+    "availability": "Full Time",
+    "positions": ["Supervisor", "Leading Hand", "Poly Welder / Operator"],
+    "objective": "Experienced pipeline and civil construction supervisor with a comprehensive background in poly welding, plant operation, dewatering systems, and crew leadership. Proven ability to manage multi-trade workforces, ensure WHS compliance, and deliver civil and pipeline projects to quality and schedule requirements across Western Australian mining and civil environments."
+  },
+  "employment": [
+    {
+      "employer": "Yanta",
+      "role": "Supervisor",
+      "location": "Western Australia",
+      "start": "October 2022",
+      "end": "May 2025",
+      "duties": [
+        "Supervising dewatering and civil construction crews across multiple active project fronts.",
+        "Ensuring compliance with and implementation of company and site occupational health and safety requirements.",
+        "Conducting quality assurance inspections and audits to maintain project standards.",
+        "Optimising workflow planning to improve efficiency and project delivery.",
+        "Training and mentoring site personnel to develop skills and reinforce safety culture.",
+        "Planning and scheduling installation and maintenance works for water transfer systems.",
+        "Planning civil works to ensure quality outcomes and delivery to project schedules."
+      ]
+    },
+    {
+      "employer": "TCD Civil",
+      "role": "All Round Operator / Poly Welder",
+      "location": "Western Australia",
+      "start": "April 2021",
+      "end": "October 2022",
+      "duties": [
+        "Performing poly welding on new and existing pipelines to specified standards, with accurate record keeping.",
+        "Completing bolt-up connections to specifications with full documentation.",
+        "Executing civil works associated with pipeline construction activities.",
+        "Operating excavators, loaders, skid steers, and rollers across various project sites.",
+        "Maintaining water transfer systems to ensure operational continuity.",
+        "Commissioning water transfer systems, including hydrostatic testing.",
+        "Installing and maintaining bores and pumps.",
+        "Adhering to all company and client site occupational health and safety requirements."
+      ]
+    },
+    {
+      "employer": "Inoteq",
+      "role": "All Round Operator / Poly Welder",
+      "location": "Western Australia",
+      "start": "July 2018",
+      "end": "April 2021",
+      "duties": [
+        "Performing poly welding on new and existing pipelines to specified standards, with accurate record keeping.",
+        "Completing bolt-up connections to specifications with full documentation.",
+        "Executing civil works associated with pipeline construction activities.",
+        "Operating excavators, loaders, skid steers, and rollers across various project sites.",
+        "Maintaining water transfer systems to ensure operational continuity.",
+        "Commissioning water transfer systems, including hydrostatic testing.",
+        "Installing and maintaining bores and pumps.",
+        "Adhering to all company and client site occupational health and safety requirements."
+      ]
+    },
+    {
+      "employer": "River Hill Contracting",
+      "role": "All Round Operator / General Hand",
+      "location": "Western Australia",
+      "start": "November 2016",
+      "end": "June 2018",
+      "duties": [
+        "Operating civil construction machinery across a range of project activities.",
+        "Conducting civil maintenance of existing infrastructure.",
+        "Performing civil works associated with pipeline installation projects.",
+        "Completing load and haul operations as required.",
+        "Managing traffic control for site vehicle movements.",
+        "Inspecting worksites and conducting safety audits.",
+        "Adhering to all company and site occupational health and safety requirements.",
+        "Maintaining machinery and vehicles in serviceable condition.",
+        "Completing general hand duties as directed."
+      ]
+    },
+    {
+      "employer": "A1 Doors",
+      "role": "Garage Door Installer",
+      "location": "Western Australia",
+      "start": "June 2015",
+      "end": "November 2016",
+      "duties": [
+        "Installing and maintaining garage doors, motors, and associated components.",
+        "Diagnosing faults and performing repairs to motors, circuit boards, sprocket assemblies, remotes, and receivers.",
+        "Interpreting parts catalogues and managing parts ordering.",
+        "Planning and scheduling installation works.",
+        "Providing customer service and processing warranty claims.",
+        "Preparing invoices and utilising hand and power tools to complete installation tasks."
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "area": "Pipeline Construction & Poly Welding",
+      "detail": "Extensive experience in HDPE poly welding, pipeline installation, commissioning, hydrostatic testing, and maintenance across dewatering and water transfer systems in mining and civil construction environments."
+    },
+    {
+      "area": "Plant Operation",
+      "detail": "Certified and experienced operator of excavators, IT loaders, front-end loaders, skid steers, rollers, and C2 cranes."
+    },
+    {
+      "area": "Supervision & Leadership",
+      "detail": "Demonstrated ability to lead and supervise multi-trade civil and pipeline crews, manage workflow, and mentor junior staff in safety and technical competency."
+    },
+    {
+      "area": "Safety & Compliance",
+      "detail": "Proficient in WHS legislation, SRMS supervisor responsibilities, OH&S implementation, quality assurance, and site auditing across mining and civil environments."
+    }
+  ],
+  "certifications": [
+    {
+      "ticket": "C2 Crane",
+      "category": "Plant",
+      "details": "Certified C2 crane operator."
+    },
+    {
+      "ticket": "IT Loader",
+      "category": "Plant",
+      "details": "Certified operator of integrated tool carrier (IT) loaders."
+    },
+    {
+      "ticket": "Excavator",
+      "category": "Plant",
+      "details": "Certified excavator operator."
+    },
+    {
+      "ticket": "Roller",
+      "category": "Plant",
+      "details": "Certified vibratory roller operator."
+    },
+    {
+      "ticket": "Skid Steer",
+      "category": "Plant",
+      "details": "Certified skid steer loader operator."
+    },
+    {
+      "ticket": "Dogging",
+      "category": "Competency",
+      "details": "HRWL Dogging ticket."
+    },
+    {
+      "ticket": "Poly Welding",
+      "category": "Civil",
+      "details": "Certified poly welder with experience across HDPE pipeline installation, maintenance, and commissioning."
+    },
+    {
+      "ticket": "Working at Heights (WAH)",
+      "category": "Safety",
+      "details": "Working at Heights certification."
+    },
+    {
+      "ticket": "SRMS Supervisor",
+      "category": "Competency",
+      "details": "Site Radiation Management System Supervisor certification."
+    },
+    {
+      "ticket": "White Card",
+      "category": "Safety",
+      "details": "General Construction Induction Card (White Card)."
+    },
+    {
+      "ticket": "HR Drivers Licence",
+      "category": "Licence",
+      "details": "Current Western Australian Heavy Rigid (HR) Drivers Licence."
+    },
+    {
+      "ticket": "Certificate II in Automotive Technology",
+      "category": "Qualification",
+      "details": "Certificate II in Automotive Technology."
+    },
+    {
+      "ticket": "Certificate III in Engineering",
+      "category": "Qualification",
+      "details": "Certificate III in Engineering."
+    }
+  ],
+  "referees": "Professional references available upon request. Please contact ACM Resources to facilitate introduction."
+}

@@ -1,0 +1,210 @@
+{
+  "_meta": {
+    "doc_ref": "ACM-HR-CV-007",
+    "date": "April 2026",
+    "classification": "ACM INTERNAL — PERSONNEL FILE",
+    "submitted_by": "ACM Resources (Australia) Pty Ltd",
+    "contact": "jobs@acmresources.com.au"
+  },
+  "candidate": {
+    "full_name": "Umut Korkmaz",
+    "address": "Western Australia",
+    "phone": "",
+    "email": "",
+    "visa": "",
+    "availability": "Full Time",
+    "positions": ["Poly Welder", "Operator", "General Hand"],
+    "objective": "Motivated and reliable poly welder and plant operator with experience across pipeline construction, dewatering, civil earthworks, and general construction across Western Australia and New South Wales. Skilled in HDPE poly welding, multi-plant operation, and civil construction tasks with a strong commitment to site safety and quality standards."
+  },
+  "employment": [
+    {
+      "employer": "ACM Resources (Australia) Pty Ltd",
+      "role": "Poly Welder",
+      "location": "Western Australia",
+      "start": "October 2023",
+      "end": "Present",
+      "duties": [
+        "Constructing new pipeline systems to specified standards and schedules.",
+        "Maintaining and repairing existing pipeline infrastructure.",
+        "Installing valves and associated pipeline fittings.",
+        "Installing monitoring equipment on pipeline systems.",
+        "Performing civil works associated with pipeline construction activities.",
+        "Assisting with the planning and scheduling of daily works."
+      ]
+    },
+    {
+      "employer": "BMR Piping and Civil",
+      "role": "Poly Welder",
+      "location": "Goldfields, Western Australia",
+      "start": "October 2022",
+      "end": "October 2023",
+      "duties": [
+        "Performing poly welding on tailings storage facilities (TSF), dewatering, and piping projects at Granny Smith, Agnew, and Gruyere mine sites.",
+        "Operating HF350, HF225, and T500 poly welding machines to specification.",
+        "Installing valves and completing bolt-up connections.",
+        "Tramming and handling pipe materials across site.",
+        "Operating a telehandler and skid steer during project works, and an elevated work platform (EWP) during shutdown periods.",
+        "Performing spotting duties to support safe plant operations.",
+        "Completing pipe fabrication works.",
+        "Driving trucks and operating all required site vehicles."
+      ]
+    },
+    {
+      "employer": "Civmec",
+      "role": "General Hand",
+      "location": "Port Hedland, Western Australia",
+      "start": "May 2022",
+      "end": "September 2022",
+      "duties": [
+        "Completing general construction tasks on the BHP PDP1 Civils and Earthworks Project at Port Hedland.",
+        "Performing spotting duties for detailed earthworks operations including backfilling and trench opening.",
+        "Installing geofabric materials to specification.",
+        "Working safely in high-risk areas including a 11,000 kW electrical zone.",
+        "Operating a compactor and laser levelling equipment, and operating a roller as required.",
+        "Forming and fitting cable tray and assisting with the installation of electrical equipment."
+      ]
+    },
+    {
+      "employer": "Deicorp",
+      "role": "General Hand",
+      "location": "New South Wales",
+      "start": "December 2021",
+      "end": "May 2022",
+      "duties": [
+        "Installing devices and instruments using power tools including jackhammers, grinders, drills, and power saws.",
+        "Installing light, power, and earthing systems above ground.",
+        "Spotting for machinery and elevated work platform (EWP) operations.",
+        "Carrying out cable termination and conduit installation works.",
+        "Assisting high-voltage jointers and testers.",
+        "Forming and fitting cable tray and assisting with electrical equipment installation.",
+        "Pulling cables to the required schedule and estimating cable lengths."
+      ]
+    },
+    {
+      "employer": "OZ-KA Construction",
+      "role": "General Hand",
+      "location": "New South Wales",
+      "start": "2019",
+      "end": "March 2021",
+      "duties": [
+        "Working alongside pipeline laying crews, including spotting for excavators during trench opening operations.",
+        "Raking, compacting, and backfilling excavations as required.",
+        "Assisting poly welders with pipeline installation tasks.",
+        "Completing general construction duties across civil construction sites.",
+        "Operating power tools including jackhammers, grinders, drills, and power saws.",
+        "Driving tractors and operating other site plant as directed."
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "area": "Poly Welding",
+      "detail": "Certified poly welder experienced in HDPE pipeline construction, maintenance, valve installation, and bolt-up using HF350, HF225, and T500 welding machines across mining and civil sites."
+    },
+    {
+      "area": "Plant Operation",
+      "detail": "Competent in the operation of IT loaders, rollers, telehandlers, excavators, skid steers, and elevated work platforms (EWP)."
+    },
+    {
+      "area": "Civil Construction",
+      "detail": "Experienced across pipeline trenching, backfilling, compaction, earthworks, geofabric installation, cable tray installation, and general civil construction activities."
+    },
+    {
+      "area": "Safety & Compliance",
+      "detail": "Holds confined space, working at heights, and white card certifications with practical experience across high-risk construction environments."
+    }
+  ],
+  "certifications": [
+    {
+      "ticket": "Poly Welding",
+      "category": "Civil",
+      "details": "Certified poly welder with experience using HF350, HF225, and T500 machines on HDPE pipeline projects."
+    },
+    {
+      "ticket": "IT Loader",
+      "category": "Plant",
+      "details": "Certified operator of integrated tool carrier (IT) loaders."
+    },
+    {
+      "ticket": "Roller",
+      "category": "Plant",
+      "details": "Certified vibratory roller operator."
+    },
+    {
+      "ticket": "Telehandler",
+      "category": "Plant",
+      "details": "Certified telehandler operator."
+    },
+    {
+      "ticket": "Excavator",
+      "category": "Plant",
+      "details": "Certified excavator operator."
+    },
+    {
+      "ticket": "Confined Space",
+      "category": "Safety",
+      "details": "Certified to enter and work in confined spaces."
+    },
+    {
+      "ticket": "Elevated Work Platform (EWP)",
+      "category": "Plant",
+      "details": "Certified EWP operator."
+    },
+    {
+      "ticket": "Dogging",
+      "category": "Competency",
+      "details": "HRWL Dogging ticket."
+    },
+    {
+      "ticket": "Chainsaw",
+      "category": "Competency",
+      "details": "Chainsaw operation competency."
+    },
+    {
+      "ticket": "4WD Operation",
+      "category": "Competency",
+      "details": "4WD driving and recovery competency."
+    },
+    {
+      "ticket": "Skid Steer",
+      "category": "Plant",
+      "details": "Certified skid steer loader operator."
+    },
+    {
+      "ticket": "First Aid",
+      "category": "Safety",
+      "details": "Current First Aid certificate."
+    },
+    {
+      "ticket": "Working at Heights (WAH)",
+      "category": "Safety",
+      "details": "Working at Heights certification."
+    },
+    {
+      "ticket": "White Card",
+      "category": "Safety",
+      "details": "General Construction Induction Card (White Card)."
+    },
+    {
+      "ticket": "HR Drivers Licence",
+      "category": "Licence",
+      "details": "Current Western Australian Heavy Rigid (HR) Drivers Licence."
+    },
+    {
+      "ticket": "BHP Site Induction",
+      "category": "Competency",
+      "details": "BHP site induction."
+    },
+    {
+      "ticket": "Rio Tinto Site Induction",
+      "category": "Competency",
+      "details": "Rio Tinto site induction."
+    },
+    {
+      "ticket": "FMG Site Induction",
+      "category": "Competency",
+      "details": "Fortescue Metals Group (FMG) site induction."
+    }
+  ],
+  "referees": "Professional references available upon request. Please contact ACM Resources to facilitate introduction."
+}
