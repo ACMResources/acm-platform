@@ -1,0 +1,61 @@
+{
+  "_meta": {
+    "doc_ref": "ACM-HR-CV-002",
+    "date": "April 2026",
+    "classification": "ACM INTERNAL — PERSONNEL FILE",
+    "submitted_by": "ACM Resources (Australia) Pty Ltd",
+    "contact": "jobs@acmresources.com.au"
+  },
+  "candidate": {
+    "full_name": "Liam Smith",
+    "address": "Lathlain, Western Australia",
+    "phone": "0435 788 835",
+    "email": "thimsdmail@gmail.com",
+    "visa": "Australian Citizen",
+    "availability": "Full Time",
+    "positions": ["Poly Welder", "Pipe Fitter", "HDPE Pipeline Specialist"],
+    "objective": "A skilled Poly Welder and Pipe Fitter with specialist experience in HDPE pipeline systems across a range of pipe sizes from DN63 to DN900. Liam is currently placed with ACM Resources and brings hands-on proficiency with Dixon, McElroy, and World fusion machines, along with spool fabrication and installation across civil and industrial projects."
+  },
+  "employment": [
+    {
+      "employer": "ACM Resources (Australia) Pty Ltd",
+      "role": "Poly Welder / Pipe Fitter",
+      "location": "Western Australia",
+      "start": "June 2023",
+      "end": "Present",
+      "duties": [
+        "Performing butt fusion and electrofusion welding on HDPE pipelines ranging from DN63 to DN900 diameter.",
+        "Operating Dixon, McElroy, and World fusion machines to applicable welding parameters and quality standards.",
+        "Fabricating and installing HDPE spool assemblies for civil and resource industry clients.",
+        "Reading and interpreting isometric drawings and pipeline specifications to ensure correct installation.",
+        "Adhering to site-specific HSEC requirements and ACM Resources quality management standards."
+      ]
+    },
+    {
+      "employer": "J Adamini Formwork",
+      "role": "Trade Assistant",
+      "location": "Western Australia",
+      "start": "February 2022",
+      "end": "May 2023",
+      "duties": [
+        "Assisted formwork carpenters with stripping, cleaning, and repositioning formwork systems.",
+        "Performed concreting operations including placement, vibration, and finishing.",
+        "Carried out steel fixings including bar tying and mesh placement to engineer specifications.",
+        "Maintained a safe and organised worksite in compliance with WHS requirements."
+      ]
+    }
+  ],
+  "skills": [
+    { "area": "HDPE Poly Welding", "detail": "Proficient in butt fusion and electrofusion welding techniques for HDPE pipelines DN63–DN900. Experienced with Dixon, McElroy, and World fusion machines." },
+    { "area": "Pipe Fitting", "detail": "Competent in HDPE pipe fitting, spool fabrication, and pressure pipeline installation across civil and resource sector projects." },
+    { "area": "Formwork & Concrete", "detail": "Practical experience in commercial formwork stripping, concreting, and steel fixing gained through trade assistant role." }
+  ],
+  "certifications": [
+    { "ticket": "White Card (CPCWHS1001)", "category": "Safety", "details": "General Construction Induction — Construction Safety card." },
+    { "ticket": "Butt Welding — PMBWELD301E", "category": "Competency", "details": "Nationally recognised competency for butt fusion welding of polyethylene pipelines." },
+    { "ticket": "Electrofusion Welding — PMBWELD302E", "category": "Competency", "details": "Nationally recognised competency for electrofusion welding of polyethylene pipelines." },
+    { "ticket": "Forklift Operator — HRWL", "category": "Competency", "details": "High Risk Work Licence for forklift operation." },
+    { "ticket": "Driver Licence — Class C", "category": "Licence", "details": "Current Western Australian Class C motor vehicle driver licence." }
+  ],
+  "referees": "Professional references available upon request. Please contact ACM Resources to facilitate introduction."
+}

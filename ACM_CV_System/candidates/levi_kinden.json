@@ -1,0 +1,111 @@
+{
+  "_meta": {
+    "doc_ref": "ACM-HR-CV-001",
+    "date": "April 2026",
+    "classification": "ACM INTERNAL — PERSONNEL FILE",
+    "submitted_by": "ACM Resources (Australia) Pty Ltd",
+    "contact": "jobs@acmresources.com.au"
+  },
+  "candidate": {
+    "full_name": "Levi Kinden",
+    "address": "Perth, Western Australia",
+    "phone": "",
+    "email": "levi@acmresources.com.au",
+    "visa": "Australian Citizen",
+    "availability": "Full Time",
+    "positions": ["Project Manager", "Estimator", "Project Co-Ordinator"],
+    "objective": "An experienced Project Manager and Estimator with a background spanning carpentry, site supervision, and project coordination across mining, civil, and construction environments. Levi has progressed from trade-level roles to senior project management, developing expertise in contract management, multi-site coordination, and stakeholder engagement with Tier 1 resources clients including Rio Tinto, BHP, and Glencore."
+  },
+  "employment": [
+    {
+      "employer": "ACM Resources (Australia) Pty Ltd",
+      "role": "Estimator / Project Manager",
+      "location": "Perth, Western Australia",
+      "start": "April 2024",
+      "end": "Present",
+      "duties": [
+        "Preparing and submitting project estimates and tender documentation for civil and mining construction contracts.",
+        "Managing project delivery from inception through to completion, ensuring milestones, budgets, and client expectations are met.",
+        "Coordinating subcontractors, suppliers, and site personnel across multiple concurrent projects.",
+        "Engaging with Tier 1 clients including Rio Tinto, BHP, and Glencore for scope development and reporting.",
+        "Overseeing document control, HSEC compliance, and contract administration."
+      ]
+    },
+    {
+      "employer": "University of Newcastle (UON)",
+      "role": "Site Supervisor / Project Manager",
+      "location": "Various Sites, Western Australia",
+      "start": "October 2022",
+      "end": "March 2024",
+      "duties": [
+        "Supervised trade and civil construction activities on university infrastructure projects.",
+        "Managed daily site operations, including safety briefings, subcontractor coordination, and progress reporting.",
+        "Delivered projects on schedule and within budget through effective resource planning.",
+        "Liaised with design consultants, clients, and regulatory authorities throughout project life cycles."
+      ]
+    },
+    {
+      "employer": "JETZ Constructions",
+      "role": "Carpenter / Site Manager",
+      "location": "Western Australia",
+      "start": "January 2020",
+      "end": "October 2022",
+      "duties": [
+        "Progressed from carpenter to Site Manager, taking on full responsibility for day-to-day site operations.",
+        "Managed crews of up to 20 personnel across residential and commercial construction projects.",
+        "Ensured compliance with WHS legislation and site-specific safety requirements.",
+        "Coordinated material procurement, scheduling, and quality inspections."
+      ]
+    },
+    {
+      "employer": "WESTCON Constructions",
+      "role": "Site Foreman",
+      "location": "Western Australia",
+      "start": "March 2019",
+      "end": "January 2020",
+      "duties": [
+        "Supervised construction crews and subcontractors on civil and building projects.",
+        "Conducted daily toolbox talks and enforced site safety plans.",
+        "Coordinated with project managers to track progress against programme and budget.",
+        "Managed material deliveries and maintained site documentation."
+      ]
+    },
+    {
+      "employer": "PJL Projects",
+      "role": "Apprentice Carpenter / Site Foreman",
+      "location": "Western Australia",
+      "start": "March 2015",
+      "end": "March 2019",
+      "duties": [
+        "Commenced as an apprentice carpenter, progressing to Site Foreman upon trade completion.",
+        "Completed Certificate III in Carpentry and applied skills across residential and commercial builds.",
+        "Assisted senior site management in scheduling, procurement, and safety compliance.",
+        "Developed strong foundations in construction methodology, site coordination, and team leadership."
+      ]
+    }
+  ],
+  "skills": [
+    { "area": "Project Management", "detail": "End-to-end project delivery across civil, mining, and construction sectors. Experienced in programme development, cost control, risk management, and stakeholder reporting." },
+    { "area": "Estimating", "detail": "Quantity take-offs, cost estimation, and tender preparation for civil and mining construction contracts. Familiar with lump sum and schedule-of-rates contract formats." },
+    { "area": "Contract Administration", "detail": "Completed Contracts Management training through AIM (Australian Institute of Management). Experienced in scope management, variations, and progress claims." },
+    { "area": "Site Supervision", "detail": "Extensive hands-on experience supervising trades and civil crews in mining and construction environments. Competent in SWMS development, toolbox talks, and incident management." },
+    { "area": "Client Engagement", "detail": "Site induction approved for Rio Tinto, BHP, and Glencore operations. Experienced in Tier 1 client reporting and relationship management." }
+  ],
+  "certifications": [
+    { "ticket": "Certificate III in Carpentry", "category": "Qualification", "details": "Nationally recognised trade qualification in carpentry." },
+    { "ticket": "Diploma in Justice Studies", "category": "Qualification", "details": "Diploma-level qualification in justice and legal studies." },
+    { "ticket": "Diploma in Project Management (In Progress)", "category": "Qualification", "details": "Currently completing a Diploma of Project Management." },
+    { "ticket": "Diploma in Leadership & Management (In Progress)", "category": "Qualification", "details": "Currently completing a Diploma of Leadership and Management." },
+    { "ticket": "Contracts Management — AIM", "category": "Qualification", "details": "Contracts Management short course completed through the Australian Institute of Management." },
+    { "ticket": "Standard 11 — Queensland Coal Mining", "category": "Safety", "details": "Queensland statutory certificate for coal mining operations." },
+    { "ticket": "S123 — QLD Coal Supervisor", "category": "Safety", "details": "Queensland coal supervisor statutory competency." },
+    { "ticket": "G2 — QLD Risk Management", "category": "Safety", "details": "Queensland risk management competency for mining environments." },
+    { "ticket": "WAPS Permit Issuer", "category": "Safety", "details": "Work Activity Permit System — Permit to Work Issuer certification." },
+    { "ticket": "Schedule 26 — WA Mining Supervisor", "category": "Safety", "details": "Western Australian statutory mine supervisor certificate under the Mines Safety and Inspection Act." },
+    { "ticket": "Working at Heights", "category": "Safety", "details": "Certified for work at heights including harness use and anchor point inspection." },
+    { "ticket": "Gas Test Atmosphere", "category": "Safety", "details": "Competency in atmospheric gas testing for confined space and hazardous area entry." },
+    { "ticket": "Confined Space Entry", "category": "Safety", "details": "Certified for confined space entry procedures." },
+    { "ticket": "Elevated Work Platform (EWP) — HRWL", "category": "Competency", "details": "High Risk Work Licence for elevated work platform operation." }
+  ],
+  "referees": "Professional references available upon request. Please contact ACM Resources to facilitate introduction."
+}
