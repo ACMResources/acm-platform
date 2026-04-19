@@ -1,0 +1,147 @@
+{
+  "_meta": {
+    "doc_ref": "ACM-HR-CV-011",
+    "date": "April 2026",
+    "classification": "ACM INTERNAL — PERSONNEL FILE",
+    "submitted_by": "ACM Resources (Australia) Pty Ltd",
+    "contact": "jobs@acmresources.com.au"
+  },
+  "candidate": {
+    "full_name": "Hurae Ngakoti",
+    "address": "Western Australia",
+    "phone": "",
+    "email": "",
+    "visa": "Australian Citizen",
+    "availability": "Full Time",
+    "positions": ["Dewatering Operator", "Civil Operator", "Poly Welder"],
+    "objective": "A versatile civil and dewatering operator with solid experience across mine site pump operations, polyethylene pipeline installation, earthmoving, and concrete works. Hurae has worked for major contractors including NRW, Maali Group, and ACM Resources, with demonstrated competency in dewatering systems, poly welding, excavator and loader operation, and safe work practices in mining environments. He holds induction approvals for Rio Tinto, Mineral Resources Limited, and Fortescue."
+  },
+  "employment": [
+    {
+      "employer": "ACM Resources (Australia) Pty Ltd",
+      "role": "Operator",
+      "location": "Western Australia",
+      "start": "November 2023",
+      "end": "Present",
+      "duties": [
+        "Completed civil works associated with pipeline construction, including trench preparation, pipe installation, and backfilling.",
+        "Constructed and maintained roads and access tracks to project specifications.",
+        "Performed ground clearing, topsoil removal, and topsoil storage in accordance with environmental requirements.",
+        "Completed water transfer and storage facility construction.",
+        "Installed water infrastructure including pumps and associated pipework.",
+        "Undertook tailings dam construction and civil works.",
+        "Constructed equipment pads and laydown areas."
+      ]
+    },
+    {
+      "employer": "Cosmos Goldfields",
+      "role": "Operator / Poly Welder",
+      "location": "Western Australia",
+      "start": "May 2023",
+      "end": "October 2023",
+      "duties": [
+        "Performed poly welding of pipe systems throughout the plant.",
+        "Installed pump systems and associated fittings.",
+        "Worked on racking levels within the plant facility.",
+        "Operated elevated work platforms (EWP) and performed spotting duties.",
+        "Fitted pumps and pipe systems to specifications.",
+        "Reported progress and issues to supervisors.",
+        "Recorded and documented all welds in accordance with quality requirements.",
+        "Maintained a safe and healthy workplace in compliance with site safety standards."
+      ]
+    },
+    {
+      "employer": "Kingdom Enterprises",
+      "role": "Owner Operator",
+      "location": "Western Australia",
+      "start": "July 2022",
+      "end": "April 2023",
+      "duties": [
+        "Managed and supervised business finances and operational activities.",
+        "Liaised with clients, site supervisors, and suppliers to coordinate works.",
+        "Performed formwork, steel tying, and plan reading for concrete construction.",
+        "Managed all sales, quotations, and invoicing.",
+        "Oversaw all occupational health and safety requirements and issues.",
+        "Paved driveways, sheds, paths, and crossovers.",
+        "Installed fencing and safely removed and disposed of asbestos materials.",
+        "Erected flat and gable patio structures.",
+        "Installed limestone retaining walls.",
+        "Operated bobcat, excavator, and dingo for earthworks and landscaping.",
+        "Laid artificial grass for residential and commercial clients."
+      ]
+    },
+    {
+      "employer": "Maali Group",
+      "role": "Dewatering Operator",
+      "location": "Western Australia",
+      "start": "February 2021",
+      "end": "June 2022",
+      "duties": [
+        "Performed excavator civil works including trench excavation, poly pipe work, and sump cleaning.",
+        "Operated loaders and GPS machine control (IT) for general civil works.",
+        "Installed poly pipe systems, relocated pipes, and threw poly pipes over pit walls.",
+        "Conducted pump checks, maintenance, and documentation and monitoring of all pump systems.",
+        "Cleaned, refuelled, and relocated pumps as required.",
+        "Worked safely in open cut pit environments and collaborated across work groups.",
+        "Performed water cart truck operations for dust suppression and site services.",
+        "Installed fire hydrants as part of site services works.",
+        "Fabricated poly pipe systems for dewatering and water transfer applications.",
+        "Worked on tie-ins and fittings for pipeline systems.",
+        "Commissioned completed pipeline systems."
+      ]
+    },
+    {
+      "employer": "NRW",
+      "role": "Dewatering Operator",
+      "location": "Western Australia",
+      "start": "August 2019",
+      "end": "January 2021",
+      "duties": [
+        "Built ramps and sumps for dewatering infrastructure.",
+        "Installed all pumps and associated equipment on site.",
+        "Performed maintenance on all pump systems.",
+        "Designed and applied poly pipeline systems for dewatering operations.",
+        "Threw poly pipes over pit walls and managed pipeline routing.",
+        "Removed poly pipe fittings and sump pumps in preparation for blasting operations.",
+        "Reinstated poly pipe fittings and pumps following blast events.",
+        "Performed electrical fusion welding and operated excavators ranging from 30 to 1,200 tonnes.",
+        "Operated Volvo wheel loaders and built and tidied windrows on site.",
+        "Served as an Emergency Response Team (ERT) member."
+      ]
+    },
+    {
+      "employer": "Boton",
+      "role": "Operator / General Hand",
+      "location": "Western Australia",
+      "start": "July 2017",
+      "end": "July 2019",
+      "duties": [
+        "Operated excavators and bobcats for general civil and industrial works.",
+        "Performed manual work and operated gantry cranes.",
+        "Conducted pressure hosing and cleaning during turnaround and shutdown activities.",
+        "Completed general hand duties as required by site supervision."
+      ]
+    }
+  ],
+  "skills": [
+    { "area": "Dewatering Operations", "detail": "Extensive experience in mine site dewatering, including pump installation, maintenance, documentation, pipeline fabrication, and sump management across iron ore and gold mining environments." },
+    { "area": "Poly Welding & Pipeline", "detail": "Proficient in polyethylene pipe fusion welding, electrofusion welding, pipe laying, and pipeline commissioning for civil and mining applications." },
+    { "area": "Plant Operation", "detail": "Competent operator of excavators (up to 1,200t), wheel loaders, skid steers, EWPs, water carts, and bobcats. Holds an MC Drivers Licence." },
+    { "area": "Civil Works", "detail": "Experienced in road and access track construction, pad works, ground clearing, topsoil stripping, tailings dam works, and concrete formwork." },
+    { "area": "Safety & Environmental", "detail": "Sound knowledge of site safety requirements, JHA completion, asbestos handling, and environmental compliance. Inducted at Rio Tinto, MRL, and Fortescue operations." }
+  ],
+  "certifications": [
+    { "ticket": "Dozer Operation", "category": "Competency", "details": "Competent operator of dozers for earthworks and civil mining applications." },
+    { "ticket": "Skid Steer Operation", "category": "Competency", "details": "Competent operator of skid steer loaders." },
+    { "ticket": "Loader Operation", "category": "Competency", "details": "Competent operator of wheel loaders for civil and mining materials handling." },
+    { "ticket": "GPS Machine Control (IT)", "category": "Competency", "details": "Competent in the use of GPS grade control systems for earthworks operations." },
+    { "ticket": "HRWL C2 — Crane Operation", "category": "Competency", "details": "High Risk Work Licence for C2 class crane operation." },
+    { "ticket": "Elevated Work Platform (EWP)", "category": "Competency", "details": "Certified for elevated work platform operation." },
+    { "ticket": "White Card", "category": "Safety", "details": "Construction industry general induction (Work Safely in the Construction Industry)." },
+    { "ticket": "MC Drivers Licence", "category": "Licence", "details": "Western Australian Multi-Combination (MC) class motor vehicle drivers licence." },
+    { "ticket": "Rio Tinto Site Induction", "category": "Safety", "details": "Approved site induction for Rio Tinto operations." },
+    { "ticket": "MRL Site Induction", "category": "Safety", "details": "Approved site induction for Mineral Resources Limited operations." },
+    { "ticket": "Fortescue (FMG) Site Induction", "category": "Safety", "details": "Approved site induction for Fortescue operations." }
+  ],
+  "referees": "Professional references available upon request. Please contact ACM Resources to facilitate introduction."
+}

@@ -1,0 +1,82 @@
+{
+  "_meta": {
+    "doc_ref": "ACM-HR-CV-012",
+    "date": "April 2026",
+    "classification": "ACM INTERNAL — PERSONNEL FILE",
+    "submitted_by": "ACM Resources (Australia) Pty Ltd",
+    "contact": "jobs@acmresources.com.au"
+  },
+  "candidate": {
+    "full_name": "Scott Parker",
+    "address": "Western Australia",
+    "phone": "",
+    "email": "",
+    "visa": "Australian Citizen",
+    "availability": "Full Time",
+    "positions": ["Senior Site Supervisor", "Project Supervisor", "Civil Construction Supervisor"],
+    "objective": "A highly experienced Senior Site Supervisor and Project Manager with over 25 years in the civil construction and mining industries, encompassing power and solar infrastructure, concrete works, civil earthworks, water capture and transfer, load and haul, and pad construction. Scott holds a Schedule 26 statutory mine supervisor certificate and has delivered complex multi-workgroup projects for Tier 1 clients including Rio Tinto and Fortescue, with demonstrated expertise in budget management, safety leadership, and site-based project management."
+  },
+  "employment": [
+    {
+      "employer": "ACM Resources (Australia) Pty Ltd",
+      "role": "Senior Project Supervisor",
+      "location": "Western Australia",
+      "start": "August 2020",
+      "end": "Present",
+      "duties": [
+        "Managed several large-scale projects including the construction of land farms, major and minor roadworks, civil construction, and multiple concurrent workgroup management.",
+        "Administered and reported against budgeting KPIs, production KPIs, and safety KPIs across all supervised projects.",
+        "Oversaw all aspects of site-based project supervision and management, ensuring client scope of works was delivered on time and within budget.",
+        "Coordinated personnel, plant, and materials resources across multiple workgroups to optimise productivity and safety outcomes."
+      ]
+    },
+    {
+      "employer": "Innotech",
+      "role": "Supervisor",
+      "location": "Western Australia",
+      "start": "2019",
+      "end": "July 2020",
+      "duties": [
+        "Supervised bore pad construction activities.",
+        "Managed road and access track construction and maintenance.",
+        "Coordinated pipeline and data line construction works.",
+        "Conducted site-based project management including budget controls, coordination of all resources, and OHS&E management, ensuring team members adhered to client scope of works at all times."
+      ]
+    },
+    {
+      "employer": "Longfields",
+      "role": "Supervisor",
+      "location": "Western Australia",
+      "start": "2018",
+      "end": "2019",
+      "duties": [
+        "Supervised foundation works for transmission and distribution line infrastructure.",
+        "Managed Rio Tinto solar farm and bore pad construction projects.",
+        "Delivered staff training and performance management.",
+        "Conducted site-based project management including budget controls, coordination of all resources, and OHS&E management, ensuring team members adhered to client scope of works at all times."
+      ]
+    }
+  ],
+  "skills": [
+    { "area": "Site Supervision & Project Management", "detail": "Over 25 years of site supervision and project management experience across civil mining, power infrastructure, and earthworks. Proven in budget management, KPI reporting, and multi-workgroup coordination." },
+    { "area": "Civil Mining Works", "detail": "Extensive experience in land farm construction, bore pad development, roadworks, pipeline construction, civil earthworks, and clearing operations across iron ore and solar energy projects." },
+    { "area": "Safety Leadership", "detail": "Holds a Schedule 26 statutory mine supervisor certificate. Completed Safety Leadership for Supervisors training. Experienced in OHS&E management, SWMS development, and incident management." },
+    { "area": "Power & Solar Infrastructure", "detail": "Supervised foundation works and construction activities for transmission, distribution, and solar energy projects for Rio Tinto and other Tier 1 clients." },
+    { "area": "Plant Operation", "detail": "Competent operator of excavators, skid steers, and telehandlers. Holds an HR-B Drivers Licence and is proficient in 4WD vehicle operation in remote environments." }
+  ],
+  "certifications": [
+    { "ticket": "Schedule 26 — WA Mining Supervisor", "category": "Safety", "details": "Western Australian statutory mine supervisor certificate under the Mines Safety and Inspection Act." },
+    { "ticket": "Section 44 — Senior Mine Supervisor", "category": "Safety", "details": "Western Australian statutory senior mine supervisor certificate." },
+    { "ticket": "Safety Leadership for Supervisors", "category": "Safety", "details": "Formal safety leadership training for site supervisors in the mining and construction industries." },
+    { "ticket": "First Aid", "category": "Safety", "details": "Current first aid certification." },
+    { "ticket": "Work Safely in the Construction Industry (White Card)", "category": "Safety", "details": "Construction industry general induction — White Card." },
+    { "ticket": "Operate 4WD Vehicle", "category": "Competency", "details": "Certified for the operation of four-wheel drive vehicles in remote and off-road environments." },
+    { "ticket": "Excavator Operation", "category": "Competency", "details": "Competent operator of excavators for civil and mining earthworks." },
+    { "ticket": "Skid Steer Operation", "category": "Competency", "details": "Competent operator of skid steer loaders." },
+    { "ticket": "Telehandler Operation", "category": "Competency", "details": "Competent operator of telehandlers for materials handling and elevated placement." },
+    { "ticket": "HR-B Drivers Licence", "category": "Licence", "details": "Western Australian Heavy Rigid with Bus (HR-B) class motor vehicle drivers licence." },
+    { "ticket": "Rio Tinto Site Induction", "category": "Safety", "details": "Approved site induction for Rio Tinto operations." },
+    { "ticket": "Fortescue (FMG) Site Induction", "category": "Safety", "details": "Approved site induction for Fortescue operations." }
+  ],
+  "referees": "Professional references available upon request. Please contact ACM Resources to facilitate introduction."
+}

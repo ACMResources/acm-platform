@@ -1,0 +1,104 @@
+{
+  "_meta": {
+    "doc_ref": "ACM-HR-CV-009",
+    "date": "April 2026",
+    "classification": "ACM INTERNAL — PERSONNEL FILE",
+    "submitted_by": "ACM Resources (Australia) Pty Ltd",
+    "contact": "jobs@acmresources.com.au"
+  },
+  "candidate": {
+    "full_name": "Adam Macrae",
+    "address": "Western Australia",
+    "phone": "",
+    "email": "",
+    "visa": "Australian Citizen",
+    "availability": "Full Time",
+    "positions": ["Final Trim Operator", "Earthworks Operator", "Civil All-Rounder"],
+    "objective": "An accomplished earthworks operator with extensive experience across civil mining and construction environments, specialising in GPS-guided bulk and final trim earthworks, excavator and dozer operation, and civil infrastructure works. Adam has worked across major resource projects for clients including Rio Tinto, BHP, Fortescue, and Roy Hill, demonstrating broad plant competency and civil earthworks expertise."
+  },
+  "employment": [
+    {
+      "employer": "Aussie Civil & Mining Resources",
+      "role": "All-Rounder / Operator",
+      "location": "Western Australia",
+      "start": "2020",
+      "end": "Present",
+      "duties": [
+        "Operated excavators for general civil and mining earthworks activities.",
+        "Operated dozers for clearing, bulk earthworks, and final trim operations.",
+        "Utilised GPS machine control systems (IT) for precise final trim earthworks.",
+        "Operated loaders for general materials handling and earthworks support.",
+        "Performed bulk and final trim earthworks to survey specifications using GPS guidance.",
+        "Constructed and maintained roads and access tracks to project standards.",
+        "Completed civil earthworks associated with pipeline construction projects.",
+        "Undertook water transfer and storage civil works including turkey's nest construction.",
+        "Constructed equipment and laydown pad civil works.",
+        "Conducted greenfields site clearance in accordance with environmental guidelines.",
+        "Performed load and haul operations and managed stockpile creation and monitoring.",
+        "Assisted with NPI (Non-Process Infrastructure) construction activities."
+      ]
+    },
+    {
+      "employer": "Innotech",
+      "role": "All-Rounder / Operator",
+      "location": "Western Australia",
+      "start": "September 2017",
+      "end": "2020",
+      "duties": [
+        "Operated excavators for civil and mining earthworks.",
+        "Utilised GPS machine control (IT) for precision earthworks.",
+        "Operated loaders for general materials handling.",
+        "Assisted with pipe handling and minor earthworks activities.",
+        "Constructed turkey's nest water storage facilities."
+      ]
+    },
+    {
+      "employer": "OTOC Australia",
+      "role": "All-Rounder / Operator",
+      "location": "Western Australia",
+      "start": "February 2014",
+      "end": "September 2017",
+      "duties": [
+        "Boxed out subgrade for car parks and access roads.",
+        "Loaded tipper trucks using a 24-tonne excavator and loader.",
+        "Backfilled trenches for services and infrastructure.",
+        "Operated water carts for dust suppression and site management.",
+        "Completed detailed earthworks for concrete slabs and footings.",
+        "Performed final trim earthworks for veranda pads and footpaths to ±5–10mm tolerance.",
+        "Trenched for services including power, water, and communications to grade.",
+        "Managed and coordinated up to 25 personnel including operators and plumbers.",
+        "Checked and signed off Job Hazard Analysis (JHA) sheets for crew compliance.",
+        "Installed stormwater drainage systems.",
+        "Lifted and placed concrete blocks using an excavator.",
+        "Conditioned and shaped subgrade materials.",
+        "Completed detailed earthworks around structures including battering."
+      ]
+    }
+  ],
+  "skills": [
+    { "area": "Earthworks & Final Trim", "detail": "Specialist in GPS-guided bulk and final trim earthworks, achieving precise tolerances for civil infrastructure, pads, and access roads across mining and civil projects." },
+    { "area": "Plant Operation", "detail": "Competent operator of excavators, dozers, loaders, rollers, skid steers, articulated dump trucks, forklifts, and telehandlers. Holds an HR Drivers Licence." },
+    { "area": "Civil Mining Works", "detail": "Experienced across road construction, pad development, pipeline civil works, turkey's nest construction, stockpile management, and greenfields clearing." },
+    { "area": "Traffic Control", "detail": "Holds a Traffic Control qualification applicable to construction and mining site environments." },
+    { "area": "Rigging", "detail": "Holds a rigging competency for lifting operations on civil and mining sites." }
+  ],
+  "certifications": [
+    { "ticket": "Dozer Operation", "category": "Competency", "details": "Competent operator of dozers for earthworks, bulk grading, and final trim applications." },
+    { "ticket": "Grader Operation", "category": "Competency", "details": "Competent operator of motor graders for road construction and maintenance." },
+    { "ticket": "Excavator Operation", "category": "Competency", "details": "Competent operator of excavators for civil mining and construction earthworks." },
+    { "ticket": "Roller Operation", "category": "Competency", "details": "Competent operator of rollers for compaction activities." },
+    { "ticket": "Loader Operation", "category": "Competency", "details": "Competent operator of wheel loaders for materials handling and earthworks." },
+    { "ticket": "Rigging", "category": "Competency", "details": "Rigging competency for lifting and load management operations." },
+    { "ticket": "Skid Steer Operation", "category": "Competency", "details": "Competent operator of skid steer loaders for civil and mining applications." },
+    { "ticket": "Articulated Dump Truck (ADT) Operation", "category": "Competency", "details": "Competent operator of articulated dump trucks for haul and earthworks activities." },
+    { "ticket": "Forklift Operation — HRWL", "category": "Competency", "details": "High Risk Work Licence for forklift operation." },
+    { "ticket": "Telehandler Operation", "category": "Competency", "details": "Competent operator of telehandlers for materials handling and elevated placement." },
+    { "ticket": "Traffic Control", "category": "Safety", "details": "Traffic control qualification for management of traffic in construction and mining environments." },
+    { "ticket": "HR Drivers Licence", "category": "Licence", "details": "Western Australian Heavy Rigid (HR) class motor vehicle drivers licence." },
+    { "ticket": "Rio Tinto Site Induction", "category": "Safety", "details": "Approved site induction for Rio Tinto operations." },
+    { "ticket": "Fortescue (FMG) Site Induction", "category": "Safety", "details": "Approved site induction for Fortescue operations." },
+    { "ticket": "BHP Site Induction", "category": "Safety", "details": "Approved site induction for BHP operations." },
+    { "ticket": "Roy Hill Site Induction", "category": "Safety", "details": "Approved site induction for Roy Hill operations." }
+  ],
+  "referees": "Professional references available upon request. Please contact ACM Resources to facilitate introduction."
+}
