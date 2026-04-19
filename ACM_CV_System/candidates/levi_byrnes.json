@@ -1,0 +1,114 @@
+{
+  "_meta": {
+    "doc_ref": "ACM-HR-CV-020",
+    "date": "April 2026",
+    "classification": "ACM INTERNAL — PERSONNEL FILE",
+    "submitted_by": "ACM Resources (Australia) Pty Ltd",
+    "contact": "jobs@acmresources.com.au"
+  },
+  "candidate": {
+    "full_name": "Levi Byrnes",
+    "address": "Western Australia",
+    "phone": "",
+    "email": "",
+    "visa": "Australian Citizen",
+    "availability": "Full Time",
+    "positions": ["Poly Welder", "Plant Operator", "Leading Hand"],
+    "objective": "Versatile and experienced Poly Welder, Plant Operator, and Leading Hand with over a decade of experience across mining, civil, and construction industries. Proven ability to fulfil leading hand, team leader, and supervisor roles while delivering high-quality polyethylene pipeline installation and earthmoving operations. Holds an extensive range of plant and equipment licences including Grader, Articulated Haul Truck, Excavator, Loader, and Telehandler. Holds Schedule 26 qualification and Cert III in Surface Extraction Operations."
+  },
+  "employment": [
+    {
+      "employer": "ACM Resources",
+      "role": "Poly Welder / All Round Operator",
+      "location": "Western Australia",
+      "start": "March 2024",
+      "end": "Present",
+      "duties": [
+        "Polyethylene pipeline installation and butt welding across mining and civil project sites.",
+        "Leading hand responsibilities including team leadership and supervisor duties.",
+        "All-round plant operation across a range of heavy equipment.",
+        "Coordination of site activities and day-to-day crew supervision."
+      ]
+    },
+    {
+      "employer": "TCD Group",
+      "role": "Poly Welder / All Round Operator",
+      "location": "Western Australia",
+      "start": "2021",
+      "end": "March 2024",
+      "duties": [
+        "Polyethylene pipeline installation and welding across project sites.",
+        "All-round operator duties including leading hand and team leader responsibilities.",
+        "Supervisor duties as required by project demands."
+      ]
+    },
+    {
+      "employer": "Gullumarri",
+      "role": "Leading Hand",
+      "location": "Western Australia",
+      "start": "2018",
+      "end": "2021",
+      "duties": [
+        "Leading hand oversight of site crews across civil and mining operations.",
+        "Plant operation and poly welding works.",
+        "Team leadership and coordination on project sites."
+      ]
+    },
+    {
+      "employer": "Platinum Boys",
+      "role": "Gyprocking Labourer",
+      "location": "Western Australia",
+      "start": "2016",
+      "end": "2017",
+      "duties": [
+        "Labouring and trade assistance on residential and commercial gyprocking projects."
+      ]
+    },
+    {
+      "employer": "Innotech Site Services",
+      "role": "Poly Welder / Operator",
+      "location": "Western Australia",
+      "start": "2013",
+      "end": "2015",
+      "duties": [
+        "Dam liner installation and maintenance across civil project sites.",
+        "Extrusion welding and wedge welding of geomembrane liners.",
+        "Plant operation in support of civil and mining works."
+      ]
+    },
+    {
+      "employer": "PTB",
+      "role": "Bricklayer",
+      "location": "Western Australia",
+      "start": "2008",
+      "end": "2013",
+      "duties": [
+        "Bricklaying and masonry works across residential and commercial construction projects."
+      ]
+    }
+  ],
+  "skills": [
+    { "area": "Poly Welding", "detail": "HDPE pipeline installation, butt welding, extrusion welding, wedge welding, and dam liner installation." },
+    { "area": "Plant Operation", "detail": "Grader, Articulated Haul Truck, Excavator, Loader, Telehandler, Roller, Skid Steer, Integrated Tool Carrier." },
+    { "area": "Leadership", "detail": "Experienced leading hand, team leader, and supervisor across multiple employers in mining and civil sectors." },
+    { "area": "Earthworks", "detail": "Civil earthworks, site preparation, and surface extraction operations." },
+    { "area": "Safety", "detail": "Working at Heights, Chainsaw operation, and Class DL driver's licence." }
+  ],
+  "certifications": [
+    { "ticket": "Schedule 26", "category": "Qualification", "details": "Schedule 26 qualification for surface extraction operations." },
+    { "ticket": "Cert III Surface Extraction Operations", "category": "Qualification", "details": "Certificate III in Surface Extraction Operations." },
+    { "ticket": "Poly Welding", "category": "Competency", "details": "HDPE butt welding, extrusion welding, and wedge welding competency." },
+    { "ticket": "Roller", "category": "Plant", "details": "Licence to operate roller." },
+    { "ticket": "Front End Loader", "category": "Plant", "details": "Licence to operate front end loader." },
+    { "ticket": "Telehandler", "category": "Plant", "details": "Licence to operate telehandler." },
+    { "ticket": "Excavator", "category": "Plant", "details": "Licence to operate excavator." },
+    { "ticket": "Articulated Haul Truck", "category": "Plant", "details": "Licence to operate articulated haul truck." },
+    { "ticket": "Skid Steer", "category": "Plant", "details": "Licence to operate skid steer loader." },
+    { "ticket": "Grader", "category": "Plant", "details": "Licence to operate motor grader." },
+    { "ticket": "EWP", "category": "Plant", "details": "Elevated Work Platform licence." },
+    { "ticket": "Working at Heights", "category": "Safety", "details": "Working at Heights certification." },
+    { "ticket": "Chainsaw", "category": "Safety", "details": "Chainsaw operation certification." },
+    { "ticket": "Class DL Driver's Licence", "category": "Licence", "details": "Western Australian Class DL motor vehicle licence." }
+  ],
+  "referees": "Professional references available upon request. Please contact ACM Resources to facilitate introduction."
+}

@@ -1,0 +1,103 @@
+{
+  "_meta": {
+    "doc_ref": "ACM-HR-CV-018",
+    "date": "April 2026",
+    "classification": "ACM INTERNAL — PERSONNEL FILE",
+    "submitted_by": "ACM Resources (Australia) Pty Ltd",
+    "contact": "jobs@acmresources.com.au"
+  },
+  "candidate": {
+    "full_name": "Brian Cox",
+    "address": "Western Australia",
+    "phone": "",
+    "email": "",
+    "visa": "Australian Citizen",
+    "availability": "Full Time",
+    "positions": ["Supervisor", "Poly Welder", "All Rounder"],
+    "objective": "Experienced Supervisor, Poly Welder, and All Rounder with a strong background in HDPE pipeline installation and fabrication, dewatering infrastructure, and civil works supervision. Proven track record across mining and civil resource projects in Western Australia with employers including ACM Resources, Mount Gibson Iron, Blue Energy, and Plumbers Industry. Holds Section 44 — Appointed Persons, Cert III in Process Manufacturing, butt weld and electrofusion welding competencies, and a range of safety and plant tickets. Rio Tinto site inducted. Committed to delivering safe, efficient, and high-quality outcomes on every project."
+  },
+  "employment": [
+    {
+      "employer": "ACM Resources (Aussie Civil & Mining Resources)",
+      "role": "Supervisor / All Rounder / Poly Welder",
+      "location": "Western Australia",
+      "start": "July 2023",
+      "end": "Present",
+      "duties": [
+        "Supervision of HDPE pipeline installation and fabrication activities.",
+        "Hands-on installation and fabrication of HDPE pipelines.",
+        "Supervision of civil works associated with HDPE pipeline installation."
+      ]
+    },
+    {
+      "employer": "Mount Gibson Iron",
+      "role": "Leading Hand",
+      "location": "Western Australia",
+      "start": "2018",
+      "end": "July 2023",
+      "duties": [
+        "Supervision of dewatering crew.",
+        "Installation and maintenance of dewatering infrastructure.",
+        "Operation of loader and other small mobile equipment in support of dewatering infrastructure installation.",
+        "Dump truck operation as required."
+      ]
+    },
+    {
+      "employer": "Blue Energy",
+      "role": "Leading Hand",
+      "location": "Western Australia",
+      "start": "2016",
+      "end": "2018",
+      "duties": [
+        "Supervision of HDPE pipeline installation and fabrication.",
+        "Supervision of dewatering crew.",
+        "Installation and maintenance of dewatering infrastructure.",
+        "Operation of plant and equipment associated with HDPE pipeline installation and dewatering."
+      ]
+    },
+    {
+      "employer": "Plumbers Industry",
+      "role": "Supervisor",
+      "location": "Western Australia",
+      "start": "2016",
+      "end": "2016",
+      "duties": [
+        "Supervision of bore installations.",
+        "Supervision of HDPE pipeline installation and fabrication.",
+        "Supervision of civil works associated with HDPE pipeline installation."
+      ]
+    }
+  ],
+  "skills": [
+    { "area": "HDPE Pipeline", "detail": "Supervision, installation, and fabrication of HDPE pipelines across civil and mining project sites." },
+    { "area": "Poly Welding", "detail": "Butt welding (PMBWELD301B) and electrofusion welding (PMBWELD302B) of HDPE pipelines." },
+    { "area": "Dewatering", "detail": "Installation, maintenance, and supervision of dewatering infrastructure across mine sites." },
+    { "area": "Plant Operation", "detail": "Front Loader (RIIMPO321F), Haul Truck (RIIMPO337E), Skid Steer (RIIMPO318F), Backhoe (RIIMPO319E), Excavator (RIIMPO320F)." },
+    { "area": "Supervision & Leadership", "detail": "Section 44 Appointed Persons certificate; experienced in leading and supervising crews on civil and mining sites." }
+  ],
+  "certifications": [
+    { "ticket": "Section 44 — Appointed Persons", "category": "Competency", "details": "Section 44 Appointed Persons certification for supervision of civil works." },
+    { "ticket": "MSA30107 — Cert III Process Manufacturing", "category": "Qualification", "details": "Certificate III in Process Manufacturing." },
+    { "ticket": "PMBWELD301B — Butt Welding", "category": "Competency", "details": "Polyethylene pipe butt welding competency." },
+    { "ticket": "PMBWELD302B — Electrofusion Welding", "category": "Competency", "details": "Polyethylene pipe electrofusion welding competency." },
+    { "ticket": "BSBMGT401A — Leadership", "category": "Competency", "details": "Leadership and management competency." },
+    { "ticket": "RIIBEF402A — Supervise On-Site Operations", "category": "Competency", "details": "Supervise on-site operations in the resources and infrastructure sectors." },
+    { "ticket": "RIICOM301B — Communicate Information", "category": "Safety", "details": "Communicate information in the resources and infrastructure industries." },
+    { "ticket": "RIIRIS301B — Risk Management", "category": "Safety", "details": "Apply risk management processes." },
+    { "ticket": "PRMPFES05B — Fire Fighting", "category": "Safety", "details": "Fire fighting competency." },
+    { "ticket": "CPCCOHS1001A — White Card", "category": "Safety", "details": "General Construction Induction — White Card." },
+    { "ticket": "TLIC2025 — 4WD Vehicle Operation", "category": "Plant", "details": "Four-wheel drive vehicle operation." },
+    { "ticket": "RIIMPO321F — Front Loader", "category": "Plant", "details": "Licence to operate front end loader." },
+    { "ticket": "RIIMPO337E — Haul Truck", "category": "Plant", "details": "Licence to operate haul truck." },
+    { "ticket": "RIIMPO318F — Skid Steer", "category": "Plant", "details": "Licence to operate skid steer loader." },
+    { "ticket": "RIIMPO319E — Backhoe", "category": "Plant", "details": "Licence to operate backhoe loader." },
+    { "ticket": "RIIMPO320F — Excavator", "category": "Plant", "details": "Licence to operate excavator." },
+    { "ticket": "Confined Space", "category": "Safety", "details": "Confined space entry and rescue competency." },
+    { "ticket": "First Aid", "category": "Safety", "details": "First aid certification." },
+    { "ticket": "Working at Heights", "category": "Safety", "details": "Working at Heights certification." },
+    { "ticket": "EWP", "category": "Plant", "details": "Elevated Work Platform licence." },
+    { "ticket": "Dogging", "category": "Competency", "details": "Dogging and rigging ticket." },
+    { "ticket": "Rio Tinto Site Induction", "category": "Safety", "details": "Rio Tinto site induction." }
+  ],
+  "referees": "Professional references available upon request. Please contact ACM Resources to facilitate introduction."
+}

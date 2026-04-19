@@ -1,0 +1,76 @@
+{
+  "_meta": {
+    "doc_ref": "ACM-HR-CV-021",
+    "date": "April 2026",
+    "classification": "ACM INTERNAL — PERSONNEL FILE",
+    "submitted_by": "ACM Resources (Australia) Pty Ltd",
+    "contact": "jobs@acmresources.com.au"
+  },
+  "candidate": {
+    "full_name": "Scott Guthrie-Phelps",
+    "address": "Busselton, WA",
+    "phone": "",
+    "email": "",
+    "visa": "Australian Citizen",
+    "availability": "Full Time",
+    "positions": ["Poly Welder", "Pipe Fitter", "Dogman"],
+    "objective": "Skilled Poly Welder, Pipe Fitter, and Dogman with hands-on experience across major resource, port, and mining projects in Western Australia. Proficient in HDPE polywelding from DN90 through to DN1000 using McElroy, Dixon, and T500 machines. Experienced in fabrication, dogging, rigging, flange management, and dewatering operations. Site-inducted with Rio Tinto, ABRA Mine Site, and Lumsden Point Port. Holds butt welding (PMBWELD301E) and electrofusion (PMBWELD302E) competencies, and a Dogman/Rigger HRWL."
+  },
+  "employment": [
+    {
+      "employer": "ABRA Mine Site (via ACM Resources)",
+      "role": "Poly Welder",
+      "location": "Western Australia",
+      "start": "January 2025",
+      "end": "Present",
+      "duties": [
+        "Polywelding of HDPE pipelines from DN90 to DN250 using Dixon and T500 machines.",
+        "Dewatering operations on mine site."
+      ]
+    },
+    {
+      "employer": "Lumsden Point Port (via ACM Resources)",
+      "role": "Poly Welder / Pipe Fitter",
+      "location": "Western Australia",
+      "start": "October 2024",
+      "end": "January 2025",
+      "duties": [
+        "Installation of DN1000 steel pipeline for port infrastructure.",
+        "Construction and installation of weir boxes and pump systems.",
+        "Rigging and lifting operations in support of pipeline installation.",
+        "Pipe fitting and flange management to engineering specifications."
+      ]
+    },
+    {
+      "employer": "Western Ranges — Rio Tinto Project (via ACM Resources)",
+      "role": "Poly Welder / Dogman",
+      "location": "Western Australia",
+      "start": "November 2023",
+      "end": "October 2024",
+      "duties": [
+        "Polywelding of HDPE pipelines from DN90 to DN630 using McElroy and Dixon machines.",
+        "Fabrication of pipeline spools and fittings to project specifications.",
+        "Dogging and rigging operations in support of pipeline and structural installation."
+      ]
+    }
+  ],
+  "skills": [
+    { "area": "Poly Welding", "detail": "HDPE polywelding DN90–DN1000 using McElroy, Dixon, and T500 machines; butt welding and electrofusion." },
+    { "area": "Pipe Fitting", "detail": "Steel and HDPE pipe fitting, flange management, and spool fabrication." },
+    { "area": "Dogging & Rigging", "detail": "Dogman and Rigger HRWL holder; experienced in rigging and lifting operations on mine and port sites." },
+    { "area": "Dewatering", "detail": "Dewatering operations including pump and weir box installation." },
+    { "area": "Plant Operation", "detail": "Light vehicle operation (RIIVEH201E, RIIVEH305F, TLIC1051 4x4)." }
+  ],
+  "certifications": [
+    { "ticket": "PMBWELD301E — Butt Welding", "category": "Competency", "details": "National competency for HDPE butt welding." },
+    { "ticket": "PMBWELD302E — Electrofusion Welding", "category": "Competency", "details": "National competency for HDPE electrofusion welding." },
+    { "ticket": "HRWL — Dogman/Rigger (DG/RB)", "category": "Competency", "details": "High Risk Work Licence — Dogman and Basic Rigging." },
+    { "ticket": "RIIVEH201E — Operate Light Vehicle", "category": "Plant", "details": "Competency to operate light vehicles on mine sites." },
+    { "ticket": "RIIVEH305F — Operate Licence Vehicle", "category": "Plant", "details": "Competency to operate licensed vehicles on mine sites." },
+    { "ticket": "TLIC1051 — 4WD Vehicle Operation", "category": "Plant", "details": "Four-wheel drive vehicle operation on unsealed roads." },
+    { "ticket": "Rio Tinto Site Induction", "category": "Safety", "details": "Rio Tinto site induction — Western Ranges project." },
+    { "ticket": "ABRA Mine Site Induction", "category": "Safety", "details": "ABRA Mine Site induction." },
+    { "ticket": "Lumsden Point Port Induction", "category": "Safety", "details": "Lumsden Point Port site induction." }
+  ],
+  "referees": "Professional references available upon request. Please contact ACM Resources to facilitate introduction."
+}

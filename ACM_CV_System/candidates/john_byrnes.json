@@ -1,0 +1,79 @@
+{
+  "_meta": {
+    "doc_ref": "ACM-HR-CV-019",
+    "date": "April 2026",
+    "classification": "ACM INTERNAL — PERSONNEL FILE",
+    "submitted_by": "ACM Resources (Australia) Pty Ltd",
+    "contact": "jobs@acmresources.com.au"
+  },
+  "candidate": {
+    "full_name": "John Byrnes",
+    "address": "Western Australia",
+    "phone": "",
+    "email": "",
+    "visa": "Australian Citizen",
+    "availability": "Full Time",
+    "positions": ["Poly Welder", "Plant Operator"],
+    "objective": "Experienced Poly Welder and Plant Operator with over 15 years of industry experience across civil, mining, and resource sectors. Proven expertise in HDPE pipeline installation, spool fabrication, butt welding, and supervision of large welding crews. Holds qualifications in Skid Steer, Excavator, Telehandler, Forklift, EWP, and Dogman. Site-inducted with FMG and Rio Tinto. Committed to safe, high-quality workmanship on every project."
+  },
+  "employment": [
+    {
+      "employer": "Aussie Civil & Mining Resources",
+      "role": "Poly Welder",
+      "location": "Western Australia",
+      "start": "2020",
+      "end": "Present",
+      "duties": [
+        "HDPE pipeline installation across a range of civil and mining projects.",
+        "Spool fabrication to project specifications and engineering drawings.",
+        "Butt welding using industry-standard equipment and procedures.",
+        "Operation of plant and machinery as required on site."
+      ]
+    },
+    {
+      "employer": "Innotech",
+      "role": "Supervisor / Poly Welder",
+      "location": "Western Australia",
+      "start": "2011",
+      "end": "2020",
+      "duties": [
+        "Butt welding of HDPE pipelines across multiple project sites.",
+        "Supervision and coordination of a welding crew of up to 20 personnel.",
+        "Facilitated toolbox talks and safety meetings to maintain site compliance.",
+        "Machinery maintenance and operational support across project lifecycle.",
+        "Dewatering operations and dam lining works."
+      ]
+    },
+    {
+      "employer": "Ertech",
+      "role": "Supervisor / Leading Hand",
+      "location": "Western Australia",
+      "start": "2009",
+      "end": "2011",
+      "duties": [
+        "Dam lining construction across civil project sites.",
+        "Civil works including earthworks and site preparation.",
+        "Supervisory and leading hand responsibilities across site activities."
+      ]
+    }
+  ],
+  "skills": [
+    { "area": "Poly Welding", "detail": "HDPE pipeline installation, spool fabrication, butt welding using McElroy and Dixon machines." },
+    { "area": "Plant Operation", "detail": "Skid Steer, Excavator, Telehandler, Forklift, EWP." },
+    { "area": "Rigging & Lifting", "detail": "Dogman ticket holder with experience in rigging and crane operations." },
+    { "area": "Supervision", "detail": "Experienced leading hand and supervisor; toolbox talks, crew coordination, safety compliance." },
+    { "area": "Dewatering", "detail": "Dam lining and dewatering operations across mining and civil sites." }
+  ],
+  "certifications": [
+    { "ticket": "Poly Welding", "category": "Competency", "details": "HDPE butt welding qualification." },
+    { "ticket": "Skid Steer Loader", "category": "Plant", "details": "Licence to operate skid steer loader." },
+    { "ticket": "Excavator", "category": "Plant", "details": "Licence to operate excavator." },
+    { "ticket": "Telehandler", "category": "Plant", "details": "Licence to operate telehandler." },
+    { "ticket": "Forklift", "category": "Plant", "details": "Forklift operator licence." },
+    { "ticket": "EWP", "category": "Plant", "details": "Elevated Work Platform licence." },
+    { "ticket": "Dogman", "category": "Competency", "details": "Dogman / rigging ticket." },
+    { "ticket": "FMG Site Induction", "category": "Safety", "details": "Fortescue Metals Group site induction." },
+    { "ticket": "Rio Tinto Site Induction", "category": "Safety", "details": "Rio Tinto site induction." }
+  ],
+  "referees": "Professional references available upon request. Please contact ACM Resources to facilitate introduction."
+}

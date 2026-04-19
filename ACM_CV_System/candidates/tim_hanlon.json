@@ -1,0 +1,138 @@
+{
+  "_meta": {
+    "doc_ref": "ACM-HR-CV-023",
+    "date": "April 2026",
+    "classification": "ACM INTERNAL — PERSONNEL FILE",
+    "submitted_by": "ACM Resources (Australia) Pty Ltd",
+    "contact": "jobs@acmresources.com.au"
+  },
+  "candidate": {
+    "full_name": "Tim Hanlon",
+    "address": "Western Australia",
+    "phone": "",
+    "email": "",
+    "visa": "Australian Citizen",
+    "availability": "Full Time",
+    "positions": ["Poly Welder", "Plant Operator", "Trade Assistant"],
+    "objective": "Hardworking and motivated Poly Welder and Plant Operator with over 10 years of experience in the civil, mining, and resources sectors. Site-inducted with BHP, FMG, Rio Tinto, and Sino Ore. Experienced in HDPE pipeline installation, heavy plant operation, and trade assistance across major Pilbara projects including Koodaideri and FMG Solomon Mine. Committed to safe work practices, team collaboration, and delivering quality results on every project. Willing to undertake drug and alcohol testing and site medicals as required."
+  },
+  "employment": [
+    {
+      "employer": "Dampier Salt",
+      "role": "Poly Welder",
+      "location": "Karratha, WA",
+      "start": "May 2022",
+      "end": "June 2022",
+      "duties": [
+        "HDPE pipeline installation and poly welding on a fixed-term project at Dampier Salt."
+      ]
+    },
+    {
+      "employer": "Laing O'Rourke — Koodaideri Project",
+      "role": "Operator / Trade Assistant",
+      "location": "Koodaideri, WA",
+      "start": "February 2021",
+      "end": "March 2022",
+      "duties": [
+        "Operation of WA600, WA500, and WA250 Komatsu wheel loaders.",
+        "Telehandler operation for material handling and site logistics.",
+        "Pipe installation and related civil works."
+      ]
+    },
+    {
+      "employer": "DTMT Construction — Koodaideri Project",
+      "role": "Operator",
+      "location": "Koodaideri, WA",
+      "start": "July 2020",
+      "end": "February 2021",
+      "duties": [
+        "VAC truck operation for excavation and underground service location.",
+        "Skid steer, loader, and telehandler operation on civil project sites."
+      ]
+    },
+    {
+      "employer": "FMG — Solomon Mine",
+      "role": "Operator",
+      "location": "Pilbara, WA",
+      "start": "February 2019",
+      "end": "June 2020",
+      "duties": [
+        "Wheel loader, skid steer, and tele stacker operation at the Solomon iron ore mine.",
+        "Iron ore stockpile management and material movement."
+      ]
+    },
+    {
+      "employer": "Civmec Construction — Altura Lithium Mine",
+      "role": "Trade Assistant / Poly Welder",
+      "location": "Pilbara, WA",
+      "start": "October 2017",
+      "end": "November 2018",
+      "duties": [
+        "Poly welding of HDPE pipelines at the Altura Lithium Mine construction project.",
+        "Trade assistance to construction crews on a DIDO roster."
+      ]
+    },
+    {
+      "employer": "Foraco Drilling",
+      "role": "Driller's Offsider / Maintenance",
+      "location": "Western Australia",
+      "start": "April 2016",
+      "end": "October 2017",
+      "duties": [
+        "Driller's offsider duties including rig setup, rod handling (KL Rod Handler), and sample management.",
+        "Water truck operation in support of drilling operations.",
+        "General maintenance of drilling equipment and site facilities."
+      ]
+    },
+    {
+      "employer": "All West Drilling",
+      "role": "Operator",
+      "location": "Karratha, WA",
+      "start": "August 2015",
+      "end": "March 2016",
+      "duties": [
+        "Bobcat operation for civil and drilling support works.",
+        "LVHV cable location and management.",
+        "Drilling rig offsider duties."
+      ]
+    },
+    {
+      "employer": "Euro Civil",
+      "role": "Trade Assistant / Plant Operator",
+      "location": "Western Australia",
+      "start": "February 2014",
+      "end": "July 2015",
+      "duties": [
+        "Truck driving and material transport for civil construction projects.",
+        "Plant operation across various civil equipment.",
+        "Post punching and fence line installation."
+      ]
+    }
+  ],
+  "skills": [
+    { "area": "Poly Welding", "detail": "HDPE pipeline installation and poly welding competency." },
+    { "area": "Plant Operation", "detail": "Wheel Loader (WA600/WA500/WA250), Skid Steer, Telehandler, Tele Stacker, VAC Truck, Integrated Tool Carrier, Bobcat." },
+    { "area": "Safety", "detail": "WHS practices, isometric drawing interpretation, Work with Permit, confined spaces, working at heights." },
+    { "area": "Site Inductions", "detail": "BHP, FMG, Rio Tinto (Lock holders, Iron Ore Essentials, Cape/Dampier/Ports), Sino Ore." },
+    { "area": "General", "detail": "Strong communication skills, computer literacy, flexible roster availability, team-oriented." }
+  ],
+  "certifications": [
+    { "ticket": "HR Driver's Licence", "category": "Licence", "details": "Western Australian Heavy Rigid Driver's Licence." },
+    { "ticket": "WA Construction White Card (CPCWHS1001)", "category": "Safety", "details": "General Construction Induction — White Card." },
+    { "ticket": "HRWL — Forklift (LF)", "category": "Plant", "details": "High Risk Work Licence — Forklift operation." },
+    { "ticket": "EWP", "category": "Plant", "details": "Elevated Work Platform licence." },
+    { "ticket": "Dangerous Goods", "category": "Safety", "details": "Dangerous Goods handling and transport." },
+    { "ticket": "Confined Spaces", "category": "Safety", "details": "Confined spaces entry and rescue." },
+    { "ticket": "Working at Heights", "category": "Safety", "details": "Work safely at heights certification." },
+    { "ticket": "Integrated Tool Carrier / Loader", "category": "Plant", "details": "Integrated tool carrier and front end loader operation." },
+    { "ticket": "Skid Steer", "category": "Plant", "details": "Skid steer loader operation." },
+    { "ticket": "Telehandler", "category": "Plant", "details": "Telehandler operation." },
+    { "ticket": "Work with Permit", "category": "Safety", "details": "Permit to Work system compliance." },
+    { "ticket": "Poly Welding", "category": "Competency", "details": "HDPE poly welding competency." },
+    { "ticket": "BHP Site Induction", "category": "Safety", "details": "BHP site induction." },
+    { "ticket": "FMG Site Induction", "category": "Safety", "details": "Fortescue Metals Group site induction." },
+    { "ticket": "Rio Tinto Site Induction", "category": "Safety", "details": "Rio Tinto site induction (Lock holders, Iron Ore Essentials, Cape/Dampier/Ports)." },
+    { "ticket": "Sino Ore Site Induction", "category": "Safety", "details": "Sino Ore site induction." }
+  ],
+  "referees": "Professional references available upon request. Please contact ACM Resources to facilitate introduction."
+}
