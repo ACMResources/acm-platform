@@ -2,7 +2,7 @@
 nixPkgs = ["python311", "python311Packages.pip"]
 
 [phases.install]
-cmds = ["npm ci", "pip install reportlab --quiet"]
+cmds = ["npm ci", "pip install reportlab pdfplumber python-docx --quiet"]
 
 [start]
 cmd = "npm run start"

@@ -1,6 +1,7 @@
-import type { Express } from "express";
+import type { Express, Request, Response, NextFunction } from "express";
 import type { Server } from "http";
 import { storage } from "./storage";
+import { requireAuth } from "./auth";
 import {
   insertCandidateSchema, insertClientSchema, insertProjectSchema,
   insertPlacementSchema, insertQuoteSchema, insertTimesheetSchema,
@@ -9,6 +10,24 @@ import {
 } from "@shared/schema";
 
 export async function registerRoutes(httpServer: Server, app: Express): Promise<void> {
+
+  // ── Global API auth guard (excludes public endpoints) ────────────
+  app.use('/api', (req: Request, res: Response, next: NextFunction) => {
+    const PUBLIC_PATHS = [
+      { method: 'POST', path: '/api/auth/login' },
+      { method: 'POST', path: '/api/auth/logout' },
+      { method: 'GET',  path: '/api/auth/me' },
+      { method: 'GET',  path: '/api/jobs/public' },
+    ];
+    // Allow public job apply
+    if (req.method === 'POST' && req.path.match(/^\/jobs\/\d+\/apply$/)) return next();
+    // Allow public job listing
+    if (req.method === 'GET' && req.path === '/jobs/public') return next();
+    // Allow auth endpoints
+    const isPublic = PUBLIC_PATHS.some(p => p.method === req.method && `/api${req.path}` === p.path);
+    if (isPublic) return next();
+    return requireAuth(req, res, next);
+  });
 
   // ── DASHBOARD ────────────────────────────────────────────────────
   app.get("/api/dashboard/stats", (_req, res) => {
@@ -215,6 +234,140 @@ export async function registerRoutes(httpServer: Server, app: Express): Promise<
     res.json({ success: true });
   });
 
+  // ── Upload CV → ACM Template ───────────────────────────────────
+  // Accepts PDF, DOCX, or TXT. Extracts text, parses into JSON, runs generate_cv.py.
+  const multer = require("multer");
+  const uploadStorage = multer.diskStorage({
+    destination: (_req: any, _file: any, cb: any) => {
+      const dir = require("path").resolve(__dirname, "../ACM_CV_System/uploads");
+      require("fs").mkdirSync(dir, { recursive: true });
+      cb(null, dir);
+    },
+    filename: (_req: any, file: any, cb: any) => {
+      const safe = file.originalname.replace(/[^a-zA-Z0-9._-]/g, '_');
+      cb(null, `${Date.now()}_${safe}`);
+    },
+  });
+  const upload = multer({
+    storage: uploadStorage,
+    limits: { fileSize: 20 * 1024 * 1024 }, // 20MB
+    fileFilter: (_req: any, file: any, cb: any) => {
+      const allowed = ['.pdf', '.docx', '.doc', '.txt'];
+      const ext = require("path").extname(file.originalname).toLowerCase();
+      cb(null, allowed.includes(ext));
+    },
+  });
+
+  app.post("/api/candidates/:id/upload-cv", upload.single('cv'), async (req: any, res) => {
+    const candidate = storage.getCandidateById(Number(req.params.id));
+    if (!candidate) return res.status(404).json({ error: "Candidate not found" });
+    if (!req.file) return res.status(400).json({ error: "No file uploaded. Accepted formats: PDF, DOCX, TXT." });
+
+    const { execSync } = require("child_process");
+    const fs = require("fs");
+    const path = require("path");
+
+    const cvBase = path.resolve(__dirname, "../ACM_CV_System");
+    const candidatesDir = path.join(cvBase, "candidates");
+    const outputClient   = path.join(cvBase, "output/client");
+    const outputInternal = path.join(cvBase, "output/internal");
+    fs.mkdirSync(candidatesDir,  { recursive: true });
+    fs.mkdirSync(outputClient,   { recursive: true });
+    fs.mkdirSync(outputInternal, { recursive: true });
+
+    // Determine next doc ref
+    const existing = fs.readdirSync(candidatesDir)
+      .filter((f: string) => f.endsWith(".json"))
+      .map((f: string) => {
+        try { const d = JSON.parse(fs.readFileSync(path.join(candidatesDir, f), "utf8")); return d._meta?.doc_ref ?? ""; }
+        catch { return ""; }
+      })
+      .filter((r: string) => r.startsWith("ACM-HR-CV-"))
+      .map((r: string) => parseInt(r.replace("ACM-HR-CV-", ""), 10))
+      .filter((n: number) => !isNaN(n));
+    // Also check current candidate's existing doc ref
+    const c = candidate as any;
+    let docRef = c.docRef;
+    if (!docRef) {
+      const nextNum = existing.length > 0 ? Math.max(...existing) + 1 : 1;
+      docRef = `ACM-HR-CV-${String(nextNum).padStart(3, "0")}`;
+    }
+
+    const key = `${candidate.firstName}_${candidate.lastName}`.toLowerCase().replace(/[^a-z_]/g, "");
+    const jsonPath = path.join(candidatesDir, `${key}.json`);
+    const uploadedFile = req.file.path;
+
+    // Step 1 — extract text and parse into structured JSON via Python
+    try {
+      const extractResult = execSync(
+        `python3 ${path.join(cvBase, "extract_cv.py")} "${uploadedFile}" "${jsonPath}" "${key}" "${docRef}"`,
+        { cwd: cvBase, timeout: 60000 }
+      ).toString().trim();
+
+      const parsed = JSON.parse(extractResult);
+      if (!parsed.success) {
+        return res.status(422).json({ error: parsed.error || "Text extraction failed" });
+      }
+    } catch (err: any) {
+      const msg = err.stdout?.toString() || err.message || "Extraction failed";
+      return res.status(500).json({ error: "CV extraction failed", detail: msg });
+    }
+
+    // Step 2 — generate ACM-branded PDFs
+    try {
+      execSync(`python3 ${path.join(cvBase, "generate_cv.py")} ${key}`, {
+        cwd: cvBase, timeout: 30000,
+      });
+    } catch (err: any) {
+      return res.status(500).json({ error: "CV generation failed", detail: err.message });
+    }
+
+    // Step 3 — read back candidate JSON to update profile fields
+    let cvData: any = {};
+    try { cvData = JSON.parse(fs.readFileSync(jsonPath, "utf8")); } catch {}
+
+    const clientPdf   = path.join(outputClient,   `${docRef}_client.pdf`);
+    const internalPdf = path.join(outputInternal, `${docRef}_internal.pdf`);
+
+    // Update candidate record with extracted data + CV refs
+    const cand = cvData.candidate || {};
+    const updatePayload: any = {
+      docRef,
+      cvClientUrl:   fs.existsSync(clientPdf)   ? `/cv-output/client/${docRef}_client.pdf`   : null,
+      cvInternalUrl: fs.existsSync(internalPdf) ? `/cv-output/internal/${docRef}_internal.pdf` : null,
+      cvGeneratedAt: new Date().toISOString(),
+      rawCvUrl:      c.rawCvUrl || null,
+    };
+    if (cand.address && !c.address)  updatePayload.address   = cand.address;
+    if (cand.phone   && !c.phone)    updatePayload.phone     = cand.phone;
+    if (cand.email   && !c.email)    updatePayload.email     = cand.email;
+    if (cand.objective && !c.objective) updatePayload.objective = cand.objective;
+    if (cand.visa)    updatePayload.visaDetails  = cand.visa;
+    if (cand.availability) updatePayload.availability = cand.availability;
+    if (cvData.employment?.length)   updatePayload.employmentHistory = JSON.stringify(cvData.employment);
+    if (cvData.certifications?.length) updatePayload.certifications  = JSON.stringify(cvData.certifications);
+    if (cvData.skills?.length)       updatePayload.skills            = JSON.stringify(cvData.skills);
+    if (cand.positions?.length)      updatePayload.trade             = cand.positions[0];
+
+    storage.updateCandidate(Number(req.params.id), updatePayload);
+
+    // Clean up uploaded temp file
+    try { fs.unlinkSync(uploadedFile); } catch {}
+
+    res.json({
+      success: true,
+      docRef,
+      clientPdf:   updatePayload.cvClientUrl,
+      internalPdf: updatePayload.cvInternalUrl,
+      extracted: {
+        name:       cand.full_name,
+        positions:  cand.positions,
+        employment: cvData.employment?.length,
+        certs:      cvData.certifications?.length,
+      }
+    });
+  });
+
   // Generate ACM-branded CV via Python script
   app.post("/api/candidates/:id/generate-cv", async (req, res) => {
     const candidate = storage.getCandidateById(Number(req.params.id));
@@ -399,11 +552,221 @@ export async function registerRoutes(httpServer: Server, app: Express): Promise<
   });
 
   // Serve generated CV PDFs
-  // In production: __dirname = /app/dist/, so ../ACM_CV_System resolves to /app/ACM_CV_System
-  // In dev: __dirname = /path/to/project/server/, so ../ACM_CV_System resolves correctly too
   app.use("/cv-output", require("express").static(
     require("path").resolve(__dirname, "../ACM_CV_System/output")
   ));
+  // Serve application uploads
+  app.use("/uploads", require("express").static(
+    require("path").resolve(__dirname, "../ACM_CV_System/uploads")
+  ));
+
+  // ── JOB ADS (admin) ─────────────────────────────────────
+  // Normalise DB snake_case -> camelCase for frontend
+  function normalizeJob(j: any) {
+    if (!j) return j;
+    return {
+      id: j.id, title: j.title, trade: j.trade, location: j.location,
+      projectName: j.project_name || null,
+      description: j.description, requirements: j.requirements || null,
+      payRate: j.pay_rate || (j.rate_from ? `$${j.rate_from}${j.rate_to ? `-$${j.rate_to}` : ''}/${j.rate_type||'hr'}` : null),
+      employmentType: j.employment_type || 'Casual',
+      published: j.status === 'published', status: j.status,
+      applicationCount: j.application_count || 0,
+      createdAt: j.created_at || new Date().toISOString(),
+      updatedAt: j.updated_at || j.created_at || new Date().toISOString(),
+    };
+  }
+  function normalizeApp(a: any) {
+    if (!a) return a;
+    return {
+      id: a.id, jobId: a.job_id, jobTitle: a.job_title || null,
+      firstName: a.first_name, lastName: a.last_name,
+      email: a.email, phone: a.phone, address: a.address || null,
+      rightToWork: a.right_to_work || null, visaDetails: a.visa_details || null,
+      experience: a.years_experience || null, coverLetter: a.cover_letter || null,
+      availability: a.availability || null,
+      cvFilePath: a.cv_file_path || null, tickets: a.tickets_file_paths || null,
+      status: a.status || 'new', candidateId: a.candidate_id || null,
+      createdAt: a.created_at || new Date().toISOString(),
+    };
+  }
+
+  app.get("/api/jobs", (_req, res) => res.json((storage.getJobAds() as any[]).map(normalizeJob)));
+  app.get("/api/jobs/public", (_req, res) => res.json((storage.getPublishedJobAds() as any[]).map(normalizeJob)));
+  app.get("/api/jobs/:id", (req, res) => {
+    const j = normalizeJob(storage.getJobAdById(Number(req.params.id)));
+    if (!j) return res.status(404).json({ message: "Job not found" });
+    res.json(j);
+  });
+  app.post("/api/jobs", (req, res) => {
+    const body = { ...req.body };
+    // Translate published boolean -> status string
+    if (typeof body.published !== 'undefined') {
+      body.status = body.published ? 'published' : 'draft';
+      delete body.published;
+    }
+    if (!body.employmentType && body.employment_type) body.employmentType = body.employment_type;
+    const j = normalizeJob(storage.createJobAd(body));
+    res.status(201).json(j);
+  });
+  app.patch("/api/jobs/:id", (req, res) => {
+    const body = { ...req.body };
+    if (typeof body.published !== 'undefined') {
+      body.status = body.published ? 'published' : 'draft';
+      delete body.published;
+    }
+    const j = normalizeJob(storage.updateJobAd(Number(req.params.id), body));
+    if (!j) return res.status(404).json({ message: "Job not found" });
+    res.json(j);
+  });
+  app.delete("/api/jobs/:id", (req, res) => {
+    storage.deleteJobAd(Number(req.params.id));
+    res.json({ success: true });
+  });
+
+  // ── JOB APPLICATIONS ───────────────────────────────────
+  const appMulter = require("multer");
+  const appUploadDir = require("path").resolve(__dirname, "../ACM_CV_System/uploads");
+  require("fs").mkdirSync(appUploadDir, { recursive: true });
+  const appUpload = appMulter({
+    storage: appMulter.diskStorage({
+      destination: (_req: any, _file: any, cb: any) => cb(null, appUploadDir),
+      filename: (_req: any, file: any, cb: any) => {
+        const safe = file.originalname.replace(/[^a-zA-Z0-9._-]/g, '_');
+        cb(null, `${Date.now()}_${safe}`);
+      },
+    }),
+    limits: { fileSize: 20 * 1024 * 1024 },
+  });
+
+  app.get("/api/jobs/:id/applications", (req, res) => {
+    res.json(storage.getApplicationsByJob(Number(req.params.id)));
+  });
+  app.get("/api/applications", (_req, res) => res.json((storage.getAllApplications() as any[]).map(normalizeApp)));
+  app.get("/api/applications/:id", (req, res) => {
+    const a = storage.getApplicationById(Number(req.params.id));
+    if (!a) return res.status(404).json({ message: "Not found" });
+    res.json(a);
+  });
+  app.patch("/api/applications/:id", (req, res) => {
+    const a = storage.updateApplication(Number(req.params.id), req.body);
+    if (!a) return res.status(404).json({ message: "Not found" });
+    res.json(a);
+  });
+
+  // Public apply — accepts multipart (CV + ticket files)
+  app.post("/api/jobs/:id/apply", appUpload.fields([
+    { name: 'cv', maxCount: 1 },
+    { name: 'tickets', maxCount: 10 },
+  ]), async (req: any, res) => {
+    const job = storage.getJobAdById(Number(req.params.id));
+    if (!job || job.status !== 'published') return res.status(404).json({ error: "Job not found or not open" });
+
+    const body = req.body;
+    if (!body.firstName || !body.lastName || !body.email || !body.phone) {
+      return res.status(400).json({ error: "First name, last name, email and phone are required" });
+    }
+
+    const cvFile = req.files?.cv?.[0];
+    const ticketFiles: any[] = req.files?.tickets || [];
+
+    const appData = {
+      jobId: Number(req.params.id),
+      firstName: body.firstName.trim(),
+      lastName: body.lastName.trim(),
+      email: body.email.trim().toLowerCase(),
+      phone: body.phone.trim(),
+      address: body.address || null,
+      rightToWork: body.rightToWork || null,
+      visaDetails: body.visaDetails || null,
+      yearsExperience: body.yearsExperience || null,
+      currentEmployer: body.currentEmployer || null,
+      availability: body.availability || null,
+      availableDate: body.availableDate || null,
+      roster: body.roster || null,
+      tickets: body.tickets || null,
+      cvFileName: cvFile?.originalname || null,
+      cvFilePath: cvFile ? `/uploads/${cvFile.filename}` : null,
+      ticketsFilePaths: ticketFiles.length ? JSON.stringify(ticketFiles.map((f: any) => `/uploads/${f.filename}`)) : null,
+    };
+
+    const application = storage.createApplication(appData);
+
+    // Auto-generate ACM CV from uploaded CV if provided
+    if (cvFile) {
+      try {
+        const { execSync } = require("child_process");
+        const path = require("path");
+        const fs = require("fs");
+        const cvBase = path.resolve(__dirname, "../ACM_CV_System");
+        const candidatesDir = path.join(cvBase, "candidates");
+        fs.mkdirSync(candidatesDir, { recursive: true });
+        fs.mkdirSync(path.join(cvBase, "output/client"), { recursive: true });
+        fs.mkdirSync(path.join(cvBase, "output/internal"), { recursive: true });
+
+        // Find next doc ref
+        const existingRefs = fs.readdirSync(candidatesDir)
+          .filter((f: string) => f.endsWith(".json"))
+          .map((f: string) => { try { return JSON.parse(fs.readFileSync(path.join(candidatesDir, f), "utf8"))._meta?.doc_ref ?? ""; } catch { return ""; } })
+          .filter((r: string) => r.startsWith("ACM-HR-CV-"))
+          .map((r: string) => parseInt(r.replace("ACM-HR-CV-", ""), 10))
+          .filter((n: number) => !isNaN(n));
+        const nextNum = existingRefs.length > 0 ? Math.max(...existingRefs) + 1 : 1;
+        const docRef = `ACM-HR-CV-${String(nextNum).padStart(3, "0")}`;
+        const key = `${appData.firstName}_${appData.lastName}`.toLowerCase().replace(/[^a-z_]/g, "");
+        const jsonPath = path.join(candidatesDir, `${key}.json`);
+        const uploadedPath = path.join(appUploadDir, cvFile.filename);
+
+        const extractOut = execSync(
+          `python3 ${path.join(cvBase, "extract_cv.py")} "${uploadedPath}" "${jsonPath}" "${key}" "${docRef}"`,
+          { cwd: cvBase, timeout: 60000 }
+        ).toString().trim();
+
+        const extracted = JSON.parse(extractOut);
+        if (extracted.success) {
+          execSync(`python3 ${path.join(cvBase, "generate_cv.py")} ${key}`, { cwd: cvBase, timeout: 30000 });
+          const clientPdf = `/cv-output/client/${docRef}_client.pdf`;
+          const internalPdf = `/cv-output/internal/${docRef}_internal.pdf`;
+          storage.updateApplication(application.id, { docRef, cvClientUrl: clientPdf, cvInternalUrl: internalPdf });
+
+          // Also create a candidate profile automatically
+          const cvData = JSON.parse(fs.readFileSync(jsonPath, "utf8"));
+          const cand = cvData.candidate || {};
+          try {
+            const newCandidate = storage.createCandidate({
+              firstName: appData.firstName,
+              lastName: appData.lastName,
+              email: appData.email,
+              phone: appData.phone,
+              trade: (cand.positions || [job.trade])[0] || job.trade,
+              status: 'available',
+              location: appData.address || job.location,
+              address: cand.address || appData.address,
+              rightToWork: appData.rightToWork,
+              visaDetails: appData.visaDetails,
+              availability: appData.availability,
+              objective: cand.objective,
+              employmentHistory: JSON.stringify(cvData.employment || []),
+              certifications: JSON.stringify(cvData.certifications || []),
+              skills: JSON.stringify(cvData.skills || []),
+              docRef,
+              cvClientUrl: clientPdf,
+              cvInternalUrl: internalPdf,
+              cvGeneratedAt: new Date().toISOString(),
+              sharepointFolderUrl: null,
+              rawCvUrl: appData.cvFilePath,
+              tickets: appData.tickets,
+            } as any);
+            storage.updateApplication(application.id, { candidateId: (newCandidate as any).id });
+          } catch {}
+        }
+      } catch (e) {
+        // CV generation failed silently — application still saved
+      }
+    }
+
+    res.status(201).json({ success: true, applicationId: application.id, message: "Application received! We'll be in touch soon." });
+  });
 
   // ── CLIENTS ──────────────────────────────────────────────────────
   app.get("/api/clients", (_req, res) => { res.json(storage.getClients()); });

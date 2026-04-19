@@ -271,3 +271,72 @@ export interface QuoteLineItem {
   rate: number;
   total: number;
 }
+
+// ── JOB ADS ───────────────────────────────────────────────────────
+export const jobAds = sqliteTable("job_ads", {
+  id: integer("id").primaryKey({ autoIncrement: true }),
+  title: text("title").notNull(),
+  trade: text("trade").notNull(),
+  classification: text("classification"),
+  location: text("location").notNull(),
+  roster: text("roster"),                    // e.g. "2:1 FIFO", "Residential"
+  rateFrom: real("rate_from"),
+  rateTo: real("rate_to"),
+  rateType: text("rate_type").default("hourly"), // hourly | daily | salary
+  employmentType: text("employment_type").default("casual"), // casual | contract | permanent
+  description: text("description").notNull(), // rich text / markdown
+  requirements: text("requirements"),         // bullet list JSON or plain text
+  tickets: text("tickets"),                   // required tickets JSON array
+  status: text("status").notNull().default("draft"), // draft | published | closed
+  applicationCount: integer("application_count").default(0),
+  expiresAt: text("expires_at"),
+  publishedAt: text("published_at"),
+  createdBy: text("created_by"),
+  shareUrl: text("share_url"),               // canonical public URL
+  createdAt: text("created_at").notNull().default(""),
+});
+
+export const insertJobAdSchema = createInsertSchema(jobAds).omit({ id: true, createdAt: true });
+export type InsertJobAd = z.infer<typeof insertJobAdSchema>;
+export type JobAd = typeof jobAds.$inferSelect;
+
+// ── JOB APPLICATIONS ──────────────────────────────────────────────
+export const jobApplications = sqliteTable("job_applications", {
+  id: integer("id").primaryKey({ autoIncrement: true }),
+  jobId: integer("job_id").notNull(),
+  // Personal info
+  firstName: text("first_name").notNull(),
+  lastName: text("last_name").notNull(),
+  email: text("email").notNull(),
+  phone: text("phone").notNull(),
+  address: text("address"),
+  // Work rights
+  rightToWork: text("right_to_work"),         // citizen | pr | visa
+  visaDetails: text("visa_details"),
+  // Experience
+  yearsExperience: text("years_experience"),
+  currentEmployer: text("current_employer"),
+  availability: text("availability"),         // immediate | 2weeks | 1month | other
+  availableDate: text("available_date"),
+  roster: text("roster"),                     // preferred roster
+  // Tickets / certs supplied
+  tickets: text("tickets"),                   // JSON array of ticket names typed in
+  // Uploaded files (stored server-side)
+  cvFileName: text("cv_file_name"),
+  cvFilePath: text("cv_file_path"),
+  ticketsFilePaths: text("tickets_file_paths"), // JSON array of paths
+  // ACM CV ref (generated after application)
+  docRef: text("doc_ref"),
+  cvClientUrl: text("cv_client_url"),
+  cvInternalUrl: text("cv_internal_url"),
+  // Status
+  status: text("status").notNull().default("new"), // new | reviewed | shortlisted | rejected | hired
+  notes: text("notes"),
+  // Link to created candidate profile
+  candidateId: integer("candidate_id"),
+  createdAt: text("created_at").notNull().default(""),
+});
+
+export const insertJobApplicationSchema = createInsertSchema(jobApplications).omit({ id: true, createdAt: true });
+export type InsertJobApplication = z.infer<typeof insertJobApplicationSchema>;
+export type JobApplication = typeof jobApplications.$inferSelect;

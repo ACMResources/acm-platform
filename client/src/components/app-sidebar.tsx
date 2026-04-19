@@ -1,7 +1,7 @@
 import { useLocation, Link } from 'wouter';
 import {
   LayoutDashboard, Users, Building2, FolderOpen, Briefcase,
-  Clock, FileText, ChevronRight, DollarSign,
+  Clock, FileText, ChevronRight, DollarSign, Megaphone, Inbox,
 } from 'lucide-react';
 import {
   Sidebar, SidebarContent, SidebarGroup, SidebarGroupLabel,
@@ -10,14 +10,19 @@ import {
 } from '@/components/ui/sidebar';
 
 const navItems = [
-  { title: 'Dashboard', url: '/', icon: LayoutDashboard },
-  { title: 'Candidates', url: '/candidates', icon: Users },
-  { title: 'Clients', url: '/clients', icon: Building2 },
-  { title: 'Projects', url: '/projects', icon: FolderOpen },
-  { title: 'Placements', url: '/placements', icon: Briefcase },
-  { title: 'Timesheets', url: '/timesheets', icon: Clock },
-  { title: 'Quotes', url: '/quotes', icon: FileText },
-  { title: 'Finance', url: '/finance', icon: DollarSign },
+  { title: 'Dashboard',    url: '/',             icon: LayoutDashboard },
+  { title: 'Candidates',   url: '/candidates',   icon: Users },
+  { title: 'Clients',      url: '/clients',      icon: Building2 },
+  { title: 'Projects',     url: '/projects',     icon: FolderOpen },
+  { title: 'Placements',   url: '/placements',   icon: Briefcase },
+  { title: 'Timesheets',   url: '/timesheets',   icon: Clock },
+  { title: 'Quotes',       url: '/quotes',       icon: FileText },
+  { title: 'Finance',      url: '/finance',      icon: DollarSign },
+];
+
+const recruitingItems = [
+  { title: 'Job Ads',      url: '/job-ads',      icon: Megaphone },
+  { title: 'Applications', url: '/applications', icon: Inbox },
 ];
 
 export function AppSidebar() {
@@ -39,6 +44,7 @@ export function AppSidebar() {
       </SidebarHeader>
 
       <SidebarContent>
+        {/* Management */}
         <SidebarGroup>
           <SidebarGroupLabel className="text-sidebar-foreground/40 text-[10px] uppercase tracking-widest px-3 pt-4 pb-1">
             Management
@@ -49,12 +55,32 @@ export function AppSidebar() {
                 const isActive = location === item.url || (item.url !== '/' && location.startsWith(item.url));
                 return (
                   <SidebarMenuItem key={item.title}>
-                    <SidebarMenuButton
-                      asChild
-                      isActive={isActive}
-                      className="group"
-                      data-testid={`nav-${item.title.toLowerCase()}`}
-                    >
+                    <SidebarMenuButton asChild isActive={isActive} className="group" data-testid={`nav-${item.title.toLowerCase()}`}>
+                      <Link href={item.url}>
+                        <item.icon className="w-4 h-4 shrink-0" />
+                        <span className="flex-1">{item.title}</span>
+                        {isActive && <ChevronRight className="w-3 h-3 opacity-50" />}
+                      </Link>
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
+                );
+              })}
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
+
+        {/* Recruiting */}
+        <SidebarGroup>
+          <SidebarGroupLabel className="text-sidebar-foreground/40 text-[10px] uppercase tracking-widest px-3 pt-4 pb-1">
+            Recruiting
+          </SidebarGroupLabel>
+          <SidebarGroupContent>
+            <SidebarMenu>
+              {recruitingItems.map((item) => {
+                const isActive = location === item.url || location.startsWith(item.url);
+                return (
+                  <SidebarMenuItem key={item.title}>
+                    <SidebarMenuButton asChild isActive={isActive} className="group" data-testid={`nav-${item.title.toLowerCase().replace(' ', '-')}`}>
                       <Link href={item.url}>
                         <item.icon className="w-4 h-4 shrink-0" />
                         <span className="flex-1">{item.title}</span>

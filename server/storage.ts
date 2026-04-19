@@ -219,6 +219,55 @@ sqlite.exec(`
     client_id INTEGER,
     synced_at TEXT NOT NULL DEFAULT (datetime('now'))
   );
+  CREATE TABLE IF NOT EXISTS job_ads (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    title TEXT NOT NULL,
+    trade TEXT NOT NULL,
+    classification TEXT,
+    location TEXT NOT NULL,
+    roster TEXT,
+    rate_from REAL,
+    rate_to REAL,
+    rate_type TEXT DEFAULT 'hourly',
+    employment_type TEXT DEFAULT 'casual',
+    description TEXT NOT NULL,
+    requirements TEXT,
+    tickets TEXT,
+    status TEXT NOT NULL DEFAULT 'draft',
+    application_count INTEGER DEFAULT 0,
+    expires_at TEXT,
+    published_at TEXT,
+    created_by TEXT,
+    share_url TEXT,
+    created_at TEXT NOT NULL DEFAULT (datetime('now'))
+  );
+  CREATE TABLE IF NOT EXISTS job_applications (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    job_id INTEGER NOT NULL,
+    first_name TEXT NOT NULL,
+    last_name TEXT NOT NULL,
+    email TEXT NOT NULL,
+    phone TEXT NOT NULL,
+    address TEXT,
+    right_to_work TEXT,
+    visa_details TEXT,
+    years_experience TEXT,
+    current_employer TEXT,
+    availability TEXT,
+    available_date TEXT,
+    roster TEXT,
+    tickets TEXT,
+    cv_file_name TEXT,
+    cv_file_path TEXT,
+    tickets_file_paths TEXT,
+    doc_ref TEXT,
+    cv_client_url TEXT,
+    cv_internal_url TEXT,
+    status TEXT NOT NULL DEFAULT 'new',
+    notes TEXT,
+    candidate_id INTEGER,
+    created_at TEXT NOT NULL DEFAULT (datetime('now'))
+  );
 `);
 
 // ── Seed demo data ─────────────────────────────────────────────────
@@ -522,6 +571,107 @@ export class SqliteStorage implements IStorage {
     const draftQuotes = (sqlite.prepare("SELECT COUNT(*) as c FROM quotes WHERE status='draft'").get() as any).c;
     const hoursRow = (sqlite.prepare("SELECT COALESCE(SUM(total_hours),0) as h FROM timesheets WHERE week_ending >= date('now','-7 days')").get() as any);
     return { totalCandidates, activePlacements, activeProjects, totalClients, pendingTimesheets, draftQuotes, totalHoursThisWeek: hoursRow.h };
+  }
+
+  // ── JOB ADS ────────────────────────────────────────────────────
+  getJobAds() {
+    return sqlite.prepare("SELECT * FROM job_ads ORDER BY created_at DESC").all();
+  }
+  getJobAdById(id: number) {
+    return sqlite.prepare("SELECT * FROM job_ads WHERE id = ?").get(id) as any;
+  }
+  getPublishedJobAds() {
+    return sqlite.prepare("SELECT * FROM job_ads WHERE status = 'published' ORDER BY published_at DESC").all();
+  }
+  createJobAd(data: any) {
+    const now = new Date().toISOString();
+    const stmt = sqlite.prepare(`INSERT INTO job_ads
+      (title,trade,classification,location,roster,rate_from,rate_to,rate_type,employment_type,
+       description,requirements,tickets,status,expires_at,published_at,created_by,share_url,created_at)
+      VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`);
+    const r = stmt.run(
+      data.title, data.trade, data.classification||null, data.location, data.roster||null,
+      data.rateFrom||null, data.rateTo||null, data.rateType||'hourly', data.employmentType||'casual',
+      data.description, data.requirements||null, data.tickets||null,
+      data.status||'draft', data.expiresAt||null,
+      data.status==='published' ? now : null,
+      data.createdBy||null, data.shareUrl||null, now
+    );
+    return this.getJobAdById(r.lastInsertRowid as number);
+  }
+  updateJobAd(id: number, data: any) {
+    const existing = this.getJobAdById(id);
+    if (!existing) return null;
+    const now = new Date().toISOString();
+    const publishedAt = data.status === 'published' && !existing.published_at ? now : existing.published_at;
+    sqlite.prepare(`UPDATE job_ads SET
+      title=COALESCE(?,title), trade=COALESCE(?,trade), classification=?,
+      location=COALESCE(?,location), roster=?, rate_from=?, rate_to=?,
+      rate_type=COALESCE(?,rate_type), employment_type=COALESCE(?,employment_type),
+      description=COALESCE(?,description), requirements=?, tickets=?,
+      status=COALESCE(?,status), expires_at=?, published_at=?,
+      created_by=COALESCE(?,created_by), share_url=?,
+      application_count=(SELECT COUNT(*) FROM job_applications WHERE job_id=?)
+      WHERE id=?`
+    ).run(
+      data.title||null, data.trade||null, data.classification??existing.classification,
+      data.location||null, data.roster??existing.roster, data.rateFrom??existing.rate_from, data.rateTo??existing.rate_to,
+      data.rateType||null, data.employmentType||null,
+      data.description||null, data.requirements??existing.requirements, data.tickets??existing.tickets,
+      data.status||null, data.expiresAt??existing.expires_at, publishedAt,
+      data.createdBy||null, data.shareUrl??existing.share_url,
+      id, id
+    );
+    return this.getJobAdById(id);
+  }
+  deleteJobAd(id: number) {
+    sqlite.prepare("DELETE FROM job_ads WHERE id = ?").run(id);
+  }
+
+  // ── JOB APPLICATIONS ──────────────────────────────────────────
+  getApplicationsByJob(jobId: number) {
+    return sqlite.prepare("SELECT * FROM job_applications WHERE job_id = ? ORDER BY created_at DESC").all(jobId);
+  }
+  getApplicationById(id: number) {
+    return sqlite.prepare("SELECT * FROM job_applications WHERE id = ?").get(id) as any;
+  }
+  getAllApplications() {
+    return sqlite.prepare(`
+      SELECT a.*, j.title as job_title, j.location as job_location, j.trade as job_trade
+      FROM job_applications a LEFT JOIN job_ads j ON a.job_id = j.id
+      ORDER BY a.created_at DESC
+    `).all();
+  }
+  createApplication(data: any) {
+    const now = new Date().toISOString();
+    const stmt = sqlite.prepare(`INSERT INTO job_applications
+      (job_id,first_name,last_name,email,phone,address,right_to_work,visa_details,
+       years_experience,current_employer,availability,available_date,roster,tickets,
+       cv_file_name,cv_file_path,tickets_file_paths,status,notes,created_at)
+      VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`);
+    const r = stmt.run(
+      data.jobId, data.firstName, data.lastName, data.email, data.phone,
+      data.address||null, data.rightToWork||null, data.visaDetails||null,
+      data.yearsExperience||null, data.currentEmployer||null,
+      data.availability||null, data.availableDate||null, data.roster||null,
+      data.tickets||null, data.cvFileName||null, data.cvFilePath||null,
+      data.ticketsFilePaths||null, 'new', data.notes||null, now
+    );
+    // bump application count on job
+    sqlite.prepare("UPDATE job_ads SET application_count = application_count + 1 WHERE id = ?").run(data.jobId);
+    return this.getApplicationById(r.lastInsertRowid as number);
+  }
+  updateApplication(id: number, data: any) {
+    const existing = this.getApplicationById(id);
+    if (!existing) return null;
+    sqlite.prepare(`UPDATE job_applications SET
+      status=COALESCE(?,status), notes=?, doc_ref=?,
+      cv_client_url=?, cv_internal_url=?, candidate_id=?
+      WHERE id=?`
+    ).run(data.status||null, data.notes??existing.notes, data.docRef??existing.doc_ref,
+      data.cvClientUrl??existing.cv_client_url, data.cvInternalUrl??existing.cv_internal_url,
+      data.candidateId??existing.candidate_id, id);
+    return this.getApplicationById(id);
   }
 }
 
