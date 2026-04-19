@@ -598,23 +598,43 @@ export async function registerRoutes(httpServer: Server, app: Express): Promise<
     if (!j) return res.status(404).json({ message: "Job not found" });
     res.json(j);
   });
-  app.post("/api/jobs", (req, res) => {
-    const body = { ...req.body };
-    // Translate published boolean -> status string
+  // Map frontend camelCase fields -> storage snake_case fields
+  function mapJobBody(raw: any) {
+    const body: any = { ...raw };
+    // published boolean -> status string
     if (typeof body.published !== 'undefined') {
       body.status = body.published ? 'published' : 'draft';
       delete body.published;
     }
-    if (!body.employmentType && body.employment_type) body.employmentType = body.employment_type;
+    // projectName -> project_name (for SQL)
+    if (body.projectName !== undefined) {
+      body.project_name = body.projectName;
+    }
+    // payRate string -> store in description prefix; also set rate_type
+    if (body.payRate !== undefined) {
+      body.pay_rate = body.payRate;
+      // Try to parse "$45/hr" or "$45-$55/hr" for rate_from/rate_to
+      const m = String(body.payRate).match(/\$?(\d+(?:\.\d+)?)(?:\s*[-–]\s*\$?(\d+(?:\.\d+)?))?/);
+      if (m) {
+        body.rateFrom = m[1];
+        body.rateTo = m[2] || null;
+      }
+      body.rateType = body.payRate.toLowerCase().includes('day') ? 'daily' : 'hourly';
+    }
+    // employmentType -> also set employment_type for storage
+    if (body.employmentType !== undefined) {
+      body.employment_type = body.employmentType;
+    }
+    return body;
+  }
+
+  app.post("/api/jobs", (req, res) => {
+    const body = mapJobBody(req.body);
     const j = normalizeJob(storage.createJobAd(body));
     res.status(201).json(j);
   });
   app.patch("/api/jobs/:id", (req, res) => {
-    const body = { ...req.body };
-    if (typeof body.published !== 'undefined') {
-      body.status = body.published ? 'published' : 'draft';
-      delete body.published;
-    }
+    const body = mapJobBody(req.body);
     const j = normalizeJob(storage.updateJobAd(Number(req.params.id), body));
     if (!j) return res.status(404).json({ message: "Job not found" });
     res.json(j);
