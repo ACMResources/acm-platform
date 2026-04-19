@@ -1,0 +1,117 @@
+{
+  "_meta": {
+    "doc_ref": "ACM-HR-CV-013",
+    "date": "April 2026",
+    "classification": "ACM INTERNAL — PERSONNEL FILE",
+    "submitted_by": "ACM Resources (Australia) Pty Ltd",
+    "contact": "jobs@acmresources.com.au"
+  },
+  "candidate": {
+    "full_name": "Sam Paul",
+    "address": "Western Australia",
+    "phone": "",
+    "email": "",
+    "visa": "Australian Citizen",
+    "availability": "Full Time",
+    "positions": ["Operator", "Poly Welder"],
+    "objective": "Experienced Operator and Poly Welder with a strong background in HDPE pipeline construction, civil infrastructure, and heavy plant operation across Western Australian mining and resources projects. Sam has progressively developed expertise in poly welding, rigging, crane operations, and civil earthworks, and brings proven capability managing pipeline and civil crews on major site operations. He holds a broad range of plant tickets and site inductions including Rio Tinto, FMG, Barrow Island, and Garden Island."
+  },
+  "employment": [
+    {
+      "employer": "ACM Resources (Australia) Pty Ltd",
+      "role": "Operator / Poly Welder",
+      "location": "Western Australia",
+      "start": "September 2024",
+      "end": "Present",
+      "duties": [
+        "Poly welding of new pipelines and undertaking repairs to existing pipeline infrastructure.",
+        "Rigging and crane operations, pipe handling, pump installations, and associated water transfer infrastructure works.",
+        "Civil operations including pipeline trenching, bore pad construction, water collection systems, pump station pads, access track construction and maintenance, and water tank pad construction.",
+        "Operation of loaders, skid steers, excavators, and cranes in civil and pipeline construction environments.",
+        "Planning and management of pipeline and civil crews to ensure safe and efficient project delivery."
+      ]
+    },
+    {
+      "employer": "KHG Contracting",
+      "role": "Poly Welder / Fabricator",
+      "location": "Western Australia",
+      "start": "February 2023",
+      "end": "September 2024",
+      "duties": [
+        "Filter press PPH plate repairs and PPE water tank repairs.",
+        "Operation of a Leister extrusion gun for poly welding applications.",
+        "Forklift operation including 3.5T, 5T, 7T, and 16T capacity units.",
+        "Fabrication of spools and measurement plug-ins for pipeline systems.",
+        "On-site poly welding during installation works as required."
+      ]
+    },
+    {
+      "employer": "TPF Group",
+      "role": "Poly Welder / Fabricator",
+      "location": "Western Australia",
+      "start": "January 2022",
+      "end": "February 2023",
+      "duties": [
+        "Filter press PPH plate repairs and PPE water tank repairs.",
+        "Operation of a Leister extrusion gun for welding applications.",
+        "Forklift operation including 7T and 16T capacity units.",
+        "Fabrication of spools and measurement plug-ins.",
+        "On-site poly welding during pipeline installation works."
+      ]
+    },
+    {
+      "employer": "Polyfuse Pty Ltd",
+      "role": "Poly Welder / Fabricator",
+      "location": "Western Australia",
+      "start": "August 2021",
+      "end": "January 2022",
+      "duties": [
+        "355mm waterline installation and maintenance works.",
+        "Operation of a Tecnodue 500mm butt welder for pipeline construction.",
+        "Civil excavator and telehandler operation for the installation of pipelines and associated infrastructure."
+      ]
+    },
+    {
+      "employer": "Global Logistics",
+      "role": "National Stores Controller / Sales and Parts",
+      "location": "Western Australia",
+      "start": "March 2018",
+      "end": "August 2021",
+      "duties": [
+        "Managed all international shipments ranging from small cartons to 40-foot containers via suppliers and shipping agents.",
+        "Monitored and implemented product tariffs, reviewed customs clearances, and ensured compliance with Australian Border Force regulations.",
+        "Liaised with local couriers and interstate freight providers to achieve the fastest response and lowest cost outcomes.",
+        "Placed orders, liaised with export department staff, and arranged shipments within vessel deadlines at maximum payload.",
+        "Maintained system stock levels and product coding, and conducted regular stock audits and cyclic counts.",
+        "Managed store assets, electrical test and tag registers, hire fleet registers, and plant maintenance schedules.",
+        "Implemented production and improvement strategies to maximise operational output.",
+        "Conducted weekly safety and performance meetings via video conference.",
+        "Handled customer parts enquiries, warranty claims, plant repairs, hire fleet maintenance, and equipment calibration."
+      ]
+    }
+  ],
+  "skills": [
+    { "area": "Poly Welding", "detail": "Experienced in butt fusion and extrusion welding of HDPE pipelines up to large diameters. Competent in on-site and workshop welding, spool fabrication, and pipeline repairs." },
+    { "area": "Civil Operations", "detail": "Skilled in pipeline trenching, bore pad and pump station construction, access track construction and maintenance, water tank pad construction, and general civil earthworks." },
+    { "area": "Plant Operation", "detail": "Holds tickets for loaders, skid steers, excavators, telehandlers, cranes, and forklifts across a range of capacities. Experienced in heavy plant operation in mining and construction environments." },
+    { "area": "Rigging and Lifting", "detail": "Competent in rigging and crane operations for pipe handling and installation of water transfer infrastructure." },
+    { "area": "Crew Leadership", "detail": "Experienced in planning and managing pipeline and civil crews in a supervisory capacity on resources sector projects." }
+  ],
+  "certifications": [
+    { "ticket": "Poly Welding", "category": "Competency", "details": "Competency in HDPE poly welding including butt fusion and extrusion techniques." },
+    { "ticket": "Elevated Work Platform (EWP)", "category": "Competency", "details": "Certified for elevated work platform operation." },
+    { "ticket": "Forklift", "category": "Competency", "details": "Licensed forklift operator across multiple capacity classes including 3.5T, 5T, 7T, and 16T." },
+    { "ticket": "Loader", "category": "Plant", "details": "Competent in front-end loader operation on civil and mining construction projects." },
+    { "ticket": "Skid Steer", "category": "Plant", "details": "Competent in skid steer operation for civil and pipeline construction." },
+    { "ticket": "Excavator", "category": "Plant", "details": "Competent in excavator operation for trenching and civil earthworks." },
+    { "ticket": "Telehandler", "category": "Plant", "details": "Competent in telehandler operation for material handling and pipe installation." },
+    { "ticket": "Gas Test Atmospheres", "category": "Safety", "details": "Competency in atmospheric gas testing for confined space and hazardous area entry." },
+    { "ticket": "Confined Space Entry", "category": "Safety", "details": "Certified for confined space entry procedures." },
+    { "ticket": "Certificate III in Transport and Logistics", "category": "Qualification", "details": "Nationally recognised qualification in transport and logistics operations." },
+    { "ticket": "Certificate II in Security Operations", "category": "Qualification", "details": "Nationally recognised qualification in security operations." },
+    { "ticket": "Electrical Test and Tag", "category": "Competency", "details": "Competent in electrical equipment testing and tagging." },
+    { "ticket": "White Card (Construction Induction)", "category": "Safety", "details": "General Construction Induction card — national white card." },
+    { "ticket": "C Class Driver's Licence", "category": "Licence", "details": "Current Western Australian C class driver's licence." }
+  ],
+  "referees": "Professional references available upon request. Please contact ACM Resources to facilitate introduction."
+}

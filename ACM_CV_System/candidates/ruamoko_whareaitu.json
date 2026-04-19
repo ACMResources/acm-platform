@@ -1,0 +1,108 @@
+{
+  "_meta": {
+    "doc_ref": "ACM-HR-CV-017",
+    "date": "April 2026",
+    "classification": "ACM INTERNAL — PERSONNEL FILE",
+    "submitted_by": "ACM Resources (Australia) Pty Ltd",
+    "contact": "jobs@acmresources.com.au"
+  },
+  "candidate": {
+    "full_name": "Ruamoko Whareaitu",
+    "address": "Western Australia",
+    "phone": "",
+    "email": "",
+    "visa": "Australian Citizen",
+    "availability": "Full Time",
+    "positions": ["Operator"],
+    "objective": "Experienced and versatile Operator with a solid background in civil works, pipeline construction, and heavy plant operation across Western Australian resources sector projects. Ruamoko has demonstrated consistent reliability and technical capability through roles with ACM Resources and Innotech, encompassing civil earthworks, access track construction, pipe installation, and dogging operations. His broad plant ticket portfolio and proven experience working on mine site environments makes him a capable and adaptable team member. He holds site inductions for Rio Tinto and FMG."
+  },
+  "employment": [
+    {
+      "employer": "ACM Resources (Australia) Pty Ltd",
+      "role": "Operator",
+      "location": "Western Australia",
+      "start": "2023",
+      "end": "Present",
+      "duties": [
+        "Civil works associated with pipeline construction across resources sector projects.",
+        "Pipe installation including handling, positioning, and supporting poly welding crews.",
+        "Road and access track construction and maintenance in remote mine site environments.",
+        "Vegetation clearing and topsoil storage operations.",
+        "Construction of bore pads, pump station pads, and civil infrastructure pads.",
+        "General civil works as directed by the project supervisor."
+      ]
+    },
+    {
+      "employer": "Innotech",
+      "role": "Operator",
+      "location": "Western Australia",
+      "start": "2018",
+      "end": "2023",
+      "duties": [
+        "Operation of roller, moxy (articulated haul truck), tipper, integrated tool carrier (IT), water cart, and service trucks.",
+        "Civil construction activities including earthmoving, compaction, and material placement.",
+        "Pipeline construction support activities.",
+        "Dogging operations including slinging and directing loads during crane lifts."
+      ]
+    },
+    {
+      "employer": "Peters Removals",
+      "role": "Driver / Removalist",
+      "location": "Western Australia",
+      "start": "2015",
+      "end": "2018",
+      "duties": [
+        "Inspected properties at pick-up addresses to assess removal requirements, then packed and labelled items as required.",
+        "Loaded goods onto removal trucks by hand or using forklifts, trolleys, lifting straps, and lifting hooks.",
+        "Applied protective packing to furniture and appliances to prevent damage during transit.",
+        "Ensured loads were correctly placed and secured to avoid damage to goods and vehicles.",
+        "Unloaded and placed goods at drop-off addresses, unpacking where required.",
+        "Checked items against inventory and noted any wear, tear, or damage.",
+        "Provided customer service and operated removal trucks."
+      ]
+    },
+    {
+      "employer": "Security Perth",
+      "role": "Security Officer / Crowd Controller",
+      "location": "Perth, Western Australia",
+      "start": "2014",
+      "end": "2015",
+      "duties": [
+        "Conducted bag and personnel checks at venue entry points.",
+        "Managed personnel removal and venue closure procedures.",
+        "Conducted identification checks and monitored venue compliance.",
+        "Maintained a safe and secure environment for patrons and staff."
+      ]
+    },
+    {
+      "employer": "Navigator Resources",
+      "role": "Land Surveyor Assistant",
+      "location": "Perth, Western Australia",
+      "start": "2012",
+      "end": "2013",
+      "duties": [
+        "Soil sampling and geological drill site preparation.",
+        "Site rehabilitation following drill programs.",
+        "Assisted the site geologist with field data collection and analysis.",
+        "Performed tenement boundary work and all-round field and site support activities."
+      ]
+    }
+  ],
+  "skills": [
+    { "area": "Civil Operations", "detail": "Experienced in civil earthworks, road and access track construction, bore pad and pump pad construction, pipe installation, and clearing and topsoil management." },
+    { "area": "Plant Operation", "detail": "Holds tickets for roller, articulated haul truck, IT loader, forklift, EWP, and dogging. Experienced operating water carts, tippers, and service vehicles across mining and civil environments." },
+    { "area": "Pipeline Construction", "detail": "Experienced in supporting pipeline installation and civil construction activities including pipe handling, trench support, and associated infrastructure works." },
+    { "area": "Dogging and Lifting", "category": "Competency", "detail": "Holds dogging licence and experienced in slinging and directing crane lifts on construction sites." }
+  ],
+  "certifications": [
+    { "ticket": "Roller", "category": "Plant", "details": "Competency in roller operation for compaction on civil construction projects." },
+    { "ticket": "Integrated Tool Carrier (IT)", "category": "Plant", "details": "Competent in IT loader operation for civil earthworks and material handling." },
+    { "ticket": "Articulated Haul Truck (Moxy)", "category": "Plant", "details": "Competent in articulated haul truck operation for civil and mining earthworks." },
+    { "ticket": "Forklift", "category": "Competency", "details": "Licensed forklift operator." },
+    { "ticket": "Dogging", "category": "Competency", "details": "Dogging licence for slinging and directing loads during crane and lifting operations." },
+    { "ticket": "Elevated Work Platform (EWP)", "category": "Competency", "details": "Certified for elevated work platform operation." },
+    { "ticket": "White Card (Construction Induction)", "category": "Safety", "details": "General Construction Induction card — national white card." },
+    { "ticket": "HR Driver's Licence", "category": "Licence", "details": "Current Heavy Rigid driver's licence." }
+  ],
+  "referees": "Professional references available upon request. Please contact ACM Resources to facilitate introduction."
+}

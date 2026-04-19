@@ -1,0 +1,124 @@
+{
+  "_meta": {
+    "doc_ref": "ACM-HR-CV-016",
+    "date": "April 2026",
+    "classification": "ACM INTERNAL — PERSONNEL FILE",
+    "submitted_by": "ACM Resources (Australia) Pty Ltd",
+    "contact": "jobs@acmresources.com.au"
+  },
+  "candidate": {
+    "full_name": "Rommel Stewart",
+    "address": "Western Australia",
+    "phone": "",
+    "email": "",
+    "visa": "Australian Citizen",
+    "availability": "Full Time",
+    "positions": ["Project Coordinator", "HDPE Welding Supervisor", "Leading Hand"],
+    "objective": "Highly capable Project Coordinator and HDPE Welding Supervisor with a strong background in large-scale pipeline construction, workforce supervision, and quality assurance management. Rommel has demonstrated progressive career growth from Poly Welder through to Leading Hand and Project Coordinator, delivering complex pipeline projects including a 264km HDPE pipeline. He brings expertise in interpreting engineering drawings, managing weld data, training and qualifying HDPE welders, and coordinating large construction crews across mining and resources sector projects. Holds site inductions for Rio Tinto and FMG."
+  },
+  "employment": [
+    {
+      "employer": "ACM Resources (Australia) Pty Ltd",
+      "role": "Project Coordinator / Leading Hand",
+      "location": "Queensland (employed from Western Australia)",
+      "start": "2023",
+      "end": "Present",
+      "duties": [
+        "Engaged in the construction of multiple pipeline and civil projects from commencement through to completion.",
+        "Interpreted design documents and material requirements to ensure construction compliance.",
+        "Managed project schedules and identified project creep indicators to maintain programme adherence.",
+        "Performed technical analysis of reworks and provided effective solutions to maintain quality standards.",
+        "Managed quality assurance systems and prepared documentation for key stakeholders.",
+        "Prepared and delivered visual presentations and progress reports to the Business Manager.",
+        "Interpreted engineering data and standards, and provided training to the workforce to ensure compliance.",
+        "Assisted with the HSE Management System and ensured site safety compliance.",
+        "Led construction of saline reinjection pump systems and supervised abstraction bore construction.",
+        "Supervised pipeline construction activities and managed daily weld data and welder competency verification.",
+        "Managed flange systems and performed daily cost coding of crew resources.",
+        "Interpreted detailed construction drawings to guide field operations."
+      ]
+    },
+    {
+      "employer": "PipeTek",
+      "role": "Pipeline Tester",
+      "location": "Western Australia",
+      "start": "2023",
+      "end": "2023",
+      "duties": [
+        "Conducted hydrostatic testing of constructed pipeline systems.",
+        "Managed flange systems and verified test integrity.",
+        "Built and presented daily reports to the Business Manager.",
+        "Performed daily cost coding of crew resources.",
+        "Interpreted detailed construction drawings to support testing activities."
+      ]
+    },
+    {
+      "employer": "MPC Kinetic",
+      "role": "HDPE Welding Supervisor",
+      "location": "Western Australia",
+      "start": "2022",
+      "end": "2023",
+      "duties": [
+        "Supervised on-site construction of a 264km HDPE pipeline at 647.5mm SDR21.",
+        "Trained and qualified HDPE welders to required competency standards.",
+        "Interpreted weld data on McElroy Vault to ensure quality compliance.",
+        "Managed daily cost coding of 120 resources.",
+        "Built and presented daily reports to the Construction Manager and Project Manager.",
+        "Updated and managed site safety procedures to maintain WHS compliance.",
+        "Scheduled materials to site and managed supply chain coordination.",
+        "Designed and organised the manufacture of specialised equipment as required.",
+        "Interpreted detailed construction drawings to guide large-scale pipeline works."
+      ]
+    },
+    {
+      "employer": "NCAP",
+      "role": "Leading Hand",
+      "location": "Western Australia",
+      "start": "2021",
+      "end": "2022",
+      "duties": [
+        "Interpreted detailed construction drawings and planned work methodology in consultation with the work party.",
+        "Organised delivery of required pipe fittings and machinery transportation to site.",
+        "Executed construction works ensuring methodology compliance, safety monitoring, and quality assurance.",
+        "Reported daily progress to the Supervisor.",
+        "Calculated load weights and organised mobile lifting equipment for critical lifts.",
+        "Recorded and collected field inspection data including Field Inspection Checklists.",
+        "Performed tie-in welding on HDPE pipelines."
+      ]
+    },
+    {
+      "employer": "MPC Kinetic",
+      "role": "Poly Welder",
+      "location": "Western Australia",
+      "start": "2020",
+      "end": "2021",
+      "duties": [
+        "Managed Permit to Work documentation for pipeline construction activities.",
+        "Supervised live dig operations and work parties on HDPE pipeline projects.",
+        "Scheduled multiple work crews at various build stages including survey, water carts, float movements, materials, and QGC certification."
+      ]
+    }
+  ],
+  "skills": [
+    { "area": "HDPE Pipeline Construction", "detail": "Extensive experience in large-scale HDPE pipeline construction including butt fusion welding, spool fabrication, tie-in welding, and pipeline testing across mining and resources sector projects." },
+    { "area": "Project Coordination", "detail": "Proven capability in managing project schedules, interpreting engineering documents, coordinating crew resources, and reporting progress to key stakeholders." },
+    { "area": "Welding Supervision and Training", "detail": "Experienced in training and qualifying HDPE welders, interpreting weld data using McElroy Vault systems, and managing quality assurance requirements on large pipeline projects." },
+    { "area": "Quality Assurance", "detail": "Competent in managing QA systems, maintaining Field Inspection Checklists, and ensuring construction compliance with engineering standards and client requirements." },
+    { "area": "HSE Management", "detail": "Experienced in assisting with HSE Management Systems, updating safety procedures, and maintaining WHS compliance on large multi-crew construction projects." },
+    { "area": "Technical Reporting", "detail": "Skilled in building and presenting daily progress reports and visual presentations to Business Managers, Construction Managers, and Project Managers." }
+  ],
+  "certifications": [
+    { "ticket": "Schedule 26 — WA Mining Supervisor", "category": "Safety", "details": "Western Australian statutory mine supervisor certificate under the Mines Safety and Inspection Act." },
+    { "ticket": "Certificate III in Polymer Processing", "category": "Qualification", "details": "Nationally recognised qualification in polymer processing, supporting HDPE welding and fabrication operations." },
+    { "ticket": "Certificate IV in Civil Construction Supervision", "category": "Qualification", "details": "Nationally recognised qualification in civil construction supervision." },
+    { "ticket": "Certificate IV in Workplace Health and Safety", "category": "Qualification", "details": "Nationally recognised qualification in workplace health and safety management." },
+    { "ticket": "Excavator", "category": "Plant", "details": "Competency in excavator operation for civil and pipeline construction." },
+    { "ticket": "Dogging", "category": "Competency", "details": "Dogging licence for slinging and directing loads." },
+    { "ticket": "4WD Operation", "category": "Competency", "details": "Certified for four-wheel drive vehicle operation on mine site access tracks." },
+    { "ticket": "Chainsaw Operation", "category": "Competency", "details": "Certified for chainsaw operation." },
+    { "ticket": "Loader", "category": "Plant", "details": "Competent in front-end loader operation." },
+    { "ticket": "White Card (Construction Induction)", "category": "Safety", "details": "General Construction Induction card — national white card." },
+    { "ticket": "HR Driver's Licence", "category": "Licence", "details": "Current Heavy Rigid driver's licence." }
+  ],
+  "referees": "Professional references available upon request. Please contact ACM Resources to facilitate introduction."
+}

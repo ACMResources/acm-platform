@@ -1,0 +1,76 @@
+{
+  "_meta": {
+    "doc_ref": "ACM-HR-CV-014",
+    "date": "April 2026",
+    "classification": "ACM INTERNAL — PERSONNEL FILE",
+    "submitted_by": "ACM Resources (Australia) Pty Ltd",
+    "contact": "jobs@acmresources.com.au"
+  },
+  "candidate": {
+    "full_name": "Kyle Pettett",
+    "address": "Western Australia",
+    "phone": "",
+    "email": "",
+    "visa": "Australian Citizen",
+    "availability": "Full Time",
+    "positions": ["Poly Welder"],
+    "objective": "Dedicated and competent Poly Welder with experience in HDPE pipeline installation, fabrication, and civil construction across Western Australian mining and resources projects. Kyle has developed strong technical skills in poly welding, civil earthworks, and bore installation through roles with ACM Resources, UON, and DAMOS. He demonstrates a consistent focus on safety, quality standards, and effective teamwork, and holds inductions for FMG and Roy Hill operations."
+  },
+  "employment": [
+    {
+      "employer": "ACM Resources (Australia) Pty Ltd",
+      "role": "Poly Welder",
+      "location": "Western Australia",
+      "start": "June 2023",
+      "end": "Present",
+      "duties": [
+        "Installation of HDPE pipelines across mining and resources sector projects.",
+        "Fabrication of HDPE spools for pipeline systems.",
+        "Civil works associated with the installation of HDPE pipelines.",
+        "Repairs to existing pipelines and associated infrastructure."
+      ]
+    },
+    {
+      "employer": "UON",
+      "role": "Poly Welder",
+      "location": "Central Pilbara, Western Australia",
+      "start": "November 2021",
+      "end": "June 2023",
+      "duties": [
+        "Welded HDPE pipelines in accordance with project scope including bolt-ups and final installations.",
+        "Developed skills and experience in assisting trench crews, civil works, and road construction, as well as general trade assistant duties.",
+        "Assisted in multiple bore installations for dewatering of mining pits.",
+        "Maintained job safety standards including safe area set-ups, clear communications, job planning, and critical thinking."
+      ]
+    },
+    {
+      "employer": "DAMOS",
+      "role": "Poly Welder",
+      "location": "Western Australia",
+      "start": "November 2019",
+      "end": "November 2021",
+      "duties": [
+        "Read and interpreted construction drawings to ensure accurate pipeline installation.",
+        "Welded pipe and pipe fittings to a high standard using correct welding parameters.",
+        "Applied formulas and general mathematics to calculate welding measures for quality assurance.",
+        "Performed general labour duties and operated a variety of hand and power tools.",
+        "Adhered to OH&S guidelines and maintained housekeeping standards on site."
+      ]
+    }
+  ],
+  "skills": [
+    { "area": "HDPE Poly Welding", "detail": "Experienced in the installation and fabrication of HDPE pipelines including butt fusion welding, spool fabrication, bolt-ups, and pipeline repairs across mining and civil construction environments." },
+    { "area": "Civil Construction", "detail": "Capable of supporting trench crews, road and access construction, bore installation, and general civil works associated with pipeline projects." },
+    { "area": "Technical Drawing", "detail": "Competent in reading and interpreting construction drawings and applying engineering data to welding parameters." },
+    { "area": "Safety and Compliance", "detail": "Demonstrated commitment to OH&S compliance, safe area set-ups, and worksite housekeeping standards." }
+  ],
+  "certifications": [
+    { "ticket": "Poly Welding", "category": "Competency", "details": "Competency in HDPE poly welding including butt fusion techniques for pipeline installation and fabrication." },
+    { "ticket": "Elevated Work Platform (EWP)", "category": "Competency", "details": "Certified for elevated work platform operation." },
+    { "ticket": "Dogging", "category": "Competency", "details": "Dogging licence for slinging and directing loads." },
+    { "ticket": "Forklift", "category": "Competency", "details": "Licensed forklift operator." },
+    { "ticket": "Operate and Maintain Chainsaws", "category": "Competency", "details": "Certified for chainsaw operation and maintenance." },
+    { "ticket": "White Card (Construction Induction)", "category": "Safety", "details": "General Construction Induction card — national white card." }
+  ],
+  "referees": "Professional references available upon request. Please contact ACM Resources to facilitate introduction."
+}

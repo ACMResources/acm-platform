@@ -1,0 +1,106 @@
+{
+  "_meta": {
+    "doc_ref": "ACM-HR-CV-015",
+    "date": "April 2026",
+    "classification": "ACM INTERNAL — PERSONNEL FILE",
+    "submitted_by": "ACM Resources (Australia) Pty Ltd",
+    "contact": "jobs@acmresources.com.au"
+  },
+  "candidate": {
+    "full_name": "Chavez Rossi",
+    "address": "Innaloo, Western Australia 6018",
+    "phone": "",
+    "email": "",
+    "visa": "Australian Citizen",
+    "availability": "Full Time",
+    "positions": ["Piping and Civil Supervisor", "Project Coordinator"],
+    "objective": "Highly experienced and safety-focused Piping and Civil Supervisor and Project Coordinator with a strong background in mining dewatering, HDPE pipeline construction, and civil infrastructure across the Pilbara and Goldfields regions. With over a decade of industry experience, Chavez combines trade qualifications in plumbing and gas fitting with demonstrated leadership, project management, and workforce training expertise. He is recognised for driving continuous improvement, building high-performing teams, and delivering projects on time and within budget in compliance with WHS regulations and client quality standards."
+  },
+  "employment": [
+    {
+      "employer": "ACM Resources (Australia) Pty Ltd",
+      "role": "Piping and Civil Supervisor / Project Coordinator",
+      "location": "Pilbara, Western Australia",
+      "start": "April 2026",
+      "end": "Present",
+      "duties": [
+        "Supervising and coordinating HDPE pipeline and civil construction activities across mine site operations.",
+        "Managing compliance with WHS regulations, corporate documentation requirements, and client quality standards.",
+        "Conducting site visits to assess client needs and developing project plans and schedules.",
+        "Maintaining and managing technical query (TQ) registers and overseeing redline drawings and markups.",
+        "Delivering poly welding operations on DN125 to DN450 HDPE pipelines.",
+        "Operating heavy equipment including loaders, water carts, and rollers as required.",
+        "Providing emergency response coordination and holding current First Aid certification."
+      ]
+    },
+    {
+      "employer": "Linkforce",
+      "role": "Supervisor — Shutdowns",
+      "location": "Pilbara, Western Australia",
+      "start": "",
+      "end": "",
+      "duties": [
+        "Supervised shutdown activities on mine site operations including pipeline and civil works.",
+        "Ensured compliance with FMG, BHP, and Rio Tinto site induction and safety requirements.",
+        "Coordinated confined space entry, working at heights, and EWP operations.",
+        "Managed crew performance and maintained safety and quality standards throughout shutdown activities."
+      ]
+    },
+    {
+      "employer": "Various Clients — Goldfields Region",
+      "role": "Project Coordinator",
+      "location": "Goldfields, Western Australia",
+      "start": "",
+      "end": "",
+      "duties": [
+        "Coordinated mining dewatering and water management projects across the Goldfields region.",
+        "Conducted client liaison and developed detailed project plans and scheduling documentation.",
+        "Managed project compliance documentation and quality control workflows.",
+        "Prepared visual presentations and key stakeholder reports."
+      ]
+    },
+    {
+      "employer": "Various Clients — FMG Chichester Cloudbreak",
+      "role": "Project Coordinator",
+      "location": "Pilbara, Western Australia",
+      "start": "",
+      "end": "",
+      "duties": [
+        "Coordinated pipeline and civil construction activities at the FMG Chichester Cloudbreak operation.",
+        "Managed schedule adherence, technical issue resolution, and crew resource allocation.",
+        "Ensured full compliance with FMG site safety, induction, and documentation requirements.",
+        "Oversaw quality assurance documentation and reported progress to key stakeholders."
+      ]
+    }
+  ],
+  "skills": [
+    { "area": "Mine Dewatering and Water Management", "detail": "Extensive experience in the design, construction, and supervision of mine dewatering infrastructure including bore fields, pipelines, pump stations, and associated civil works." },
+    { "area": "Poly Welding", "detail": "Proficient in HDPE poly welding across DN125 to DN450 pipe diameters using butt fusion, electrofusion, and extrusion welding techniques." },
+    { "area": "Heavy Equipment Operation", "detail": "Experienced in operating loaders, water carts, and rollers on mine site and civil construction projects." },
+    { "area": "Project Coordination", "detail": "Proven ability to manage complex projects across multiple sites, develop schedules, maintain TQ registers, and coordinate technical documentation." },
+    { "area": "Safety and Compliance", "detail": "Strong understanding of WHS legislation, JSA preparation, Schedule 26 statutory responsibilities, and site compliance requirements for major resources clients including FMG, BHP, and Rio Tinto." },
+    { "area": "Training and Supervision", "detail": "Experienced in supervising and training site crews, ensuring competency compliance and consistent application of safety and quality standards." }
+  ],
+  "certifications": [
+    { "ticket": "High Risk Work Licence (HRWL)", "category": "Competency", "details": "High Risk Work Licence covering plant and equipment operation in hazardous environments." },
+    { "ticket": "Excavator — Civil and Hydraulic", "category": "Plant", "details": "Competency in civil and hydraulic excavator operation." },
+    { "ticket": "First Aid and CPR", "category": "Safety", "details": "Current First Aid and CPR certification." },
+    { "ticket": "Working at Heights (WAH)", "category": "Safety", "details": "Certified for work at heights including harness use and anchor point inspection." },
+    { "ticket": "Chainsaw Maintenance and Operations", "category": "Competency", "details": "Certified for chainsaw operation and maintenance." },
+    { "ticket": "Fire Training", "category": "Safety", "details": "Certified in fire safety and emergency response." },
+    { "ticket": "Confined Space Entry", "category": "Safety", "details": "Certified for confined space entry procedures." },
+    { "ticket": "Skid Steer", "category": "Plant", "details": "Competent in skid steer loader operation." },
+    { "ticket": "White Card (Construction Induction)", "category": "Safety", "details": "General Construction Induction card — national white card." },
+    { "ticket": "Gas Test Atmospheres", "category": "Safety", "details": "Competency in atmospheric gas testing for confined space and hazardous area entry." },
+    { "ticket": "Conduct Water Vehicle Operations", "category": "Competency", "details": "Certified for water cart and water vehicle operations on mine sites." },
+    { "ticket": "Schedule 26 — WA Mining Supervisor", "category": "Safety", "details": "Western Australian statutory mine supervisor certificate under the Mines Safety and Inspection Act." },
+    { "ticket": "Standard 11 — Queensland Coal Mining", "category": "Safety", "details": "Queensland statutory competency for coal mining operations." },
+    { "ticket": "Butt Welding", "category": "Competency", "details": "Competency in HDPE butt fusion welding for pipeline construction." },
+    { "ticket": "Section 44", "category": "Safety", "details": "Competency under Section 44 of the Mines Safety and Inspection Act." },
+    { "ticket": "Telehandler", "category": "Plant", "details": "Competent in telehandler operation for material handling on site." },
+    { "ticket": "Electrofusion Welding", "category": "Competency", "details": "Competency in electrofusion welding of HDPE pipelines." },
+    { "ticket": "IT Loader Operations", "category": "Plant", "details": "Competent in integrated tool carrier (IT) loader operation." },
+    { "ticket": "Extrusion Welding", "category": "Competency", "details": "Competency in extrusion welding of HDPE pipeline systems." }
+  ],
+  "referees": "Professional references available upon request. Please contact ACM Resources to facilitate introduction."
+}
